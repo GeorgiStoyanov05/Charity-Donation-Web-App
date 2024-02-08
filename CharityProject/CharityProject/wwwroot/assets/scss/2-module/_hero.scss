@@ -1,0 +1,51 @@
+.hero {
+    overflow-x: hidden;
+    margin: 0 0;
+    display: flex;
+    align-items: center;
+    background-image: url(../img/banner.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 580px;
+
+    // min-width: 568px;
+    @include iphn-screen {
+        height: 730px;
+    }
+
+    // min-width: 992px;
+    @include lg-screen {
+        height: 834px;
+    }
+
+    &__hand {
+        position: absolute;
+        bottom: 0;
+        right: -2%;
+        background: white;
+        padding: 12px 12px;
+        border-radius: 20px;
+        transform: rotate(-29deg);
+
+        // min-width: 992px;
+        @include lg-screen {
+            right: 3%;
+        }
+
+        // min-width: 1200px;
+        @include xl-screen {
+            right: 0%;
+        }
+
+        // min-width: 1366px;
+        @include xli-screen {
+            right: -2%;
+        }
+
+        img {
+            transform: rotate(45deg);
+        }
+
+    }
+}

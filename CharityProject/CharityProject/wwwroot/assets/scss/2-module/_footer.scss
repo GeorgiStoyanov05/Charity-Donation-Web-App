@@ -1,0 +1,133 @@
+.footer {
+    position: relative;
+    z-index: 8;
+    background-image: url(../img/footerDrop.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: $C-1;
+    padding: 16rem 0 48px 0;
+
+    // min-width: 1200px;
+    @include xl-screen {
+        padding: 20rem 0 48px 0;
+    }
+
+    &__desc {
+        color: $C-3;
+        margin: 12px 0 20px 0;
+
+        // min-width: 1200px;
+        @include xl-screen {
+            font-size: 16px;
+        }
+    }
+
+    &__social {
+        margin: 0 0;
+
+        &-ul {
+            display: flex;
+            gap: 16px;
+        }
+
+        &-link {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            color: $white !important;
+            background: $social-back;
+            border: 1px solid $border;
+            transition: all 0.3s ease !important;
+            border-radius: 100px;
+            font-size: 20px;
+            width: 48px;
+            height: 48px;
+
+            &:hover {
+                transition: all 0.3s ease !important;
+                background: $btn-2;
+            }
+        }
+    }
+
+    &__sub {
+        font-family: $font;
+        font-size: 24px;
+        font-weight: 500;
+        color: $white;
+        text-transform: capitalize;
+        margin: 0 0 20px 0;
+    }
+
+    &__inp {
+        font-family: $font;
+        font-size: 16px;
+        color: $white !important;
+        background: $inp-bg !important;
+        border-radius: 12px;
+        padding: 16px 0 16px 12px;
+        outline: 0 !important;
+        border: 1px solid transparent !important;
+        box-shadow: none !important;
+
+        &:focus {
+            border: 1px solid $btn-2 !important;
+        }
+
+        &-btn {
+            color: $white !important;
+            position: absolute;
+            top: 8%;
+            right: 1.3%;
+            content: "";
+            padding: 11px 24px !important;
+            transition: all 0.2s linear;
+            
+            &:hover {
+                color: $white !important;
+                transition: all 0.2s linear;
+                background: $btn-hover !important;
+            }
+        }
+    }
+
+    &__list {
+        margin: 0 0;
+        padding: 0 0;
+
+        &li:last-child {
+            margin: 0 0;
+        }
+
+        li {
+            margin: 0 0 16px 0;
+        }
+
+        &-item {
+            text-decoration: none;
+            color: $white !important;
+            font-family: $font;
+            font-size: 1rem;
+            text-transform: capitalize;
+            transition: all 0.3s ease !important;
+            position: relative;
+
+            &:hover {
+                transition: all 0.3s ease;
+                color: $btn-2 !important;
+            }
+        }
+    }
+
+    &__border {
+        background: $line;
+        margin: 48px 0;
+        height: 2px !important;
+    }
+
+    &__bottom {
+        color: $C-3;
+    }
+}

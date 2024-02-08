@@ -1,0 +1,369 @@
+.cases {
+    overflow-x: hidden;
+
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 40px;
+
+        // min-width: 768px;
+        @include md-screen {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        // min-width: 1200px;
+        @include xl-screen {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    &__btn {
+        margin: 48px 0 0 0;
+        border: 1px solid $btn;
+        color: $btn;
+        background: transparent;
+        text-transform: capitalize;
+        font-family: $font;
+        font-size: 20px;
+        font-weight: 500;
+        border-radius: 12px;
+        padding: 15px 30px;
+        transition: all 0.2s linear;
+
+        &:hover {
+            transition: all 0.2s linear;
+            background: $btn;
+            color: $white;
+        }
+    }
+
+    &__card {
+        border-radius: 20px;
+        background: $white;
+        overflow: hidden;
+        border: 1px solid $border-2;
+
+        // min-width: 400px;
+        @include xsss-screen {
+            border: 0 !important;
+            box-shadow: 0px 8px 12px 0px rgba(77, 77, 77, 0.07);
+        }
+
+        &-mb {
+            margin: 0 0 0.7rem 0;
+        }
+
+        &-location {
+            font-family: $font;
+            color: $C-1;
+            font-size: 12px;
+            margin: 0 0 12px 4px;
+        }
+
+        &-i {
+            margin-bottom: 12px;
+        }
+
+        &-title {
+            text-decoration: none;
+            font-family: $font;
+            color: $C-1 !important;
+            font-size: 18px;
+            font-weight: 600;
+            margin: 12px 0;
+            transition: all 0.2s linear;
+
+            &:hover {
+                transition: all 0.2s linear;
+                color: $btn !important;
+            }
+
+            // min-width: 576px;
+            @include iphn-screen {
+                font-size: 24px;
+            }
+
+            // min-width: 768px;
+            @include md-screen {
+                font-size: 18px;
+            }
+
+            // min-width: 992px;
+            @include lg-screen {
+                font-size: 24px;
+            }
+
+            // min-width: 1200px;
+            @include xl-screen {
+                font-size: 22px;
+            }
+
+            // min-width: 1400px;
+            @include xlii-screen {
+                font-size: 24px;
+            }
+        }
+
+        &:hover &-img>img {
+            transform: scale(1.1);
+            transition: all 0.2s linear;
+        }
+
+        &-img {
+            position: relative;
+            margin: 12px 12px;
+            overflow: hidden;
+            border-radius: 12px;
+
+            img {
+                transform: scale(1);
+                transition: all 0.2s linear;
+                border-radius: 12px;
+            }
+        }
+
+        &-progress {
+            height: 5px !important;
+            background: $C-3 !important;
+            margin: 12px 0 0 0;
+
+            &--bar {
+                background: linear-gradient(#009688, #009688);
+            }
+        }
+
+        &-tag {
+            position: absolute;
+            bottom: 16px;
+            left: 16px;
+            text-transform: capitalize;
+            font-family: $font;
+            font-size: 12px;
+            font-weight: 400;
+            background: $white;
+            color: $black;
+            padding: 10px 14px;
+            border-radius: 100px;
+        }
+
+        &-range {
+            border-radius: 10px;
+            background: $text-bg;
+            box-shadow: 0px 8px 20px 0px rgba(208, 208, 208, 0.07);
+            padding: 18px 16px;
+            margin: 12px 0 0 0;
+
+            &--bottom {
+                display: block;
+                justify-content: space-between;
+                margin: 16px 0 0 0;
+
+                // min-width: 400px;
+                @include xsss-screen {
+                    display: flex;
+                }
+
+                &---m {
+                    margin: 0 0 12px 0;
+
+                    // min-width: 400px;
+                    @include xsss-screen {
+                        margin: 0 0;
+                    }
+                }
+            }
+
+            &--dollar {
+                background: $small-i;
+                color: $btn;
+                padding: 7px 10px;
+                border-radius: 50px;
+                width: 36px;
+                height: 36px;
+
+                // min-width: 768px;
+                @include md-screen {
+                    padding: 6px 9px;
+                }
+
+                // min-width: 992px;
+                @include lg-screen {
+                    padding: 7px 8px;
+                }
+            }
+
+            &--price {
+                font-family: $font;
+                font-weight: 400;
+                font-size: 14px;
+                color: $text;
+                text-transform: capitalize;
+
+                // min-width: 768px;
+                @include md-screen {
+                    font-size: 12px;
+                }
+
+                // min-width: 992px;
+                @include lg-screen {
+                    font-size: 14px;
+                }
+            }
+        }
+
+    }
+
+    .slick-slider {
+        padding: 0 2px;
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .slick-list {
+        grid-column: 1/3;
+    }
+
+    .slick-dots {
+        margin: 30px 0 0 0;
+    }
+
+    .slick-slide {
+
+        // min-width: 576px;
+        @include sm-screen {
+            width: 535px !important;
+            margin: 10px 0px 16px 20px;
+        }
+
+
+        // min-width: 768px;
+        @include md-screen {
+            width: 350px !important;
+            margin: 10px 0px 16px 19px;
+        }
+
+        // min-width: 992px;
+        @include lg-screen {
+            width: 455px !important;
+            margin: 10px 0px 16px 32px;
+        }
+
+
+        // min-width: 1200px;
+        @include xl-screen {
+            width: 357px !important;
+            margin: 10px 0px 16px 27px;
+        }
+
+        // min-width: 1400px;     
+        @include xlii-screen {
+            width: 404px !important;
+        }
+
+        // min-width: 1440px;
+        @include xliii-screen {
+            width: 388px !important;
+            margin: 10px 0px 16px 42px;
+        }
+    }
+
+
+    //------> Single__Cases Slider
+    &__slider3 {
+
+        &-arrow {
+            &--left {
+                position: absolute;
+                top: 36%;
+                left: -2.5%;
+                content: "";
+
+                // min-width: 992px;
+                @include lg-screen {
+                    top: 35%;
+                }
+
+                // min-width: 1400px;
+                @include xlii-screen {
+                    top: 38%;
+                }
+            }
+
+            &--right {
+                position: absolute;
+                top: 36%;
+                right: -3%;
+                content: "";
+                grid-column: 2/2;
+
+                // min-width: 768px;
+                @include md-screen {
+                    right: -9%;
+                }
+
+                // min-width: 992px;
+                @include lg-screen {
+                    top: 35%;
+                    right: -7%;
+                }
+
+                // min-width: 1200px;
+                @include xl-screen {
+                    right: -4.3%;
+                }
+
+                // min-width: 1400px;
+                @include xlii-screen {
+                    top: 38%;
+                }
+            }
+        }
+
+        &-slider {
+
+            .slick-dots {
+                position: relative;
+                z-index: 99;
+                margin: -12px 0 0 0 !important;
+            }
+
+            .slick-slide {
+                margin: 0px 0px 3rem 0px;
+
+                // min-width: 576px;
+                @include sm-screen {
+                    width: 513px !important;
+                    margin: 10px 0px 2rem 20px;
+                }
+
+
+                // min-width: 768px;
+                @include md-screen {
+                    width: 330px !important;
+                    margin: 10px 0px 2rem 26px;
+                }
+
+                // min-width: 992px;
+                @include lg-screen {
+                    width: 441px !important;
+                    margin: 10px 0px 3rem 32px;
+                }
+
+
+                // min-width: 1200px;
+                @include xl-screen {
+                    width: 350px !important;
+                    margin: 10px 0px 16px 27px;
+                }
+
+                // min-width: 1400px;
+                @include xlii-screen {
+                    width: 400px !important;
+                    margin: 10px 0 16px 23px;
+                }
+            }
+        }
+
+    }
+
+}

@@ -1,0 +1,166 @@
+.mission {
+    padding: 80px 0;
+    background-image: url(../img/footerDrop.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: $C-1;
+    overflow-x: hidden;
+
+    // min-width: 1200px;
+    @include xl-screen {
+        padding: 110px;
+    }
+
+    &__mb {
+        margin-bottom: 100px;
+    }
+
+    &__target {
+        border: 1px solid $border-3;
+        border-radius: 100px;
+        width: 130px;
+        height: 130px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+
+        // min-width: 576px;
+        @include sm-screen {
+            width: 156px;
+            height: 156px;
+        }
+
+        &-tr {
+            transform: translate(-28px, 0);
+        }
+
+        &-text {
+            color: $border-2;
+            font-size: 12px;
+            text-transform: capitalize;
+            font-weight: 400;
+            margin: 0 0 8px 0;
+            padding: 0 25px;
+        }
+
+        &-num {
+            font-size: 24px;
+            font-weight: 700;
+            color: $white;
+            margin: 0 0;
+        }
+    }
+
+    &__card {
+        padding: 28px 40px 32px 40px;
+        text-align: start;
+        border-radius: 30px;
+        background: $white;
+        box-shadow: 0px 12px 43px -12px rgba(34, 85, 58, 0.14);
+        border: 2px solid transparent;
+        transition: all 0.2s linear !important;
+
+        &:hover {
+            transition: all 0.2s linear !important;
+            border: 2px solid $white;
+            background: $btn !important;
+        }
+
+        &:hover &-heading {
+            transition: all 0.2s linear !important;
+            color: $white !important;
+        }
+
+        &:hover &-desc {
+            transition: all 0.2s linear !important;
+            color: $C-3 !important;
+        }
+
+        &:hover &-btn {
+            transition: all 0.2s linear !important;
+            color: $white !important;
+        }
+
+        &:hover &-btn {
+            &--i {
+                border: 2px solid $white;
+                transition: all 0.2s linear !important;
+                color: $white !important;
+            }
+        }
+
+        &:hover &-icon {
+            transition: all 0.2s linear !important;
+            background: $white !important;
+        }
+
+        &:first-child {
+            margin: 0 0 50px 0;
+
+            // min-width: 992px;
+            @include lg-screen {
+                margin: 0 0;
+            }
+        }
+
+        &-heading {
+            font-size: 25px !important;
+            margin: 24px 0 12px 0 !important;
+            font-weight: 600 !important;
+            text-transform: capitalize;
+
+            // min-width: 992px;
+            @include lg-screen {
+                font-size: 30px !important;
+            }
+        }
+
+        &-desc {
+            font-size: 14px !important;
+            line-height: 22px !important;
+
+            // min-width: 992px;
+            @include lg-screen {
+                font-size: 16px !important;
+                line-height: 28px !important;
+            }
+        }
+
+        &-btn {
+            font-family: $font;
+            font-size: 16px;
+            font-weight: 500;
+            color: $C-1;
+            text-transform: capitalize;
+            text-decoration: none;
+            background: transparent;
+            border: 0;
+            margin: 24px 0 0 0;
+            display: flex;
+            align-items: center;
+            transition: all 0.2s linear !important;
+
+            &:hover &--i {
+                transform: translate(5px, 0);
+                transition: all 0.2s linear;
+            }
+
+            &--i {
+                margin: 0 0 0 11px;
+                font-size: 12px;
+                width: 20px;
+                height: 20px;
+                background: transparent;
+                color: $C-1;
+                border: 2px solid $C-1;
+                border-radius: 100px;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                transition: all 0.2s linear;
+            }
+        }
+    }
+}

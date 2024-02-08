@@ -1,0 +1,85 @@
+.social {
+
+    &__body {
+        background: $btn;
+        border-radius: 30px;
+        padding: 0 20px;
+        height: 268px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        z-index: 9;
+
+        &--loc {
+            position: absolute;
+            content: '';
+            bottom: 0;
+            left: 0;
+            width: 225px;
+            height: 225px;
+            z-index: -1;
+            background-image: url(../img/back-drop-1.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+
+        &--con {
+            position: absolute;
+            content: '';
+            bottom: 0;
+            left: 0;
+            width: 225px;
+            height: 225px;
+            z-index: -1;
+            background-image: url(../img/back-drop-4.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+
+        &--mail {
+            position: absolute;
+            content: '';
+            bottom: 0;
+            left: 0;
+            width: 225px;
+            height: 225px;
+            z-index: -1;
+            background-image: url(../img/back-drop-3.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+    }
+
+    &__text {
+        font-family: $font;
+        font-weight: 600;
+        font-size: 24px;
+        color: $white;
+        text-transform: capitalize;
+        margin: 24px 0 12px 0;
+    }
+
+    &__number {
+        font-family: $font;
+        font-weight: 400;
+        font-size: 18px;
+        color: $text-bg;
+    }
+
+    &__i {
+        margin: auto;
+        background: $back-drop;
+        width: 80px;
+        height: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100%;
+    }
+}

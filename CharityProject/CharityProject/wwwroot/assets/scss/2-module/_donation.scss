@@ -1,0 +1,243 @@
+.donation {
+    overflow-x: hidden;
+    padding: 80px 0 100px 0;
+
+    // min-width: 1200px;
+    @include xl-screen {
+        padding: 120px 0 160px 0;
+    }
+
+    &__mt {
+        margin: 30px 0 0 0;
+        display: grid;
+        align-items: center;
+        grid-template-columns: repeat(1, 1fr);
+
+        // min-width: 568px;
+        @include iphn-screen {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    &__heading {
+        margin: 0 0 24px 0;
+
+        // min-width: 992px;
+        @include lg-screen {
+            font-size: 35px;
+        }
+
+        // min-width: 1200px;
+        @include xl-screen {
+            font-size: 42px;
+        }
+    }
+
+    &__element {
+        position: absolute;
+        left: -15px;
+        top: 0%;
+    }
+
+    &__element2 {
+        position: absolute;
+        right: 0%;
+        top: -9%;
+        z-index: -2;
+        transform: rotateY(170deg);
+        width: 100px;
+        height: 130px;
+    }
+
+    &__element3 {
+        position: absolute;
+        top: 0%;
+        right: 0;
+        transform: rotateY(190deg);
+
+        // min-width: 992px;
+        @include lg-screen {
+            width: 16%;
+        }
+
+        // min-width: 1200px;
+        @include xl-screen {
+            width: auto;
+        }
+    }
+
+    &__desc {
+        font-size: 16px;
+        line-height: 28px !important;
+    }
+
+    &__btn {
+        margin: 30px 0 0 0;
+        font-weight: 500;
+        outline: 0 !important;
+        box-shadow: none !important;
+    }
+
+    &__video {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 30px 0 0 0;
+
+        // min-width: 568px;
+        @include iphn-screen {
+            margin: 0 0;
+        }
+
+        &-btn {
+            position: relative;
+            cursor: pointer;
+        }
+
+        &-player {
+            transform: scale(1);
+            animation: img_anima 3s ease-in-out infinite;
+        }
+
+        &-waves {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+
+            &--div {
+                width: 80px;
+                height: 80px;
+                background: rgba(0, 113, 93, 0.10);
+                opacity: 0;
+                border-radius: 100%;
+                z-index: -1;
+                animation: waves_anima 3s ease-in-out infinite;
+            }
+
+            &--player {
+                cursor: pointer;
+                font-size: 40px;
+                color: $btn;
+                border-radius: 100px;
+                padding: 8px;
+
+            }
+
+            &--one {
+                animation-delay: 0s;
+            }
+
+            &--two {
+                animation-delay: 1s;
+                position: absolute;
+                top: 0;
+            }
+
+            &--three {
+                animation-delay: 2s;
+                position: absolute;
+                top: 0;
+            }
+
+            @keyframes waves_anima {
+                0% {
+                    transform: scale(0.2, 0.2);
+                    opacity: 0;
+                }
+
+                50% {
+                    opacity: 0.9;
+                }
+
+                100% {
+                    transform: scale(0.9, 0.9);
+                    opacity: 0;
+                }
+            }
+
+            @keyframes img_anima {
+                0% {
+                    transform: scale(1);
+
+                }
+
+                50% {
+                    transform: scale(1.15);
+                }
+
+                100% {
+                    transform: scale(1);
+
+                }
+            }
+        }
+
+        &-text {
+            margin: 0 0 !important;
+            color: $C-1 !important;
+            font-size: 16px !important;
+
+            // min-width: 992px;
+            @include lg-screen {
+                font-size: 14px !important;
+            }
+
+            // min-width: 1200px;
+            @include xl-screen {
+                font-size: 16px !important;
+            }
+        }
+
+    }
+
+
+    &__img {
+        position: relative;
+
+        &-circle {
+            width: 65%;
+        }
+
+        &-m {
+            margin: 4rem 0 -4rem 0;
+        }
+
+        &-person {
+            position: absolute;
+            left: -2%;
+            top: -30%;
+        }
+
+        &-shape {
+            position: absolute;
+            z-index: -1;
+            right: -3%;
+            content: "";
+        }
+    }
+}
+
+.vbox-content {
+    min-height: 0 !important;
+    height: 100% !important;
+    margin: auto;
+}
+
+// ---> for vedio
+.venoratio {
+
+    // min-width: 1200px;
+    @include xl-screen {
+        width: 70%;
+    }
+}
+
+.vbox-close {
+    top: 5%;
+    right: 3%;
+    font-size: 35px;
+    color: $white;
+}

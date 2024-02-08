@@ -1,0 +1,108 @@
+.hero {
+    &__banner {
+        &-two {
+            position: relative;
+
+            &::before {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 50%;
+                height: 100%;
+                content: "";
+                background: $bg;
+                z-index: -1;
+            }
+
+            &::after {
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 50%;
+                height: 100%;
+                content: "";
+                z-index: -1;
+                background-image: url(../img/blur-bg.png);
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;
+            }
+        }
+    }
+
+    &__three {
+        margin: 0 0;
+        background-image: url(../img/header-img-3.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+
+        &-layer {
+            background: linear-gradient(272deg, rgba(0, 113, 93, 0.00) 0%, #037762 100%);
+            padding: 130px 0 76px 0;
+        }
+
+        &-gray {
+            color: $C-3 !important;
+        }
+
+        &-i {
+            color: $btn;
+            background: $C-3;
+            margin: 0 8px 0 0;
+            height: 24px;
+            width: 24px;
+            border-radius: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        &-btn {
+            background: $white !important;
+            color: $C-1 !important;
+            border: 1px solid $white;
+        }
+
+        &-box {
+            display: flex;
+            background: $white;
+            justify-content: space-around;
+            align-items: center;
+            padding: 30px 30px;
+            border-radius: 20px;
+            max-width: 337px;
+
+
+            &--num {
+                color: $btn;
+                font-family: $font;
+                font-size: 19px;
+                font-weight: 600;
+                margin: 0 0 12px 0;
+                text-transform: capitalize;
+
+                // min-width: 568px;
+                @include iphn-screen {
+                    font-size: 24px;
+                }
+            }
+
+            &--icon {
+                margin: 0 12px 0 0;
+                border-radius: 100px;
+                background: linear-gradient(180deg, rgba(0, 113, 93, 0.10) 0%, rgba(0, 113, 93, 0.00) 100%);
+                padding: 16px 16px;
+            }
+        }
+
+        &-progress {
+            background: $back-drop;
+            height: 8px;
+
+            &--bar {
+                background: $btn;
+            }
+        }
+    }
+}

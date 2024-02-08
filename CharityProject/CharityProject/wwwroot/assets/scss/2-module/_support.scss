@@ -1,0 +1,117 @@
+.support {
+    background: $C-1;
+    padding: 80px 0;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+
+    // min-width: 1200px;
+    @include xl-screen {
+        padding: 110px 0;
+    }
+
+    &::before {
+        position: absolute;
+        content: '';
+        left: 0;
+        bottom: 0;
+        background-image: url(../img/line-left.png);
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 450px;
+        height: 450px;
+        z-index: -1;
+    }
+
+    &::after {
+        position: absolute;
+        content: '';
+        right: -4%;
+        bottom: 0;
+        background-image: url(../img/line-right.png);
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 260px;
+        height: 310px;
+        z-index: -1;
+    }
+
+    &__heading {
+        margin: 0 0 48px 0;
+
+        // min-width: 992px;
+        @include lg-screen {
+            font-size: 35px;
+        }
+
+        // min-width: 1200px;
+        @include xl-screen {
+            font-size: 42px;
+        }
+    }
+
+    &__card {
+        padding: 28px 40px 52px 40px;
+        text-align: center;
+        border-radius: 30px;
+        background: $white;
+        cursor: pointer;
+        box-shadow: 0px 12px 43px -12px rgba(34, 85, 58, 0.14);
+        transition: all 0.2s linear;
+        border: 2px solid transparent;
+
+        &:hover {
+            transition: all 0.2s linear;
+            border: 2px solid $white;
+            background: $btn !important;
+        }
+
+        &:hover &-heading {
+            transition: all 0.2s linear;
+            color: $white !important;
+        }
+
+        &:hover &-desc {
+            transition: all 0.2s linear;
+            color: $C-3 !important;
+        }
+
+        &:hover &-icon {
+            transition: all 0.2s linear;
+            background: $white;
+        }
+
+        &:first-child {
+            margin: 0 0 50px 0;
+
+            // min-width: 1200px;
+            @include xl-screen {
+                margin: 0 0;
+            }
+        }
+
+        &-icon {
+            background: rgba(0, 113, 93, 0.10);
+        }
+
+        &-heading {
+            font-size: 22px !important;
+            margin: 24px 0 12px 0 !important;
+            font-weight: 600 !important;
+            text-transform: capitalize;
+        }
+
+        &-desc {
+            font-size: 14px !important;
+            line-height: 22px !important;
+
+            // min-width: 992px;
+            @include lg-screen {
+                font-size: 16px !important;
+                line-height: 28px !important;
+            }
+        }
+    }
+}

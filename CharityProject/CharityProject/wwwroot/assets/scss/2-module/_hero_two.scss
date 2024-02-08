@@ -1,0 +1,62 @@
+.hero {
+    &__banner {
+        background-image: url(../img/banner-2.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    &__two {
+        padding: 20px 0 96px 0;
+
+        &-i {
+            color: $btn;
+            background: $white;
+            margin: 0 8px 0 0;
+            padding: 6px;
+            height: 28px;
+            width: 28px;
+            border-radius: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    &__frame {
+        margin: 0 0;
+        position: relative;
+
+        &-circle {
+            width: 100%;
+        }
+
+        &-person {
+            position: absolute;
+            left: -2%;
+            top: -43%;
+        }
+
+        &-lines {
+            position: absolute;
+            left: -11%;
+            bottom: 5%;
+        }
+
+        &-team {
+            background: $white;
+            border-radius: 20px;
+            padding: 20px;
+            position: absolute;
+            right: 7%;
+            bottom: -5%;
+            box-shadow: 0px 8px 40px 0px rgba(60, 77, 74, 0.08);
+
+            &--text {
+                text-transform: capitalize;
+                font-size: 20px;
+            }
+        }
+
+    }
+}

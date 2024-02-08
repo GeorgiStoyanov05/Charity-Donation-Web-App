@@ -1,0 +1,67 @@
+.num {
+    background: $btn;
+    background-image: url(../img/back-drop.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    overflow-x: hidden;
+
+    &__body {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        font-family: $font;
+        padding: 80px 0;
+        text-align: center;
+        gap: 50px;
+
+        // min-width: 568px;
+        @include iphn-screen {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        // min-width: 768px;
+        @include md-screen {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        &-digit {
+            font-size: 55px;
+            color: $white;
+            font-weight: 700;
+
+            // min-width: 768px;
+            @include md-screen {
+                font-size: 45px;
+            }
+
+            // min-width: 992px;
+            @include lg-screen {
+                font-size: 55px;
+            }
+
+            // min-width: 1200px;
+            @include xl-screen {
+                font-size: 72px;
+            }
+        }
+
+        &-text {
+            color: $label;
+            font-family: $font;
+            font-size: 20px;
+            font-weight: 500;
+            text-transform: capitalize;
+
+            // min-width: 768px;
+            @include md-screen {
+                font-size: 16px;
+            }
+
+            // min-width: 992px;
+            @include lg-screen {
+                font-size: 24px;
+            }
+        }
+    }
+
+}

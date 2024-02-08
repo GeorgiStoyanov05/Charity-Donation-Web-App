@@ -1,0 +1,58 @@
+.org {
+    overflow-x: hidden;
+
+    &__desc {
+        font-size: 16px;
+        line-height: 28px !important;
+    }
+
+    &__li {
+        display: flex;
+        align-items: center;
+        margin: 0 0 45px 0;
+
+        // max-width: 575px;
+        @include iphnX-screen {
+            text-align: center;
+            display: block !important;
+        }
+
+        &:last-child {
+            margin: 0 0;
+        }
+
+        &-name {
+            font-family: $font;
+            font-weight: 600;
+            font-size: 30px;
+            color: $C-1;
+
+            // max-width: 575px;
+            @include iphnX-screen {
+                font-size: 25px;
+            }
+        }
+
+        &-img {
+            background: $btn;
+            border-radius: 100px;
+            padding: 15px;
+            margin: 0 20px 0 0;
+
+            // max-width: 575px;
+            @include iphnX-screen {
+                margin: 0 auto 20px auto;
+                width: 70px;
+                height: 70px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            &--icon {
+                width: 36px;
+                height: 36px;
+            }
+        }
+    }
+}

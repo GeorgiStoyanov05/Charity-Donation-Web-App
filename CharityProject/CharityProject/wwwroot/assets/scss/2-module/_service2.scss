@@ -1,0 +1,110 @@
+.service2 {
+    overflow-x: hidden;
+
+    &__bg {
+        background: linear-gradient(180deg, #ECF4F3 0%, #FFF 100%);
+    }
+
+    &__m {
+        margin-bottom: 48px !important;
+    }
+
+    &__card {
+        padding: 28px 40px 52px 40px;
+        text-align: center;
+        border-radius: 30px;
+        background: $white;
+        box-shadow: 0px 12px 43px -12px rgba(34, 85, 58, 0.14);
+        transition: all 0.2s linear;
+        cursor: pointer;
+
+        &:hover {
+            transition: all 0.2s linear;
+            background: $btn;
+        }
+
+        &:hover &-boxshow {
+            display: none;
+            transition: all 0.2s linear;
+        }
+
+        &:hover &-boxhide {
+            display: block;
+            transition: all 0.2s linear;
+        }
+
+        &:hover &-handshow {
+            display: none;
+            transition: all 0.2s linear;
+        }
+
+        &:hover &-handhide {
+            display: block;
+            transition: all 0.2s linear;
+        }
+
+        &:hover &-heading {
+            transition: all 0.2s linear;
+            color: $white;
+        }
+
+        &:hover &-desc {
+            transition: all 0.2s linear;
+            color: $border-2;
+        }
+
+        &:first-child {
+            margin: 0 0 50px 0;
+
+            // min-width: 992px;
+            @include lg-screen {
+                margin: 0 0;
+            }
+        }
+
+        &-boxhide {
+            display: none;
+            transition: all 0.2s linear;
+        }
+
+        &-boxshow {
+            display: block;
+            transition: all 0.2s linear;
+        }
+
+        &-handhide {
+            display: none;
+            transition: all 0.2s linear;
+        }
+
+        &-handshow {
+            display: block;
+            transition: all 0.2s linear;
+        }
+
+        &-heading {
+            font-size: 25px !important;
+            margin: 24px 0 12px 0 !important;
+            font-weight: 600 !important;
+            text-transform: capitalize;
+            transition: all 0.2s linear;
+
+            // min-width: 992px;
+            @include lg-screen {
+                font-size: 30px !important;
+            }
+        }
+
+        &-desc {
+            font-size: 14px !important;
+            line-height: 22px !important;
+            transition: all 0.2s linear;
+
+            // min-width: 992px;
+            @include lg-screen {
+                font-size: 16px !important;
+                line-height: 28px !important;
+            }
+        }
+    }
+}

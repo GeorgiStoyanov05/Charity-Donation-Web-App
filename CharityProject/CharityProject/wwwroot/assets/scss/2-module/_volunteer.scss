@@ -1,0 +1,86 @@
+.volunteer {
+    overflow-x: hidden;
+
+    &__requirement {
+        border-radius: 20px;
+        background: rgba(253, 214, 91, 0.10);
+        padding: 30px;
+        margin: 30px 0 0 0;
+    }
+
+    &__text {
+        font-family: $font;
+        font-weight: 700;
+        font-weight: 30px;
+        color: $C-1;
+        margin: 0 0 24px 0;
+    }
+
+    &__desc {
+        font-family: $font;
+        font-weight: 400;
+        font-size: 16px;
+        color: $line;
+    }
+
+    &__list {
+        margin: 24px 0 50px 0;
+
+        li {
+            font-family: $font;
+            font-weight: 500;
+            font-size: 16px;
+            color: $line;
+            margin: 0 0 18px 0;
+            display: flex;
+            gap: 16px;
+
+            // min-wdith: 400px;
+            @include xsss-screen {
+                align-items: center;
+            }
+        }
+
+        &-sub {
+            text-transform: capitalize;
+            font-family: $font;
+            font-weight: 400;
+            font-size: 13px;
+            color: $text;
+
+            // min-wdith: 400px;
+            @include xsss-screen {
+                font-size: 16px;
+            }
+        }
+
+        &-content {
+            font-family: $font;
+            font-weight: 500;
+            // font-size: 24px;
+            font-size: 15px;
+            color: $C-1;
+
+            // min-wdith: 400px;
+            @include xsss-screen {
+                font-size: 20px;
+            }
+        }
+
+        &-i {
+            background: $bg-3;
+            font-size: 20px;
+            padding: 16px 16px;
+            border-radius: 100px;
+            color: $C-1;
+            margin: 0 0 16px 0;
+
+            // min-wdith: 400px;
+            @include xsss-screen {
+                margin: 0 0 0 0;
+                font-size: 28px;
+                padding: 20px 20px;
+            }
+        }
+    }
+}
