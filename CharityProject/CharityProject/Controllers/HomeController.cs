@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace CharityProject.Controllers
+namespace Charities.Controllers
 {
     public class HomeController : Controller
     {
@@ -18,7 +18,17 @@ namespace CharityProject.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult AboutUs()
+        {
+            return View();
+        }
+
+        public IActionResult Blog()
+        {
+            return View();
+        }
+
+        public IActionResult Contact()
         {
             return View();
         }
