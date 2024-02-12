@@ -14786,6 +14786,7 @@ ul > li {
 }
 .menu__list-dropdown--ul {
   position: relative;
+ 
   border: 1px solid rgba(62, 94, 80, 0.168627451) !important;
   -webkit-box-shadow: 0px 8px 34px 0px rgba(77, 77, 77, 0.07);
           box-shadow: 0px 8px 34px 0px rgba(77, 77, 77, 0.07);

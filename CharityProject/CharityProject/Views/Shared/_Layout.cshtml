@@ -76,23 +76,7 @@
 
                     @if (SignInManager.IsSignedIn(User))
                     {
-                        <li class="nav-item dropdown">
-                            <a class="btn menu__btn menu__btn-in mb-3 mb-lg-0" href="#" id="navbarDropdown" role="button"
-                           data-bs-toggle="dropdown" aria-expanded="false">
-                                @User.Identity?.Name
-                            </a>
-                            <ul class="dropdown-menu menu__list-dropdown--ul" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="single-cases.html">single cases</a></li>
-                                <li><a class="dropdown-item" href="donate.html">donate</a></li>
-                                <li><a class="dropdown-item" href="blog-details.html">blog details</a></li>
-                                <li><a class="dropdown-item" href="faqs.html">faqs</a></li>
-                                <li><a class="dropdown-item" href="gallery.html">gallery</a></li>
-                                <li><a class="dropdown-item" href="team.html">team</a></li>
-                                <li><a class="dropdown-item" href="testimonials.html">testimonials</a></li>
-                                <li><a class="dropdown-item" href="volunteer.html">volunteer</a></li>
-                                <li><a class="dropdown-item" href="error.html">error</a></li>
-                            </ul>
-                        </li>
+
                     }
 
                 </ul>
@@ -106,6 +90,23 @@
                 else
                 {
 
+                    <div>
+                        <a class="btn menu__btn menu__btn-in mb-3 mb-lg-0 nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                            @User.Identity?.Name
+                        </a>
+                        <ul class="dropdown-menu menu__list-dropdown--ul" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="single-cases.html">single cases</a></li>
+                            <li><a class="dropdown-item" href="donate.html">donate</a></li>
+                            <li><a class="dropdown-item" href="blog-details.html">blog details</a></li>
+                            <li><a class="dropdown-item" href="faqs.html">faqs</a></li>
+                            <li><a class="dropdown-item" href="gallery.html">gallery</a></li>
+                            <li><a class="dropdown-item" href="team.html">team</a></li>
+                            <li><a class="dropdown-item" href="testimonials.html">testimonials</a></li>
+                            <li><a class="dropdown-item" href="volunteer.html">volunteer</a></li>
+                            <li><a class="dropdown-item" href="error.html">error</a></li>
+                        </ul>
+                    </div>
                     <div class="d-sm-flex d-lg-block gap-4 mt-3 mt-lg-0">
                         <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
                             <button type="submit" class="btn menu__btn menu__btn-up mb-3 mb-lg-0">Logout</button>
