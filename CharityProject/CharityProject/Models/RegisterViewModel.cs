@@ -5,8 +5,8 @@ namespace CharityProject.Models
     public class RegisterViewModel
     {
         [Required]
-        [StringLength(30, MinimumLength = 5)]
-        public string UserName { get; set; } = null!;
+        [StringLength(30, MinimumLength = 3)]
+        public string Username { get; set; } = null!;
 
         [Required]
         [EmailAddress]

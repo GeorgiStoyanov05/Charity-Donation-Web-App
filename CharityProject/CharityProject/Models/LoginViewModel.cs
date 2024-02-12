@@ -12,6 +12,9 @@ namespace CharityProject.Models
         [DataType(DataType.Password)]
         public string Password { get; set; } = null!;
 
+        [Required]
+        public bool RememberMe { get; set; } = false;
+
         [UIHint("hidden")]
         public string? ReturnUrl { get; set; }
     }

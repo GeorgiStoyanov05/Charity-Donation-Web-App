@@ -53,9 +53,9 @@ $(document).ready(function () {
 /* ---------------------------> 
   Form Validation
 <--------------------------- */
-$(document).ready(function () {
+  $(document).ready(function () {
   $("form").submit(function (e) {
-    e.preventDefault();
+      console.log("Hallo");
   });
 
   const validateInput = (input, validErr, validErrReq, regex) => {

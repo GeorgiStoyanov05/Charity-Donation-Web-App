@@ -1,114 +1,115 @@
-﻿        <div class="sign">
-            <div class="container-fluid p-0">
-                <div class="sign__layer">
-                    <div class="d-md-flex justify-content-between position-relative h-100">
-                        <div class="col-11 col-sm-10 col-md-8 col-lg-5 col-xl-4 m-auto sign__position">
-                            <div class="sign__form">
-                                <h5 class="sign__small d-none d-lg-block">Copyright © 2023 Company Name</h5>
-                                <form action="#" method="POST" class="" id="form">
-                                    <h4 class="sign__form-heading">Sign up</h4>
+﻿@model CharityProject.Models.RegisterViewModel
+
+<div class="sign">
+    <div class="container-fluid p-0">
+        <div class="sign__layer">
+            <div class="d-md-flex justify-content-between position-relative h-100">
+                <div class="col-11 col-sm-10 col-md-8 col-lg-5 col-xl-4 m-auto sign__position">
+                    <div class="sign__form">
+                        <h5 class="sign__small d-none d-lg-block">Copyright © 2023 Company Name</h5>
+                        <form method="post" class="" id="form">
+                            <h4 class="sign__form-heading">Sign up</h4>
+                            <div class="">
+                                <div class="sign__form-mb">
+                                    <label class="sign__form-label" asp-for="Username">
+                                        Username <span class="text-danger">*</span>
+                                    </label>
+                                    <input class="form-control sign__form-input" id="nameInp" name="username"
+                                           type="text" placeholder="Enter your name" asp-for="Username">
                                     <div class="">
-                                        <div class="sign__form-mb">
-                                            <label class="sign__form-label" for="nameInp">name <span
-                                                    class="text-danger">*</span></label>
-                                            <input class="form-control sign__form-input" id="nameInp" name="name"
-                                                type="text" placeholder="Enter your name">
-                                            <div class="">
-                                                <span class="sign__text sign__text-name text-danger d-none">Use a valid
-                                                    name</span>
-                                                <span
-                                                    class="sign__text sign__text-name--required text-danger d-none">Name
-                                                    is
-                                                    required</span>
-                                            </div>
-                                        </div>
-                                        <div class="sign__form-mb">
-                                            <label class="sign__form-label" for="emailInp">Email <span
-                                                    class="text-danger">*</span></label>
-                                            <input class="form-control sign__form-input" id="emailInp" name="email"
-                                                type="email" placeholder="Enter your email">
-                                            <div class="">
-                                                <span class="sign__text sign__text-email text-danger d-none">Email must
-                                                    be
-                                                    valid</span>
-                                                <span
-                                                    class="sign__text sign__text-email--required text-danger d-none">Email
-                                                    is
-                                                    required</span>
-                                            </div>
-                                        </div>
-                                        <div class="">
-                                            <label class="sign__form-label" for="passwordInp">Password <span
-                                                    class="text-danger">*</span></label>
-                                            <input class="form-control sign__form-input" id="passwordInp"
-                                                name="password" type="password" placeholder="Create a Password">
-                                        </div>
-                                        <div class="mt-1 mb-4">
-                                            <div class="">
-                                                <span class="sign__text sign__text-pass text-danger d-none">Password
-                                                    must be 3 to 5 characters long</span>
-                                                <span
-                                                    class="sign__text sign__text-pass--required text-danger d-none">Password
-                                                    is
-                                                    required</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-10 col-sm-12 m-auto">
-                                            <div class="">
-                                                <input class="sign__btn sign__btn-in form-control" type="submit"
-                                                    value="Get started">
-                                            </div>
-                                            <div class="">
-                                                <button class="sign__btn sign__btn-up form-control"><img class="pe-3"
-                                                        src="~/assets/img/google-g.svg" alt="image">Sign in with
-                                                    Google</button>
-                                            </div>
-                                        </div>
-                                        <div class="">
-                                            <p class="sign__text text-center">Already have an account? <a
-                                                    class="sign__form-link" href="singin.html">Log in</a></p>
+                                        <span class="sign__text sign__text-name text-danger d-none" asp-validation-for="Username"></span>
+                                    </div>
+                                </div>
+                                <div class="sign__form-mb">
+                                    <label class="sign__form-label" asp-for="Email">
+                                        Email <span class="text-danger">*</span>
+                                    </label>
+                                    <input class="form-control sign__form-input" id="emailInp" name="email"
+                                           type="email" placeholder="Enter your email" asp-for="Email">
+                                    <div class="">
+                                        <span class="sign__text sign__text-email text-danger d-none" asp-validation-for="Email"></span>
+                                    </div>
+                                </div>
+                                <div class="">
+                                    <label class="sign__form-label" asp-for="Password">
+                                        Password <span class="text-danger">*</span>
+                                    </label>
+                                    <input class="form-control sign__form-input" id="passwordInp"
+                                           name="password" type="password" placeholder="Create a Password" asp-for="Password">
+                                </div>
+                                <div class="mt-1 mb-4">
+                                    <div class="">
+                                        <span class="sign__text sign__text-pass text-danger d-none" asp-validation-for="Password"></span>
+                                    </div>
+                                </div>
+                                <div class="sign__form-mb">
+                                    <label class="sign__form-label" asp-for="ConfirmPassword">
+                                        Repeat Password <span class="text-danger">*</span>
+                                    </label>
+                                    <input class="form-control sign__form-input" id="nameInp" name="ConfirmPassword"
+                                           type="password" placeholder="Enter your Password again" asp-for="ConfirmPassword">
+                                    <div class="">
+                                        <span class="sign__text sign__text-name text-danger d-none" asp-validation-for="ConfirmPassword"></span>
+                                    </div>
+                                </div>
+                                <div class="col-10 col-sm-12 m-auto">
+                                    <div class="">
+                                        <input type="submit" class="sign__btn sign__btn-in form-control" value="Get Started"/>
+                                    </div>
+                                    <div class="">
+                                        <button class="sign__btn sign__btn-up form-control">
+                                            <img class="pe-3"
+                                                 src="~/assets/img/google-g.svg" alt="image">Sign in with
+                                            Google
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="">
+                                    <p class="sign__text text-center">
+                                        Already have an account? <a class="sign__form-link" asp-controller="Account" asp-action="Login">Log in</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="">
+                        <img class="sign__card-element d-none d-xxl-block" src="~/assets/img/element-4.png"
+                             alt="image">
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6 d-none d-lg-block">
+                    <div class="">
+                        <div class="sign__slider">
+                            <div class="sign__slider-item">
+                                <div class="card sign__card h-100">
+                                    <img class="img-fluid h-100 sign__card-img" src="~/assets/img/signUp.png"
+                                         alt="image">
+                                    <div class="card-img-overlay sign__card-overlay">
+                                        <div class="position-relative">
+                                            <h5 class="global__heading global__heading-w sign__card-title">
+                                                Sign
+                                                up
+                                                for a charity account
+                                            </h5>
+                                            <p class="sign__card-p">Create an account to save and continue.</p>
                                         </div>
                                     </div>
-                                </form>
+                                </div>
                             </div>
-                            <div class="">
-                                <img class="sign__card-element d-none d-xxl-block" src="~/assets/img/element-4.png"
-                                    alt="image">
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-6 d-none d-lg-block">
-                            <div class="">
-                                <div class="sign__slider">
-                                    <div class="sign__slider-item">
-                                        <div class="card sign__card h-100">
-                                            <img class="img-fluid h-100 sign__card-img" src="~/assets/img/signUp.png"
-                                                alt="image">
-                                            <div class="card-img-overlay sign__card-overlay">
-                                                <div class="position-relative">
-                                                    <h5 class="global__heading global__heading-w sign__card-title">Sign
-                                                        up
-                                                        for a charity account
-                                                    </h5>
-                                                    <p class="sign__card-p">Create an account to save and continue.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="sign__slider-item">
-                                        <div class="card sign__card h-100">
-                                            <img class="img-fluid h-100 sign__card-img" src="~/assets/img/signIn.png"
-                                                alt="image">
-                                            <img class="sign__card-element d-none d-lg-block"
-                                                src="~/assets/img/element-4.png" alt="image">
-                                            <div class="card-img-overlay sign__card-overlay">
-                                                <div class="position-relative">
-                                                    <h5 class="global__heading global__heading-w sign__card-title">Sign
-                                                        up
-                                                        for a charity account
-                                                    </h5>
-                                                    <p class="sign__card-p">Create an account to save and continue.</p>
-                                                </div>
-                                            </div>
+                            <div class="sign__slider-item">
+                                <div class="card sign__card h-100">
+                                    <img class="img-fluid h-100 sign__card-img" src="~/assets/img/signIn.png"
+                                         alt="image">
+                                    <img class="sign__card-element d-none d-lg-block"
+                                         src="~/assets/img/element-4.png" alt="image">
+                                    <div class="card-img-overlay sign__card-overlay">
+                                        <div class="position-relative">
+                                            <h5 class="global__heading global__heading-w sign__card-title">
+                                                Sign
+                                                up
+                                                for a charity account
+                                            </h5>
+                                            <p class="sign__card-p">Create an account to save and continue.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -118,5 +119,6 @@
                 </div>
             </div>
         </div>
-        <!-- SignUp END -->
     </div>
+</div>
+<!-- SignUp END -->

@@ -17,11 +17,11 @@ builder.Services.AddDefaultIdentity<User>(options =>
     options.Password.RequiredLength = 5;
 })
     .AddEntityFrameworkStores<ApplicationDbContext>();
-    
-builder.Services.ConfigureApplicationCookie(options=>
+
+builder.Services.ConfigureApplicationCookie(options =>
 {
-    options.LoginPath = "/User/Login";
-})
+    options.LoginPath = "/Account/Login";
+});
 
 builder.Services.AddControllersWithViews();
 
