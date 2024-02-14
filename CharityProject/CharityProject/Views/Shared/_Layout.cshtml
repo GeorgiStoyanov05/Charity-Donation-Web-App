@@ -73,12 +73,6 @@
                     <li class="nav-item">
                         <a class="nav-link menu__list-link" asp-controller="Home" asp-action="Contact">contact</a>
                     </li>
-
-                    @if (SignInManager.IsSignedIn(User))
-                    {
-
-                    }
-
                 </ul>
                 @if (!SignInManager.IsSignedIn(User))
                 {
@@ -90,12 +84,13 @@
                 else
                 {
 
-                    <div>
-                        <a class="btn menu__btn menu__btn-in mb-3 mb-lg-0 nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
+                    <div class="">
+                        <a class="btn menu__btn menu__btn-in mb-3 mb-lg-0" href="#" id="navbarDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
                             @User.Identity?.Name
                         </a>
                         <ul class="dropdown-menu menu__list-dropdown--ul" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" asp-controller="Cases" asp-action="Create">Create a case</a></li>
                             <li><a class="dropdown-item" href="single-cases.html">single cases</a></li>
                             <li><a class="dropdown-item" href="donate.html">donate</a></li>
                             <li><a class="dropdown-item" href="blog-details.html">blog details</a></li>
