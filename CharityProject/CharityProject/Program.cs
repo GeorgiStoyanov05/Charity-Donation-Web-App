@@ -1,5 +1,7 @@
 using Charities.Data.Models;
+using CharityProject.Contracts;
 using CharityProject.Data;
+using CharityProject.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -24,6 +26,7 @@ builder.Services.ConfigureApplicationCookie(options =>
 });
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<ICaseService, CaseService>();
 
 var app = builder.Build();
 

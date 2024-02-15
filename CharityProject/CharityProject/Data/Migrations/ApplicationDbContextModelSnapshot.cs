@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace CharityProject.Data.Migrations
+namespace CharityProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -34,7 +34,34 @@ namespace CharityProject.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Category");
+                    b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("3c95ad1b-6618-46bc-8e5b-cfa5b6284899"),
+                            Name = "Healthy Food"
+                        },
+                        new
+                        {
+                            Id = new Guid("1d12cf26-8672-40e6-b389-facac63030e7"),
+                            Name = "Free Education"
+                        },
+                        new
+                        {
+                            Id = new Guid("7fd8a33a-ef72-4c18-b3c2-cda55b3e4bc0"),
+                            Name = "Clean Water"
+                        },
+                        new
+                        {
+                            Id = new Guid("028deab9-921b-4453-af6d-91f9d434eb4a"),
+                            Name = "Helping Poor"
+                        },
+                        new
+                        {
+                            Id = new Guid("42e58574-8a02-4acb-9c5a-009db0813174"),
+                            Name = "Medical Facilities"
+                        });
                 });
 
             modelBuilder.Entity("Charities.Data.Models.Charity", b =>
@@ -83,7 +110,7 @@ namespace CharityProject.Data.Migrations
 
                     b.HasIndex("CreatorId");
 
-                    b.ToTable("Charity");
+                    b.ToTable("Charities");
                 });
 
             modelBuilder.Entity("Charities.Data.Models.Comment", b =>
@@ -128,7 +155,7 @@ namespace CharityProject.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Owner");
+                    b.ToTable("Owners");
                 });
 
             modelBuilder.Entity("Charities.Data.Models.Donation", b =>

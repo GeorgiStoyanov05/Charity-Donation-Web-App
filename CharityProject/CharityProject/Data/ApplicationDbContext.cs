@@ -10,9 +10,9 @@ namespace CharityProject.Data
             : base(options)
         {
         }
-        public DbSet<Creator> Owner { get; set; }
-        public DbSet<Charity> Charity { get; set; }
-        public DbSet<Category> Category { get; set; }
+        public DbSet<Creator> Owners { get; set; }
+        public DbSet<Charity> Charities { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -33,6 +33,33 @@ namespace CharityProject.Data
             builder.Entity<User>()
                 .Property(u => u.Email)
                 .IsRequired();
+
+            builder.Entity<Category>()
+                .HasData(new Category()
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "Healthy Food"
+                },
+                new Category()
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "Free Education"
+                },
+                new Category()
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "Clean Water"
+                },
+                new Category()
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "Helping Poor"
+                },
+                new Category()
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "Medical Facilities"
+                });
 
             base.OnModelCreating(builder);
         }

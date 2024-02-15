@@ -1,88 +1,93 @@
-﻿   <!--  Banner START -->
-
-    <div class="banner">
-        <div class="banner__overlay">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 text-center text-lg-start">
-                        <h1 class="global__title global__title-dark text-capitalize">Start your campaign and change the world!</h1>
-                        <ul class="banner__ul">
-                            <li class="banner__ul-list p-0">
-                                <a class="banner__ul-link" asp-controller="Home" asp-action="Index">
-                                    home
-                                </a>
-                            </li>
-                            <li class="banner__ul-list">
-                                Create a case
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="banner__element d-none d-lg-block">
-                    <img src="~/assets/img/element-3.svg" alt="image">
-                </div>
-                <div class="banner__polygon d-none d-lg-block">
-                    <img src="~/assets/img/polygon.svg" alt="image">
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!--  Banner END -->
-
-    <!--  Contact START -->
-
-    <div class="contact global__py pt-0">
-        <div class="container p-sm-0">
+﻿@model CharityProject.Models.CreateCaseViewModel
+<div class="banner">
+    <div class="banner__overlay">
+        <div class="container">
             <div class="row">
-                <form method="POST" class="contact__form">
-                    <div class="col-12 col-md-9 col-lg-6 text-center m-auto" data-aos="fade-down"
-                        data-aos-duration="1000">
-                        <h3 class="global__text">Case</h3>
-                        <h2 class="global__heading">Create your Voluntary Case
-                        </h2>
-                    </div>
-                    <div class="contact__form-body">
-                        <div class="">
-                            <input id="nameInp" class="contact__form-inp form-control" type="text"
-                                placeholder="Name">
-                            <div class="">
-                                <span class="sign__text sign__text-name text-danger d-none">Use a valid
-                                    name</span>
-                                <span class="sign__text sign__text-name--required text-danger d-none">Name
-                                    is
-                                    required</span>
-                            </div>
-                        </div>
-                        <div class="">
-                            <input id="emailInp" class="contact__form-inp form-control" type="text"
-                                placeholder="Location">
-                            <div class="">
-                            </div>
-                        </div>
-                        <div class="">
-                            <input id="phnInp" class="contact__form-inp form-control" type="number"
-                                placeholder="Funds needed">
-                            <div class="">
-                            </div>
-                        </div>
-                        <div class="">
-                            <select class="contact__form-inp form-select">
-                                <option value="1">Choose Category</option>
-                                <option value="2">Choose two</option>
-                                <option value="3">Choose three</option>
-                                <option value="4">Choose four</option>
-                            </select>
-                        </div>
-                        <div class="contact__form-body--comnt">
-                            <textarea class="contact__form-inp form-control" id="comment" cols="30" rows="5"
-                                placeholder="Write your description"></textarea>
-                        </div>
-                        <div class="">
-                            <input class="donation__btn global__btn mt-0" type="submit" value="create">
-                        </div>
-                    </div>
-                </form>
+                <div class="col-12 text-center text-lg-start">
+                    <h1 class="global__title global__title-dark text-capitalize">Start your campaign and change the world!</h1>
+                    <ul class="banner__ul">
+                        <li class="banner__ul-list p-0">
+                            <a class="banner__ul-link" asp-controller="Home" asp-action="Index">
+                                home
+                            </a>
+                        </li>
+                        <li class="banner__ul-list">
+                            Create a case
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="banner__element d-none d-lg-block">
+                <img src="~/assets/img/element-3.svg" alt="image">
+            </div>
+            <div class="banner__polygon d-none d-lg-block">
+                <img src="~/assets/img/polygon.svg" alt="image">
             </div>
         </div>
     </div>
+</div>
+<div class="contact global__py pt-0">
+    <div class="container p-sm-0">
+        <div class="row">
+            <form method="POST" class="contact__form">
+                <div class="col-12 col-md-9 col-lg-6 text-center m-auto" data-aos="fade-down"
+                     data-aos-duration="1000">
+                    <h3 class="global__text">Case</h3>
+                    <h2 class="global__heading">
+                        Create your Voluntary Case
+                    </h2>
+                </div>
+                <div class="contact__form-body">
+                    <div class="">
+                        <input id="nameInp" class="contact__form-inp form-control" type="text"
+                               placeholder="Name" asp-for="Name" />
+                        <div class="">
+                            <span class="sign__text sign__text-name text-danger d-none">
+                                Use a valid
+                                name
+                            </span>
+                            <span class="sign__text sign__text-name--required text-danger d-none">
+                                Name
+                                is
+                                required
+                            </span>
+                        </div>
+                    </div>
+                    <div class="">
+                        <input class="contact__form-inp form-control" type="text"
+                               placeholder="Image URL" asp-for="ImageUrl">
+                        <div class="">
+                        </div>
+                    </div>
+                    <div class="">
+                        <input id="emailInp" class="contact__form-inp form-control" type="text"
+                               placeholder="Location" asp-for="Location">
+                        <div class="">
+                        </div>
+                    </div>
+                    <div class="">
+                        <input id="phnInp" class="contact__form-inp form-control" type="number"
+                               placeholder="Funds needed" asp-for="FundsNeeded">
+                        <div class="">
+                        </div>
+                    </div>
+                    <div class="">
+                        <select class="contact__form-inp form-select" asp-for="CategoryId">
+                            @foreach (var category in ViewBag.Categories)
+                            {
+                                <option value="@category.Id">@category.Name</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="contact__form-body--comnt">
+                        <textarea class="contact__form-inp form-control" id="comment" cols="30" rows="5"
+                                  placeholder="Write your description" asp-for="Description"></textarea>
+                    </div>
+                    <div class="">
+                        <input class="donation__btn global__btn mt-0" type="submit" value="create">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
