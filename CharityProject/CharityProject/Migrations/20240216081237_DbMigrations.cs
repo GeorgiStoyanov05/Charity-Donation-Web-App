@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CharityProject.Migrations
 {
-    public partial class InitialDbMigrations : Migration
+    public partial class DbMigrations : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -297,11 +297,11 @@ namespace CharityProject.Migrations
                 columns: new[] { "Id", "Name" },
                 values: new object[,]
                 {
-                    { new Guid("028deab9-921b-4453-af6d-91f9d434eb4a"), "Helping Poor" },
-                    { new Guid("1d12cf26-8672-40e6-b389-facac63030e7"), "Free Education" },
-                    { new Guid("3c95ad1b-6618-46bc-8e5b-cfa5b6284899"), "Healthy Food" },
-                    { new Guid("42e58574-8a02-4acb-9c5a-009db0813174"), "Medical Facilities" },
-                    { new Guid("7fd8a33a-ef72-4c18-b3c2-cda55b3e4bc0"), "Clean Water" }
+                    { new Guid("2a8e35e3-bb7f-4dc5-b2cf-7e8c1453fa61"), "Free Education" },
+                    { new Guid("3d2a38cd-b4a6-4b24-a818-b9970903b641"), "Medical Facilities" },
+                    { new Guid("4e1f7579-c1f2-4a1c-bde2-29b80eeac8be"), "Clean Water" },
+                    { new Guid("c20ba78f-d1f4-4386-91fa-1c261b034c92"), "Healthy Food" },
+                    { new Guid("e9bd096b-3c55-4769-aa1b-0a4d64b6343f"), "Helping Poor" }
                 });
 
             migrationBuilder.CreateIndex(

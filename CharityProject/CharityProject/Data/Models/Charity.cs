@@ -26,19 +26,21 @@ namespace Charities.Data.Models
         public string? Location { get; set; }
 
         //TODO: Updates
-
+        public ICollection<Update> Updates { get; set; }
 
         [Required]
         [Range(1.00, double.MaxValue)]
         public double? FundsNeeded { get; set; }
 
         //TODO: FundsDonated
+        public ICollection<Donation> Donations { get; set; }
 
         [Required]
         [Url]
         public string? ImageUrl { get; set; }
 
         //TODO: Comments
+        public ICollection<Comment> Comments { get; set; }
 
         [Required]
         [ForeignKey("Category")]

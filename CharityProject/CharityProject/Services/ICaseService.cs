@@ -9,5 +9,7 @@ namespace CharityProject.Services
         Task<Charity> CreateCharity(CreateCaseViewModel model, string userId);
 
         Task<List<Category>> GetAllCategories();
+
+        Task<List<Charity>> GetAllCharities();
     }
 }

@@ -17,9 +17,10 @@ namespace Charities.Controllers
         }
 
         [HttpGet]
-        public IActionResult All()
+        public async Task<IActionResult> All()
         {
-            return View();
+            List<Charity> charities = await caseService.GetAllCharities();
+            return View(charities);
         }
 
         [HttpGet]
