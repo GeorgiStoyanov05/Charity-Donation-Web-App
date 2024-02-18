@@ -59,5 +59,10 @@ namespace CharityProject.Contracts
         {
             return await context.Charities.Include(c => c.Donations).Include(c=>c.Updates).Include(c=>c.Category).Include(c=>c.Comments).ToListAsync();
         }
+
+        public async Task<Charity> GetCharity(Guid id)
+        {
+            return await context.Charities.FindAsync(id);
+        }
     }
 }

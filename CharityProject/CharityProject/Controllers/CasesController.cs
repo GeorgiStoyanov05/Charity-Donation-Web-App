@@ -34,9 +34,20 @@ namespace Charities.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CreateCaseViewModel model)
         {
-            var userId = User.Claims.FirstOrDefault(c=>c.Type==ClaimTypes.NameIdentifier)?.Value;
+            var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
             var charity = await caseService.CreateCharity(model, userId);
             return Redirect("/Home/Index");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> DetailsCase(Guid id)
+        {
+            List<Charity> charities = await caseService.GetAllCharities();
+            Charity charity = await caseService.GetCharity(id);
+            ViewBag.Charity = charity;
+            ViewBag.FundsRaised = charity.Donations.Sum(d => d.Amount);
+            ViewBag.PercentRaiased = charity.Donations.Sum(d => d.Amount) / charity.FundsNeeded;
+            return View(charities);
         }
     }
 }

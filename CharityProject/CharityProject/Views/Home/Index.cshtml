@@ -56,7 +56,7 @@
                     {
                         <div class="card cases__card">
                             <div class="cases__card-img">
-                                <a href="single-cases.html">
+                                <a asp-controller="Cases" asp-action="DetailsCase" asp-route-id="@charity.Id">
                                     <img class="img-fluid w-100" src="@charity.ImageUrl" alt="image">
                                 </a>
                                 <h4 class="cases__card-tag">@charity.Category?.Name</h4>
@@ -69,7 +69,7 @@
                                     </span>
                                 </div>
                                 <div class="">
-                                    <a href="single-cases.html" class="cases__card-title">
+                                    <a asp-controller="Cases" asp-action="DetailsCase" asp-route-id="@charity.Id" class="cases__card-title">
                                         @charity.Name
                                     </a>
                                 </div>
