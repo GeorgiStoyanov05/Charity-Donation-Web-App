@@ -1,4 +1,6 @@
-﻿using CharityProject.Models;
+﻿using Charities.Data.Models;
+using CharityProject.Models;
+using CharityProject.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -7,15 +9,18 @@ namespace Charities.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ICaseService caseService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ICaseService _caseService)
         {
             _logger = logger;
+            caseService = _caseService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            List<Charity> charities = await caseService.GetAllCharities();
+            return View(charities);
         }
 
         public IActionResult AboutUs()
