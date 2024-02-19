@@ -1,362 +1,11 @@
 ﻿@model List<Charities.Data.Models.Charity>
-<!-- GoUp START -->
-<button id="topBtn"><i class="fas fa-arrow-up"></i></button>
-<!-- GoUp END -->
-<!-- Modal START -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered form__dialog">
-        <div class="modal-content border-0 bg-transparent">
-            <form action="#" method="POST" class="form global__white form__pd mt-0">
-                <!-- Modal_Head -->
-                <div class="">
-                    <div class="">
-                        <button class="btn form__return modal__right-close" data-bs-dismiss="modal" type="button">
-                            <i class="fa-solid fa-chevron-left"></i>
-                            Return to fundraiser
-                        </button>
-                    </div>
-                    <div class="d-sm-flex align-items-center form__my">
-                        <img class="img-fluid form__img" src="~/assets/img/form-img.png" alt="image">
-                        <div class="mt-4 mt-sm-0">
-                            <h4 class="form__small">
-                                You're supporting <a href="#"
-                                                     class="form__small-bold">
-                                    Essentials
-                                    Fund
-                                </a>
-                            </h4>
-                            <h4 class="form__small mb-0">
-                                Your donation will benefit <a href="#"
-                                                              class="form__small-bold">
-                                    Fundz.org
-                                </a>
-                            </h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="d-flex align-items-center">
-                    <div class="form__icon" style="background: #F2F8F7;">
-                        <img class="" src="~/assets/img/dollar.svg" alt="image">
-                    </div>
-                    <p class="form__price">$100</p>
-                </div>
-                <hr class="form__border">
-                <!-- Modal Price Area -->
-                <div class="form__mb">
-                    <ul class="form__ul">
-                        <li class="form__dark">
-                            <label class="form__ul-label form__ul-label--pointer">
-                                <span class="form__ul-div d-block">
-                                    $25
-                                    <input type="radio" name="price">
-                                    <span class="form__ul-label--checkmark form__ul-label--checkmark---left"></span>
-                                </span>
-                            </label>
-                        </li>
-                        <li class="form__dark">
-                            <label class="form__ul-label form__ul-label--pointer">
-                                <span class="form__ul-div d-block">
-                                    $50
-                                    <input type="radio" name="price">
-                                    <span class="form__ul-label--checkmark form__ul-label--checkmark---left"></span>
-                                </span>
-                            </label>
-                        </li>
-                        <li class="form__dark">
-                            <label class="form__ul-label form__ul-label--pointer">
-                                <span class="form__ul-div d-block">
-                                    $100
-                                    <input type="radio" name="price">
-                                    <span class="form__ul-label--checkmark form__ul-label--checkmark---left"></span>
-                                </span>
-                            </label>
-                        </li>
-                        <li class="form__dark">
-                            <label class="form__ul-label form__ul-label--pointer">
-                                <span class="form__ul-div d-block">
-                                    $250
-                                    <input type="radio" name="price">
-                                    <span class="form__ul-label--checkmark form__ul-label--checkmark---left"></span>
-                                </span>
-                            </label>
-                        </li>
-                        <li class="form__dark" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
-                            aria-expanded="false" aria-controls="collapseTwo">
-                            <label class="form__ul-label form__ul-label--pointer">
-                                <span class="form__ul-div d-block">
-                                    Custom Amount
-                                    <input type="radio" name="price">
-                                    <span class="form__ul-label--checkmark"></span>
-                                </span>
-                            </label>
-                        </li>
-                    </ul>
-                    <div class="collapse col-5 col-sm-3 col-lg-2  mt-3" id="collapseTwo">
-                        <input class="form-control form__input" type="number" placeholder="$50">
-                    </div>
-                </div>
-                <div class="">
-                    <h4 class="form__heading form__mb">Payment method</h4>
-                    <div class="col-12">
-                        <div class="accordion form__heading-accordion" id="accordionExample">
-                            <!-- Modal_Payment_method 1 -->
-                            <div class="accordion-item form__heading-accordion--item">
-                                <div class="accordion-heade form__heading-accordion--header d-sm-flex align-items-center justify-content-between pb-3 ps-2 ps-sm-0 pb-sm-0"
-                                     id="headingOne" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-                                     aria-controls="collapseOne">
-                                    <div class="w-100 pb-0">
-                                        <label class="form__ul-label form__ul-label--pointer">
-                                            <span class="form__ul-div d-block p-4 pb-0 pb-sm-4">
-                                                <i class="fa-regular fa-credit-card ms-1 me-2"></i>
-                                                Credit or debit card
-                                                <input type="radio" name="payment">
-                                                <span class="form__ul-label--checkmark"
-                                                      style="left: 4%; top: 38%;"></span>
-                                            </span>
-                                        </label>
-                                    </div>
-                                    <ul class="d-flex gap-2 mt-3 mt-sm-0">
-                                        <li>
-                                            <a href="#">
-                                                <img src="~/assets/img/p-i-1.svg" alt="image">
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <img src="~/assets/img/p-i-2.svg" alt="image">
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <img src="~/assets/img/p-i-3.svg" alt="image">
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <img src="~/assets/img/p-i-4.svg" alt="image">
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- Modal_Payment_method Input filed 1 -->
-                                <div id="collapseOne" class="accordion-collapse collapse"
-                                     data-bs-parent="#accordionExample">
-                                    <div class="d-md-flex col-11 m-auto my-4">
-                                        <div class="col-md-6">
-                                            <input class="form-control form__input" type="text"
-                                                   placeholder="Card number">
-                                        </div>
-                                        <div class="col-md-3 ps-md-3 mt-4 mt-md-0">
-                                            <input class="form-control form__input" type="date">
-                                        </div>
-                                        <div class="col-md-3 ps-md-3 mt-4 mt-md-0">
-                                            <input class="form-control form__input" type="text" placeholder="CVV">
-                                        </div>
-                                    </div>
-                                    <div class="col-11 m-auto">
-                                        <select class="form-select form__input">
-                                            <option selected>Name on Card</option>
-                                            <option value="MasterCard">MasterCard</option>
-                                            <option value="VisaCard">Visa Card</option>
-                                            <option value="AmericanExpress">American Express</option>
-                                            <option value="Discover">
-                                                Discover card
-                                            </option>
-                                        </select>
-                                    </div>
-                                    <div class="d-sm-flex col-11 m-auto mt-4">
-                                        <div class="col-sm-6 pe-sm-3">
-                                            <select class="form-select form__input">
-                                                <option selected>Country</option>
-                                                <option value="1">Bangladesh</option>
-                                                <option value="2">India</option>
-                                                <option value="3">Uk</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-sm-6 mt-4 mt-sm-0">
-                                            <input class="form-control form__input" type="text"
-                                                   placeholder="Card number">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-7 col-lg-6 me-auto mt-4 ps-4">
-                                        <label class="form__ul-label form__ul-label--pointer d-flex fw-normal mb-3">
-                                            <span class="form__ul-div d-block">
-                                                <input type="checkbox" id="test" name="check">
-                                                <span class="form__ul-label--checkmark form__ul-label--checkmark3"></span>
-                                                Save card for future donations.
-                                            </span>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Modal_Payment_method 2 -->
-                            <div class="accordion-item form__heading-accordion--item">
-                                <div class="accordion-heade form__heading-accordion--header d-sm-flex align-items-center justify-content-between pb-3 ps-2 ps-sm-0 pb-sm-0"
-                                     data-bs-toggle="collapse" data-bs-target="#collapseThree"
-                                     aria-controls="collapseThree" id="headingTwo">
-                                    <div class="w-100 pb-0">
-                                        <label class="form__ul-label form__ul-label--pointer">
-                                            <span class="form__ul-div d-block p-4 pb-0 pb-sm-4">
-                                                <img class="ms-1 me-2" src="~/assets/img/google.svg" alt="image">
-                                                Google Pay
-                                                <input type="radio" name="payment">
-                                                <span class="form__ul-label--checkmark"
-                                                      style="left: 3.4%; top: 38%;"></span>
-                                            </span>
-                                        </label>
-                                    </div>
-                                </div>
-                                <!-- Modal_Payment_method Input filed 2 -->
-                                <div id="collapseThree" class="accordion-collapse collapse"
-                                     aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                    <div class="d-md-flex col-11 m-auto my-4">
-                                        <div class="col-md-6">
-                                            <input class="form-control form__input" type="text"
-                                                   placeholder="Card number">
-                                        </div>
-                                        <div class="col-md-3 ps-md-3 mt-4 mt-md-0">
-                                            <input class="form-control form__input" type="date">
-                                        </div>
-                                        <div class="col-md-3 ps-md-3 mt-4 mt-md-0">
-                                            <input class="form-control form__input" type="text" placeholder="CVV">
-                                        </div>
-                                    </div>
-                                    <div class="col-11 m-auto">
-                                        <select class="form-select form__input">
-                                            <option selected>Name on Card</option>
-                                            <option value="MasterCard">MasterCard</option>
-                                            <option value="VisaCard">Visa Card</option>
-                                            <option value="AmericanExpress">
-                                                American Express
-                                            </option>
-                                            <option value="Discover">
-                                                Discover card
-                                            </option>
-                                        </select>
-                                    </div>
-                                    <div class="d-sm-flex col-11 m-auto mt-4">
-                                        <div class="col-sm-6 pe-sm-3">
-                                            <select class="form-select form__input">
-                                                <option selected>Country</option>
-                                                <option value="1">Bangladesh</option>
-                                                <option value="2">India</option>
-                                                <option value="3">Uk</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-sm-6 mt-4 mt-sm-0">
-                                            <input class="form-control form__input" type="text"
-                                                   placeholder="Card number">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-7 col-lg-6 me-auto mt-4 ps-4">
-                                        <label class="form__ul-label form__ul-label--pointer d-flex fw-normal mb-3">
-                                            <span class="form__ul-div d-block">
-                                                <input type="checkbox" id="testTwo" name="check">
-                                                <span class="form__ul-label--checkmark form__ul-label--checkmark3"></span>
-                                                Save card for future donations.
-                                            </span>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Modal Condition -->
-                <div class="col-12 mt-4 form__mb">
-                    <div class="mt-4">
-                        <div class="col-sm-11 col-lg-8">
-                            <label class="form__ul-label form__ul-label--pointer fw-normal px-2">
-                                <span class="form__ul-div d-block">
-                                    <input type="checkbox" id="testEight" name="check">
-                                    <span class="form__ul-label--checkmark form__ul-label--checkmark3"
-                                          style="left: 0 !important;"></span>
-                                    Don't Display my name publicly on the fundraiser.<span class="ps-2">
-                                        <img src="~/assets/img/i.svg" alt="image">
-                                    </span>
-                                </span>
-                            </label>
-                        </div>
-                        <div class="col-sm-10 col-lg-12">
-                            <label class="form__ul-label form__ul-label--pointer fw-normal px-2">
-                                <span class="form__ul-div d-block">
-                                    <input type="checkbox" id="testNine" name="check">
-                                    <span class="form__ul-label--checkmark form__ul-label--checkmark3"
-                                          style="left: 0 !important;"></span>
-                                    Get occasional marketing updates from Fundz. You may unsubscribe at any
-                                    time
-                                </span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <!-- Modal Amount -->
-                <div class="col-12 mt-4">
-                    <h4 class="form__heading">Your Donation</h4>
-                    <div class="mt-4">
-                        <ul class="form__donation">
-                            <li>
-                                Your donation
-                                <span>$100.00</span>
-                            </li>
-                            <li class="mb-0">
-                                Vat (%)
-                                <span>0%</span>
-                            </li>
-                            <li>
-                                <hr class="form__border w-100">
-                            </li>
-                            <li class="mb-0">
-                                Total due today
-                                <span>$100.00</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- Modal Bottom -->
-                <div class="col-md-10 col-lg-7 mx-auto d-flex justify-content-center">
-                    <button class="form-control form__btn">
-                        <img class="img-fluid" src="~/assets/img/google-lg.svg" alt="image">
-                    </button>
-                </div>
-                <div class="col-12">
-                    <h4 class="form__small">
-                        By continuing, you agree with <a href="#"
-                                                         class="form__small-bold">
-                            GoFundMe
-                            terms
-                        </a> and <a href="#" class="form__small-bold">privacy notice. </a>
-                    </h4>
-                </div>
-                <hr class="form__border">
-                <div class="d-sm-flex align-items-start form__my mb-0">
-                    <img class="img-fluid form__shield" src="~/assets/img/shield.svg" alt="image">
-                    <div class="mt-3 mt-sm-0">
-                        <h4 class="form__text">Fundz protects your donation</h4>
-                        <p class="form__small mb-0">
-                            We guarantee you a full refund for up to a year in the
-                            rare case that fraud
-                            occurs. <a href="#" class="form__small-bold">
-                                See our Fundz Giving
-                                Guarantee.
-                            </a>
-                        </p>
-                    </div>
-                </div>
-
-            </form>
-        </div>
-    </div>
-</div>
-<!-- Modal END -->
 <!--  Banner START -->
-
 <div class="banner">
     <div class="banner__overlay">
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center text-lg-start">
-                    <h1 class="global__title global__title-dark text-capitalize">single Case</h1>
+                    <h1 class="global__title global__title-dark text-capitalize">Case Details</h1>
                     <ul class="banner__ul">
                         <li class="banner__ul-list p-0">
                             <a class="banner__ul-link" asp-controller="Home" asp-action="Index">
@@ -402,11 +51,32 @@
                 </div>
                 <div class="">
                     <h1>
-
                     </h1>
                     <div class="">
                         <p class="education__para education__para-mb">
                             @ViewBag.Charity.Description
+                        </p>
+                    </div>
+                    <div class="">
+                        <h3 class="education__headline">Comments:</h3>
+                        <p class="education__para education__para-mb">
+                            <div class="education__search">
+                                <h4 class="education__txt">User12343</h4>
+                                AMOGUS
+                            </div>
+                            @if (User.Identity?.IsAuthenticated ?? true)
+                            {
+                                <br/>
+                                <div class="education__search">
+                                    <h4 class="education__txt">Write your comment:</h4>
+                                    <form action="#" method="POST" class="d-flex position-relative mt-3">
+                                        <input class="education__inp form-control" type="text" placeholder="Enter your comment">
+                                        <button class="global__btn education__inp-btn">
+                                            <i class="fa-solid fa-magnifying-glass"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            }
                         </p>
                     </div>
                 </div>
@@ -423,7 +93,7 @@
                     </form>
                 </div>
                 <div class="education__cases">
-                    <h4 class="education__txt">recent cases</h4>
+                    <h4 class="education__txt">Top Donators</h4>
                     <div class="">
                         <ul class="education__cases-list">
                             <li>
@@ -490,7 +160,7 @@
                 <form action="#" method="POST" class="form border-0">
                     <div class="d-flex align-items-center">
                         <img class="form__icon" src="~/assets/img/dollar-lg-S.svg" alt="icon">
-                        <p class="form__price">$100</p>
+                        <p class="form__price"></p>
                     </div>
                     <hr class="form__border">
                     <div class="form__mb">
@@ -675,7 +345,7 @@
                                 <a asp-controller="Cases" asp-action="DetailsCase" asp-route-id="@charity.Id" class="cases__card-title">@charity.Name</a>
                             </div>
                             <div class="cases__card-range">
-                                <p class="global__desc m-0">Founded: @(charity.Donations.Sum(d => d.Amount)/charity.FundsNeeded) %</p>
+                                <p class="global__desc m-0">Funded: @(charity.Donations.Sum(d => d.Amount)/charity.FundsNeeded) %</p>
                                 <div class="progress cases__card-progress">
                                     <div class="progress-bar cases__card-progress--bar" role="progressbar"
                                  style="width: @(charity.Donations.Sum(d => d.Amount)/charity.FundsNeeded)%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
