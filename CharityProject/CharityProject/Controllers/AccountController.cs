@@ -47,7 +47,7 @@ namespace Charities.Controllers
             if (result.Succeeded)
             {
                 await signInManager.SignInAsync(user, isPersistent: false);
-                return Redirect("/Home/Index");
+                return RedirectToAction("Index", "Home");
             }
             foreach (var item in result.Errors)
             {

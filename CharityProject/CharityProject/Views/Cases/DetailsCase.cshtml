@@ -66,7 +66,7 @@
                             </div>
                             @if (User.Identity?.IsAuthenticated ?? true)
                             {
-                                <br/>
+                                <br />
                                 <div class="education__search">
                                     <h4 class="education__txt">Write your comment:</h4>
                                     <form action="#" method="POST" class="d-flex position-relative mt-3">
@@ -155,162 +155,165 @@
             </div>
         </div>
         <!-- Form -->
-        <div class="row">
-            <div class="col-lg-10 col-xl-8">
-                <form action="#" method="POST" class="form border-0">
-                    <div class="d-flex align-items-center">
-                        <img class="form__icon" src="~/assets/img/dollar-lg-S.svg" alt="icon">
-                        <p class="form__price"></p>
-                    </div>
-                    <hr class="form__border">
-                    <div class="form__mb">
-                        <ul class="form__ul">
-                            <li>
-                                <label class="form__ul-label form__ul-label--pointer">
-                                    <span class="form__ul-div d-block">
-                                        $25
-                                        <input type="radio" name="radio">
-                                        <span class="form__ul-label--checkmark form__ul-label--checkmark---left"></span>
-                                    </span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="form__ul-label form__ul-label--pointer">
-                                    <span class="form__ul-div d-block">
-                                        $50
-                                        <input type="radio" name="radio">
-                                        <span class="form__ul-label--checkmark form__ul-label--checkmark---left"></span>
-                                    </span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="form__ul-label form__ul-label--pointer">
-                                    <span class="form__ul-div d-block">
-                                        $100
-                                        <input type="radio" name="radio">
-                                        <span class="form__ul-label--checkmark form__ul-label--checkmark---left"></span>
-                                    </span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="form__ul-label form__ul-label--pointer">
-                                    <span class="form__ul-div d-block">
-                                        $250
-                                        <input type="radio" name="radio">
-                                        <span class="form__ul-label--checkmark form__ul-label--checkmark---left"></span>
-                                    </span>
-                                </label>
-                            </li>
-                            <li>
-                                <div data-bs-toggle="collapse" data-bs-target="#collapseExample"
-                                     aria-controls="collapseExample">
+        @if (User.Identity?.IsAuthenticated ?? true)
+        {
+            <div class="row">
+                <div class="col-lg-10 col-xl-8">
+                    <form action="#" method="POST" class="form border-0">
+                        <div class="d-flex align-items-center">
+                            <img class="form__icon" src="~/assets/img/dollar-lg-S.svg" alt="icon">
+                            <p class="form__price"></p>
+                        </div>
+                        <hr class="form__border">
+                        <div class="form__mb">
+                            <ul class="form__ul">
+                                <li>
                                     <label class="form__ul-label form__ul-label--pointer">
                                         <span class="form__ul-div d-block">
-                                            Custom Amount
+                                            $25
                                             <input type="radio" name="radio">
-                                            <span class="form__ul-label--checkmark"></span>
+                                            <span class="form__ul-label--checkmark form__ul-label--checkmark---left"></span>
+                                        </span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form__ul-label form__ul-label--pointer">
+                                        <span class="form__ul-div d-block">
+                                            $50
+                                            <input type="radio" name="radio">
+                                            <span class="form__ul-label--checkmark form__ul-label--checkmark---left"></span>
+                                        </span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form__ul-label form__ul-label--pointer">
+                                        <span class="form__ul-div d-block">
+                                            $100
+                                            <input type="radio" name="radio">
+                                            <span class="form__ul-label--checkmark form__ul-label--checkmark---left"></span>
+                                        </span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form__ul-label form__ul-label--pointer">
+                                        <span class="form__ul-div d-block">
+                                            $250
+                                            <input type="radio" name="radio">
+                                            <span class="form__ul-label--checkmark form__ul-label--checkmark---left"></span>
+                                        </span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <div data-bs-toggle="collapse" data-bs-target="#collapseExample"
+                                     aria-controls="collapseExample">
+                                        <label class="form__ul-label form__ul-label--pointer">
+                                            <span class="form__ul-div d-block">
+                                                Custom Amount
+                                                <input type="radio" name="radio">
+                                                <span class="form__ul-label--checkmark"></span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="collapse col-5 col-sm-3 col-lg-2 mt-3" id="collapseExample">
+                                <input class="form-control form__input" type="number" placeholder="$50">
+                            </div>
+                        </div>
+                        <div class="form__mb">
+                            <ul class="form__ul">
+                                <li class="bg-transparent py-0 ps-0">
+                                    <label class="form__ul-label form__ul-label--pointer">
+                                        <span class="form__ul-div d-block px-0">
+                                            <input type="radio" id="testFive" name="check">
+                                            <span class="form__ul-label--checkmark" style="left: 0;"></span>
+                                            Test Donation
+                                        </span>
+                                    </label>
+                                </li>
+                                <li class="bg-transparent py-0 ps-0">
+                                    <label class="form__ul-label form__ul-label--pointer">
+                                        <span class="form__ul-div d-block px-0">
+                                            <input type="radio" id="testSix" name="check">
+                                            <span class="form__ul-label--checkmark" style="left: 0;"></span>
+                                            Offline Donation
+                                        </span>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="form__mb">
+                            <h4 class="form__heading form__mb">Personal Information</h4>
+                            <div class="d-sm-flex col-12">
+                                <div class="col-sm-6 pe-sm-3">
+                                    <label class="form__ul-label form__ul-label--lg" for="first">
+                                        first name
+                                        <span class="text-danger ps-1">*</span>
+                                        <span class="ps-2"><img src="~/assets/img/question.svg" alt="image"></span>
+                                    </label>
+                                    <input class="form-control form__input" id="first" type="text"
+                                       placeholder="First Name">
+                                </div>
+                                <div class="col-sm-6 ps-sm-3 mt-4 mt-sm-0">
+                                    <label class="form__ul-label form__ul-label--lg" for="last">
+                                        last name<span class="text-danger ps-1">*</span><span class="ps-2">
+                                            <img src="~/assets/img/question.svg" alt="image">
+                                        </span>
+                                    </label>
+                                    <input class="form-control form__input" id="last" type="text"
+                                       placeholder="Last Name">
+                                </div>
+                            </div>
+                            <div class="col-12 mt-4">
+                                <div class="">
+                                    <label class="form__ul-label form__ul-label--lg" for="email">
+                                        Email Address
+                                        <span class="text-danger ps-1">*</span><span class="ps-2">
+                                            <img src="~/assets/img/question.svg" alt="image">
+                                        </span>
+                                    </label>
+                                    <input class="form-control form__input" id="email" type="email" placeholder="Email">
+                                </div>
+                                <div class="mt-4">
+                                    <label class="form__ul-label form__ul-label--lg ps-0" for="comment">
+                                        Comment
+                                        <span class="ps-2">
+                                            <img src="~/assets/img/question.svg"
+                                             alt="image">
+                                        </span>
+                                    </label>
+                                    <textarea class="form-control form__input" id="comment" cols="30" rows="5"
+                                          placeholder="Leave a Comment"></textarea>
+                                </div>
+                                <div class="mt-4 d-flex align-items-center">
+                                    <label class="form__ul-label form__ul-label--pointer ps-0">
+                                        <span class="form__ul-div d-block">
+                                            <input type="checkbox" id="testSaven" name="check">
+                                            <span class="form__ul-label--checkmark form__ul-label--checkmark2"></span>
+                                            <span class="ps-2">
+                                                Make
+                                                this an
+                                                anonymous
+                                                donation.
+                                            </span>
+                                            <span class="ps-2">
+                                                <img src="~/assets/img/question.svg" alt="image">
+                                            </span>
                                         </span>
                                     </label>
                                 </div>
-                            </li>
-                        </ul>
-                        <div class="collapse col-5 col-sm-3 col-lg-2 mt-3" id="collapseExample">
-                            <input class="form-control form__input" type="number" placeholder="$50">
-                        </div>
-                    </div>
-                    <div class="form__mb">
-                        <ul class="form__ul">
-                            <li class="bg-transparent py-0 ps-0">
-                                <label class="form__ul-label form__ul-label--pointer">
-                                    <span class="form__ul-div d-block px-0">
-                                        <input type="radio" id="testFive" name="check">
-                                        <span class="form__ul-label--checkmark" style="left: 0;"></span>
-                                        Test Donation
-                                    </span>
-                                </label>
-                            </li>
-                            <li class="bg-transparent py-0 ps-0">
-                                <label class="form__ul-label form__ul-label--pointer">
-                                    <span class="form__ul-div d-block px-0">
-                                        <input type="radio" id="testSix" name="check">
-                                        <span class="form__ul-label--checkmark" style="left: 0;"></span>
-                                        Offline Donation
-                                    </span>
-                                </label>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="form__mb">
-                        <h4 class="form__heading form__mb">Personal Information</h4>
-                        <div class="d-sm-flex col-12">
-                            <div class="col-sm-6 pe-sm-3">
-                                <label class="form__ul-label form__ul-label--lg" for="first">
-                                    first name
-                                    <span class="text-danger ps-1">*</span>
-                                    <span class="ps-2"><img src="~/assets/img/question.svg" alt="image"></span>
-                                </label>
-                                <input class="form-control form__input" id="first" type="text"
-                                       placeholder="First Name">
-                            </div>
-                            <div class="col-sm-6 ps-sm-3 mt-4 mt-sm-0">
-                                <label class="form__ul-label form__ul-label--lg" for="last">
-                                    last name<span class="text-danger ps-1">*</span><span class="ps-2">
-                                        <img src="~/assets/img/question.svg" alt="image">
-                                    </span>
-                                </label>
-                                <input class="form-control form__input" id="last" type="text"
-                                       placeholder="Last Name">
-                            </div>
-                        </div>
-                        <div class="col-12 mt-4">
-                            <div class="">
-                                <label class="form__ul-label form__ul-label--lg" for="email">
-                                    Email Address
-                                    <span class="text-danger ps-1">*</span><span class="ps-2">
-                                        <img src="~/assets/img/question.svg" alt="image">
-                                    </span>
-                                </label>
-                                <input class="form-control form__input" id="email" type="email" placeholder="Email">
-                            </div>
-                            <div class="mt-4">
-                                <label class="form__ul-label form__ul-label--lg ps-0" for="comment">
-                                    Comment
-                                    <span class="ps-2">
-                                        <img src="~/assets/img/question.svg"
-                                             alt="image">
-                                    </span>
-                                </label>
-                                <textarea class="form-control form__input" id="comment" cols="30" rows="5"
-                                          placeholder="Leave a Comment"></textarea>
-                            </div>
-                            <div class="mt-4 d-flex align-items-center">
-                                <label class="form__ul-label form__ul-label--pointer ps-0">
-                                    <span class="form__ul-div d-block">
-                                        <input type="checkbox" id="testSaven" name="check">
-                                        <span class="form__ul-label--checkmark form__ul-label--checkmark2"></span>
-                                        <span class="ps-2">
-                                            Make
-                                            this an
-                                            anonymous
-                                            donation.
-                                        </span>
-                                        <span class="ps-2">
-                                            <img src="~/assets/img/question.svg" alt="image">
-                                        </span>
-                                    </span>
-                                </label>
-                            </div>
-                            <div class="">
-                                <button class="btn donation__btn global__btn" data-bs-toggle="modal"
+                                <div class="">
+                                    <button class="btn donation__btn global__btn" data-bs-toggle="modal"
                                         data-bs-target="#exampleModal" type="button">
-                                    donation now
-                                </button>
+                                        donation now
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
-        </div>
+        }
     </div>
 </div>
 <!-- Education END  -->
