@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CharityProject.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<User>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -16,15 +16,6 @@ namespace CharityProject.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<Comment>()
-                .HasKey(x => new { x.CharityId, x.UserId });
-
-            builder.Entity<Update>()
-                .HasKey(x => new { x.CharityId, x.UserId });
-
-            builder.Entity<Donation>()
-                .HasKey(x => new { x.CharityId, x.UserId });
-
             builder.Entity<User>()
                 .Property(u => u.UserName)
                 .HasMaxLength(20)

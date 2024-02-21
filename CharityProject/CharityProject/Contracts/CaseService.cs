@@ -62,7 +62,16 @@ namespace CharityProject.Contracts
 
         public async Task<Charity> GetCharity(Guid id)
         {
-            return await context.Charities.FindAsync(id);
+            return await context.Charities.Include(c => c.Comments).ThenInclude(c => c.User).Include(c => c.Donations).ThenInclude(c=>c.User).Include(c => c.Updates).ThenInclude(c => c.User).FirstOrDefaultAsync(c => c.Id == id);
+        }
+
+        public async Task<Charity> AddCommentToCharity(Charity charity, Comment comment)
+        {
+            Charity extendedCharity = context.Charities.Where(c => c.Id == charity.Id).Include(c => c.Comments).ToList()[0];
+            extendedCharity.Comments!.Add(comment);
+            context.Charities.Update(charity);
+            await context.SaveChangesAsync();
+            return extendedCharity;
         }
     }
 }

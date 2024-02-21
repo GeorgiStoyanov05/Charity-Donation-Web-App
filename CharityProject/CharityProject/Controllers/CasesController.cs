@@ -2,6 +2,7 @@
 using CharityProject.Contracts;
 using CharityProject.Models;
 using CharityProject.Services;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
@@ -10,10 +11,12 @@ namespace Charities.Controllers
     public class CasesController : Controller
     {
         private readonly ICaseService caseService;
+        private readonly UserManager<User> userManager;
 
-        public CasesController(ICaseService caseService)
+        public CasesController(ICaseService caseService, UserManager<User> _userManager)
         {
             this.caseService = caseService;
+            this.userManager = _userManager;
         }
 
         [HttpGet]
@@ -35,7 +38,7 @@ namespace Charities.Controllers
         public async Task<IActionResult> Create(CreateCaseViewModel model)
         {
             var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
-            var charity = await caseService.CreateCharity(model, userId);
+            var charity = await caseService.CreateCharity(model, userId!);
             return Redirect("/Home/Index");
         }
 
@@ -44,10 +47,27 @@ namespace Charities.Controllers
         {
             List<Charity> charities = await caseService.GetAllCharities();
             Charity charity = await caseService.GetCharity(id);
-            ViewBag.Charity = charity;
-            ViewBag.FundsRaised = charity.Donations.Sum(d => d.Amount);
-            ViewBag.PercentRaiased = charity.Donations.Sum(d => d.Amount) / charity.FundsNeeded;
-            return View(charities);
+            DetailsCaseViewModel viewModel = new DetailsCaseViewModel()
+            {
+                Charities = charities,
+                Charity = charity
+            };
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> PostComment(DetailsCaseViewModel model)
+        {
+            Comment comment = new Comment()
+            {
+                Text = model.Comment.Text,
+                CreatedDate = DateTime.Now,
+                UserId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value,
+                CharityId = model.Charity.Id
+            };
+            Charity charity = await caseService.GetCharity(model.Charity.Id);
+            await caseService.AddCommentToCharity(charity, comment);
+            return RedirectToAction("DetailsCase", "Cases", charity);
         }
     }
 }

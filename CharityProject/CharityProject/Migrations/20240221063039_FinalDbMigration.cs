@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CharityProject.Migrations
 {
-    public partial class DbMigrations : Migration
+    public partial class FinalDbMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -28,7 +28,6 @@ namespace CharityProject.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
@@ -216,21 +215,20 @@ namespace CharityProject.Migrations
                 name: "Comment",
                 columns: table => new
                 {
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    CharityId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     Text = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CharityId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Comment", x => new { x.CharityId, x.UserId });
+                    table.PrimaryKey("PK_Comment", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Comment_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Comment_Charities_CharityId",
                         column: x => x.CharityId,
@@ -243,14 +241,14 @@ namespace CharityProject.Migrations
                 name: "Donation",
                 columns: table => new
                 {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     CharityId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Amount = table.Column<double>(type: "float", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Donation", x => new { x.CharityId, x.UserId });
+                    table.PrimaryKey("PK_Donation", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Donation_AspNetUsers_UserId",
                         column: x => x.UserId,
@@ -269,15 +267,15 @@ namespace CharityProject.Migrations
                 name: "Update",
                 columns: table => new
                 {
-                    CharityId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Text = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CharityId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Update", x => new { x.CharityId, x.UserId });
+                    table.PrimaryKey("PK_Update", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Update_AspNetUsers_UserId",
                         column: x => x.UserId,
@@ -297,11 +295,11 @@ namespace CharityProject.Migrations
                 columns: new[] { "Id", "Name" },
                 values: new object[,]
                 {
-                    { new Guid("2a8e35e3-bb7f-4dc5-b2cf-7e8c1453fa61"), "Free Education" },
-                    { new Guid("3d2a38cd-b4a6-4b24-a818-b9970903b641"), "Medical Facilities" },
-                    { new Guid("4e1f7579-c1f2-4a1c-bde2-29b80eeac8be"), "Clean Water" },
-                    { new Guid("c20ba78f-d1f4-4386-91fa-1c261b034c92"), "Healthy Food" },
-                    { new Guid("e9bd096b-3c55-4769-aa1b-0a4d64b6343f"), "Helping Poor" }
+                    { new Guid("531a246b-999d-4722-9f7a-8e406412a75d"), "Helping Poor" },
+                    { new Guid("58490b84-70df-4a56-b027-e64327649510"), "Medical Facilities" },
+                    { new Guid("89206c06-3a75-4302-a674-e01a32f7cd61"), "Clean Water" },
+                    { new Guid("957f3109-3cca-44e4-97c5-109f038d48b7"), "Free Education" },
+                    { new Guid("ac31ec7b-0261-458a-a357-5888c7dbc8e9"), "Healthy Food" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -354,14 +352,29 @@ namespace CharityProject.Migrations
                 column: "CreatorId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Comment_CharityId",
+                table: "Comment",
+                column: "CharityId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Comment_UserId",
                 table: "Comment",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Donation_CharityId",
+                table: "Donation",
+                column: "CharityId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Donation_UserId",
                 table: "Donation",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Update_CharityId",
+                table: "Update",
+                column: "CharityId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Update_UserId",

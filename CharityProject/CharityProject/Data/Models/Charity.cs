@@ -40,7 +40,7 @@ namespace Charities.Data.Models
         public string? ImageUrl { get; set; }
 
         //TODO: Comments
-        public ICollection<Comment> Comments { get; set; }
+        public ICollection<Comment>? Comments { get; set; }
 
         [Required]
         [ForeignKey("Category")]
