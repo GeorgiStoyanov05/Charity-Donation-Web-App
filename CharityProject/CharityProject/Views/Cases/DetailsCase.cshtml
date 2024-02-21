@@ -71,7 +71,12 @@
                                 @foreach (var comment in Model.Charity.Comments)
                                 {
                                     <div class="education__search">
-                                        <h4 class="education__txt">@comment.User?.UserName</h4>
+                                        <h4 class="education__txt">@comment.User?.UserName 
+                                            @if (Model.User==comment.User)
+                                            {
+                                            <button class="btn btn-danger align-content-lg-end">Delete</button>
+                                            }
+                                        </h4>
                                         @comment.Text
                                     </div>
                                     <br/>

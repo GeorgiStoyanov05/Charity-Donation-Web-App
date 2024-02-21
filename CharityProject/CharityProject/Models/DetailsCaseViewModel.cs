@@ -8,6 +8,8 @@ namespace CharityProject.Models
 
         public Charity Charity { get; set; } = null!;
 
+        public User User { get; set; } = null!;
+
         public Comment Comment { get; set; } = null!;
 
         public Donation Donation { get; set; } = null!;

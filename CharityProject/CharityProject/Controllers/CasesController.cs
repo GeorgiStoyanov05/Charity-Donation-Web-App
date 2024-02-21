@@ -47,10 +47,12 @@ namespace Charities.Controllers
         {
             List<Charity> charities = await caseService.GetAllCharities();
             Charity charity = await caseService.GetCharity(id);
+            User currentUser = await userManager.GetUserAsync(this.User);
             DetailsCaseViewModel viewModel = new DetailsCaseViewModel()
             {
                 Charities = charities,
-                Charity = charity
+                Charity = charity,
+                User = currentUser
             };
             return View(viewModel);
         }
