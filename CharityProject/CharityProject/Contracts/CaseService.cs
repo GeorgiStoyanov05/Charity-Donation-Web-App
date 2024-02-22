@@ -28,7 +28,7 @@ namespace CharityProject.Contracts
                 creator = new Creator()
                 {
                     Id = userId,
-                    Username = user.UserName,
+                    Username = user!.UserName,
                     Email = user.Email
 
                 };
