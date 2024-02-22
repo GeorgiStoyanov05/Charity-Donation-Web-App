@@ -22,15 +22,19 @@ namespace CharityProject.Contracts
         public async Task<Charity> CreateCharity(CreateCaseViewModel model, string userId)
         {
             var user = await context.Users.FindAsync(userId);
-            Creator creator = new Creator() 
+            var creator = context.Owners.Find(userId);
+            if (creator == null)
             {
-                Id = user.Id,
-                Username = user.UserName,
-                Email = user.Email
+                creator = new Creator()
+                {
+                    Id = userId,
+                    Username = user.UserName,
+                    Email = user.Email
 
-            };
-            await context.Owners.AddAsync(creator);
-            await context.SaveChangesAsync();
+                };
+                await context.Owners.AddAsync(creator);
+                await context.SaveChangesAsync();
+            }
             Charity charity = new Charity()
             {
                 Name = model.Name,

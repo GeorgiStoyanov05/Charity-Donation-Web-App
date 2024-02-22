@@ -15,6 +15,6 @@ namespace Charities.Data.Models
         [Required]
         [EmailAddress]
         public string? Email { get; set; }
-        public ICollection<Charity>? Charities { get; set; }
+        public ICollection<Charity> Charities { get; set; } = new HashSet<Charity>();
     }
 }
