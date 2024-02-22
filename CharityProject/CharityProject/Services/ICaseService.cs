@@ -13,7 +13,5 @@ namespace CharityProject.Services
         Task<List<Charity>> GetAllCharities();
 
         Task<Charity> GetCharity(Guid id);
-
-        Task<Charity> AddCommentToCharity(Charity charity, Comment comment);
     }
 }

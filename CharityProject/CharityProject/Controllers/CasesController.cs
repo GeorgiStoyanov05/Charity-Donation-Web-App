@@ -56,20 +56,5 @@ namespace Charities.Controllers
             };
             return View(viewModel);
         }
-
-        [HttpPost]
-        public async Task<IActionResult> PostComment(DetailsCaseViewModel model)
-        {
-            Comment comment = new Comment()
-            {
-                Text = model.Comment.Text,
-                CreatedDate = DateTime.Now,
-                UserId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value,
-                CharityId = model.Charity.Id
-            };
-            Charity charity = await caseService.GetCharity(model.Charity.Id);
-            await caseService.AddCommentToCharity(charity, comment);
-            return RedirectToAction("DetailsCase", "Cases", charity);
-        }
     }
 }

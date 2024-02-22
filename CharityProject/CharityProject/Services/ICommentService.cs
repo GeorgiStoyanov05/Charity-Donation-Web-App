@@ -4,6 +4,8 @@ namespace CharityProject.Services
 {
     public interface ICommentService
     {
-        Task<Comment> CreateComment(Comment comment);
+        Task<Charity> AddCommentToCharity(Charity charity, Comment comment);
+
+        Task<Charity> DeleteComment(Guid commentId);
     }
 }
