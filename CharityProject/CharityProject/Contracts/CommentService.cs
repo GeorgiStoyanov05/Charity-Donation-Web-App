@@ -33,9 +33,9 @@ namespace CharityProject.Contracts
             return charity.Comments!.FirstOrDefault()!;
         }
 
-        public async Task<Charity> DeleteComment(Guid commentId)
+        public async Task<Charity> DeleteComment(Guid commentId, Guid charityId)
         {
-            Charity charity = context.Charities.Include(c => c.Comments).ToList()[0];
+            Charity charity = context.Charities.Include(c => c.Comments).Where(c=>c.Id==charityId).ToList()[0];
             Comment comment = charity.Comments!.Where(c => c.Id == commentId).FirstOrDefault()!;
             charity.Comments!.Remove(comment);
             await context.SaveChangesAsync();

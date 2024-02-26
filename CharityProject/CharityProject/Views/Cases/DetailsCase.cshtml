@@ -75,7 +75,7 @@
                                             @comment.User?.UserName
                                             @if (Model.User == comment.User)
                                             {
-                                                <a class="btn btn-danger align-content-lg-end" asp-controller="Comments" asp-action="DeleteComment" asp-route-commentId="@comment.Id">Delete</a>
+                                                <a class="btn btn-danger align-content-lg-end" asp-controller="Comments" asp-action="DeleteComment" asp-route-commentId="@comment.Id" asp-route-charityId="@Model.Charity.Id">Delete</a>
                                             }
                                         </h4>
                                         @comment.Text

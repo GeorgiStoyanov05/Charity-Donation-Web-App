@@ -37,9 +37,9 @@ namespace CharityProject.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> DeleteComment(Guid commentId)
+        public async Task<IActionResult> DeleteComment(Guid commentId, Guid charityId)
         {
-            Charity charity = await commentService.DeleteComment(commentId);
+            Charity charity = await commentService.DeleteComment(commentId, charityId);
             return RedirectToAction("DetailsCase", "Cases", charity);
         }
     }

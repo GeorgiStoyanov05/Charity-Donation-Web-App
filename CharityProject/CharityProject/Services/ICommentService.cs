@@ -6,6 +6,6 @@ namespace CharityProject.Services
     {
         Task<Charity> AddCommentToCharity(Charity charity, Comment comment);
 
-        Task<Charity> DeleteComment(Guid commentId);
+        Task<Charity> DeleteComment(Guid commentId, Guid charityId);
     }
 }
