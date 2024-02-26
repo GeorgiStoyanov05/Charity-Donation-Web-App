@@ -21,5 +21,13 @@ namespace Charities.Data.Models
         [Required]
         [Range(1.00, double.MaxValue)]
         public double Amount { get; set; }
+
+        [Required]
+        public DateTime DateMade { get; set; }
+
+        public string Comment { get; set; } = "";
+
+        [Required]
+        public bool IsAnonymous { get; set; } = false;
     }
 }

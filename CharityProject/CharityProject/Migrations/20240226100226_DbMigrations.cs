@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CharityProject.Migrations
 {
-    public partial class FinalDbMigration : Migration
+    public partial class DbMigrations : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -244,7 +244,10 @@ namespace CharityProject.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     CharityId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Amount = table.Column<double>(type: "float", nullable: false)
+                    Amount = table.Column<double>(type: "float", nullable: false),
+                    DateMade = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Comment = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IsAnonymous = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -295,11 +298,11 @@ namespace CharityProject.Migrations
                 columns: new[] { "Id", "Name" },
                 values: new object[,]
                 {
-                    { new Guid("531a246b-999d-4722-9f7a-8e406412a75d"), "Helping Poor" },
-                    { new Guid("58490b84-70df-4a56-b027-e64327649510"), "Medical Facilities" },
-                    { new Guid("89206c06-3a75-4302-a674-e01a32f7cd61"), "Clean Water" },
-                    { new Guid("957f3109-3cca-44e4-97c5-109f038d48b7"), "Free Education" },
-                    { new Guid("ac31ec7b-0261-458a-a357-5888c7dbc8e9"), "Healthy Food" }
+                    { new Guid("14adc0d0-7c9b-45b5-875c-52073e6eb6e3"), "Helping Poor" },
+                    { new Guid("42be113a-06c1-44a5-b64e-b168c6eeb3a6"), "Clean Water" },
+                    { new Guid("7d7b3215-12e8-4d7d-879b-b4d375eea99b"), "Healthy Food" },
+                    { new Guid("bce6351c-3ba4-461e-b763-dbfd37801e72"), "Medical Facilities" },
+                    { new Guid("de6ec43c-5cba-4a45-b6b7-846073b24cb5"), "Free Education" }
                 });
 
             migrationBuilder.CreateIndex(

@@ -179,7 +179,7 @@
         {
             <div class="row">
                 <div class="col-lg-10 col-xl-8">
-                    <form action="#" method="POST" class="form border-0">
+                    <form asp-controller="Donations" asp-action="MakeDonation" method="POST" class="form border-0">
                         <div class="d-flex align-items-center">
                             <h2 class="">Make a Donation</h2>
                         </div>
@@ -190,7 +190,8 @@
                                     Amount
                                     <span class="text-danger ps-1">*</span>
                                 </label>
-                                <input class="form-control form__input" type="number" placeholder="$10">
+                                <input class="form-control form__input" type="number" placeholder="$10" asp-for="@Model.Donation.Amount">
+                                <input type="text" hidden value="@Model.Charity.Id" asp-for="@Model.Charity.Id" />
                             </div>
                         </div>
                         <div class="form__mb">
@@ -200,12 +201,12 @@
                                         Comment
                                     </label>
                                     <textarea class="form-control form__input" id="comment" cols="30" rows="5"
-                                          placeholder="Leave a Comment"></textarea>
+                                          placeholder="Leave a Comment" asp-for="@Model.Donation.Comment"></textarea>
                                 </div>
                                 <div class="mt-4 d-flex align-items-center">
                                     <label class="form__ul-label form__ul-label--pointer ps-0">
                                         <span class="form__ul-div d-block">
-                                            <input type="checkbox" id="testSaven" name="check">
+                                            <input type="checkbox" id="testSaven" asp-for="@Model.Donation.IsAnonymous">
                                             <span class="form__ul-label--checkmark form__ul-label--checkmark2"></span>
                                             <span class="ps-2">
                                                 Make
@@ -219,10 +220,8 @@
                                     </label>
                                 </div>
                                 <div class="">
-                                    <button class="btn donation__btn global__btn" data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal" type="button">
-                                        donation now
-                                    </button>
+                                    <input class="btn donation__btn global__btn"
+                                       type="submit" value="Donate now" />
                                 </div>
                             </div>
                         </div>

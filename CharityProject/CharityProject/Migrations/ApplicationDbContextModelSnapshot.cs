@@ -39,27 +39,27 @@ namespace CharityProject.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("ac31ec7b-0261-458a-a357-5888c7dbc8e9"),
+                            Id = new Guid("7d7b3215-12e8-4d7d-879b-b4d375eea99b"),
                             Name = "Healthy Food"
                         },
                         new
                         {
-                            Id = new Guid("957f3109-3cca-44e4-97c5-109f038d48b7"),
+                            Id = new Guid("de6ec43c-5cba-4a45-b6b7-846073b24cb5"),
                             Name = "Free Education"
                         },
                         new
                         {
-                            Id = new Guid("89206c06-3a75-4302-a674-e01a32f7cd61"),
+                            Id = new Guid("42be113a-06c1-44a5-b64e-b168c6eeb3a6"),
                             Name = "Clean Water"
                         },
                         new
                         {
-                            Id = new Guid("531a246b-999d-4722-9f7a-8e406412a75d"),
+                            Id = new Guid("14adc0d0-7c9b-45b5-875c-52073e6eb6e3"),
                             Name = "Helping Poor"
                         },
                         new
                         {
-                            Id = new Guid("58490b84-70df-4a56-b027-e64327649510"),
+                            Id = new Guid("bce6351c-3ba4-461e-b763-dbfd37801e72"),
                             Name = "Medical Facilities"
                         });
                 });
@@ -172,6 +172,16 @@ namespace CharityProject.Migrations
 
                     b.Property<Guid>("CharityId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Comment")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateMade")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsAnonymous")
+                        .HasColumnType("bit");
 
                     b.Property<string>("UserId")
                         .IsRequired()
