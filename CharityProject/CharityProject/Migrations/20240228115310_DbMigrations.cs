@@ -246,7 +246,7 @@ namespace CharityProject.Migrations
                     CharityId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Amount = table.Column<double>(type: "float", nullable: false),
                     DateMade = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Comment = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Comment = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsAnonymous = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -298,11 +298,11 @@ namespace CharityProject.Migrations
                 columns: new[] { "Id", "Name" },
                 values: new object[,]
                 {
-                    { new Guid("14adc0d0-7c9b-45b5-875c-52073e6eb6e3"), "Helping Poor" },
-                    { new Guid("42be113a-06c1-44a5-b64e-b168c6eeb3a6"), "Clean Water" },
-                    { new Guid("7d7b3215-12e8-4d7d-879b-b4d375eea99b"), "Healthy Food" },
-                    { new Guid("bce6351c-3ba4-461e-b763-dbfd37801e72"), "Medical Facilities" },
-                    { new Guid("de6ec43c-5cba-4a45-b6b7-846073b24cb5"), "Free Education" }
+                    { new Guid("0f9dbaf0-cd49-4e57-a1a9-0c7c80c45523"), "Helping Poor" },
+                    { new Guid("31ec8b2e-8945-4396-8cfc-89a56bb2367d"), "Clean Water" },
+                    { new Guid("9de499df-5fcb-4fb6-b80e-cfc99a01afe4"), "Healthy Food" },
+                    { new Guid("b2c43449-f9d8-496f-829f-a01ec96c242b"), "Free Education" },
+                    { new Guid("bfb61b25-3e73-49a1-93a0-c915801ffdc2"), "Medical Facilities" }
                 });
 
             migrationBuilder.CreateIndex(

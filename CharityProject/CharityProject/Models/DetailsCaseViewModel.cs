@@ -15,5 +15,7 @@ namespace CharityProject.Models
         public Donation Donation { get; set; } = null!;
 
         public Update Update { get; set; } = null!;
+
+        public List<Donation> BiggestDonations = null!;
     }
 }

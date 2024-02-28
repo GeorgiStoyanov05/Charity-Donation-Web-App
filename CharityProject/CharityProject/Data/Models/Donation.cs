@@ -25,7 +25,8 @@ namespace Charities.Data.Models
         [Required]
         public DateTime DateMade { get; set; }
 
-        public string Comment { get; set; } = "";
+        
+        public string? Comment { get; set; }
 
         [Required]
         public bool IsAnonymous { get; set; } = false;

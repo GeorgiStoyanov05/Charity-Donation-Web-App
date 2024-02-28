@@ -52,7 +52,8 @@ namespace Charities.Controllers
             {
                 Charities = charities,
                 Charity = charity,
-                User = currentUser
+                User = currentUser,
+                BiggestDonations = charity.Donations.OrderByDescending(d => d.Amount).Take(3).ToList()
             };
             return View(viewModel);
         }

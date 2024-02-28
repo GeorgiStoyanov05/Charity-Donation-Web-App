@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CharityProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240226100226_DbMigrations")]
+    [Migration("20240228115310_DbMigrations")]
     partial class DbMigrations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -41,27 +41,27 @@ namespace CharityProject.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("7d7b3215-12e8-4d7d-879b-b4d375eea99b"),
+                            Id = new Guid("9de499df-5fcb-4fb6-b80e-cfc99a01afe4"),
                             Name = "Healthy Food"
                         },
                         new
                         {
-                            Id = new Guid("de6ec43c-5cba-4a45-b6b7-846073b24cb5"),
+                            Id = new Guid("b2c43449-f9d8-496f-829f-a01ec96c242b"),
                             Name = "Free Education"
                         },
                         new
                         {
-                            Id = new Guid("42be113a-06c1-44a5-b64e-b168c6eeb3a6"),
+                            Id = new Guid("31ec8b2e-8945-4396-8cfc-89a56bb2367d"),
                             Name = "Clean Water"
                         },
                         new
                         {
-                            Id = new Guid("14adc0d0-7c9b-45b5-875c-52073e6eb6e3"),
+                            Id = new Guid("0f9dbaf0-cd49-4e57-a1a9-0c7c80c45523"),
                             Name = "Helping Poor"
                         },
                         new
                         {
-                            Id = new Guid("bce6351c-3ba4-461e-b763-dbfd37801e72"),
+                            Id = new Guid("bfb61b25-3e73-49a1-93a0-c915801ffdc2"),
                             Name = "Medical Facilities"
                         });
                 });
@@ -176,7 +176,6 @@ namespace CharityProject.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Comment")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateMade")

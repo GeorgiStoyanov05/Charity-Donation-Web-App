@@ -103,65 +103,31 @@
             </div>
             <!-- Right Sider_Bar -->
             <div class="col-12 col-sm-8 col-lg-4 mt-5 mt-lg-0">
-                <div class="education__search">
-                    <h4 class="education__txt">search</h4>
-                    <form action="#" method="POST" class="d-flex position-relative mt-3">
-                        <input class="education__inp form-control" type="text" placeholder="Enter your email">
-                        <button class="global__btn education__inp-btn">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                        </button>
-                    </form>
-                </div>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
                 <div class="education__cases">
                     <h4 class="education__txt">Top Donators</h4>
                     <div class="">
                         <ul class="education__cases-list">
-                            <li>
-                                <a class="education__cases-list--img" href="single-cases.html">
-                                    <img class="" src="~/assets/img/recent-img-1.png" alt="image">
-                                </a>
-                                <div class="">
-                                    <a href="single-cases.html" class="education__cases-list--link">
-                                        Education
-                                        program in
-                                        Uganda
-                                    </a>
-                                    <p class="education__cases-list--date">October 25, 2023</p>
-                                </div>
-                            </li>
-                            <li>
-                                <a class="education__cases-list--img" href="single-cases.html">
-                                    <img class="" src="~/assets/img/recent-img-2.png" alt="image">
-                                </a>
-                                <div class="">
-                                    <a href="single-cases.html" class="education__cases-list--link">
-                                        African water
-                                        crisis :
-                                        Children
-                                        and women
-                                    </a>
-                                    <p class="education__cases-list--date">October 25, 2023</p>
-                                </div>
-                            </li>
-                            <li>
-                                <a class="education__cases-list--img" href="single-cases.html">
-                                    <img class="" src="~/assets/img/recent-img-3.png" alt="image">
-                                </a>
-                                <div class="">
-                                    <a href="single-cases.html" class="education__cases-list--link">
-                                        Be kind for the
-                                        poor
-                                        people and
-                                        the kids.
-                                    </a>
-                                    <p class="education__cases-list--date">October 25, 2023</p>
-                                </div>
-                            </li>
+                            @foreach (var donation in Model.BiggestDonations)
+                            {
+                                <li>
+                                    <div class="">
+                                        <a class="education__cases-list--link">
+                                            @donation.User!.UserName - @donation.Amount$
+                                        </a>
+                                        <p class="education__cases-list--date">@donation.DateMade.ToLongDateString()</p>
+                                    </div>
+                                </li>
+                            }
                         </ul>
                     </div>
                 </div>
                 <div class="education__cases">
-                    <h4 class="education__txt">Categories</h4>
+                    <h4 class="education__txt">Category</h4>
                     <div class="">
                         <ul class="education__cases-list">
                             <li class="education__cases-list--m">
@@ -171,6 +137,17 @@
                             </li>
                         </ul>
                     </div>
+                </div>
+                <br />
+                <div class="education__search">
+                    <h4 class="education__txt">Write your comment:</h4>
+                    <form asp-action="PostComment" asp-controller="Comments" method="POST" class="d-flex position-relative mt-3">
+                        <input type="text" hidden value="@Model.Charity.Id" asp-for="@Model.Charity.Id" />
+                        <input class="education__inp form-control" type="text" placeholder="Enter your comment" asp-for="@Model.Comment.Text">
+                        <button class="global__btn education__inp-btn">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -237,13 +214,13 @@
 <div class="cases global__py pt-0">
     <div class="container p-sm-0">
         <div class="cases__grid">
-            @if (Model.Charities.Count == 0)
+            @if (Model.Charities.Where(c => c != Model.Charity).ToList().Count == 0)
             {
-                <h1>There are no Charities currently!</h1>
+                <h1>There are no more Charities currently!</h1>
             }
             else
             {
-                @foreach (var charity in Model.Charities)
+                @foreach (var charity in Model.Charities.Where(c => c != Model.Charity))
                 {
                     <div class="card cases__card" data-aos="fade-down" data-aos-duration="1000">
                         <div class="cases__card-img">
@@ -263,10 +240,10 @@
                                 <a asp-controller="Cases" asp-action="DetailsCase" asp-route-id="@charity.Id" class="cases__card-title">@charity.Name</a>
                             </div>
                             <div class="cases__card-range">
-                                <p class="global__desc m-0">Funded: @(charity.Donations.Sum(d => d.Amount)/charity.FundsNeeded) %</p>
+                                <p class="global__desc m-0">Funded: @(Math.Round(Convert.ToDecimal(charity.Donations.Sum(d => d.Amount)/charity.FundsNeeded)*100)) %</p>
                                 <div class="progress cases__card-progress">
                                     <div class="progress-bar cases__card-progress--bar" role="progressbar"
-                                 style="width: @(charity.Donations.Sum(d => d.Amount)/charity.FundsNeeded)%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                 style="width: @((charity.Donations.Sum(d => d.Amount)/charity.FundsNeeded)*100)%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
                                     </div>
                                 </div>
                                 <div class="cases__card-range--bottom">

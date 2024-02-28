@@ -74,10 +74,10 @@
                                     </a>
                                 </div>
                                 <div class="cases__card-range">
-                                    <p class="global__desc m-0">Founded: @(charity.Donations.Sum(d => d.Amount)/charity.FundsNeeded)%</p>
+                                    <p class="global__desc m-0">Founded:  @(Math.Round(Convert.ToDecimal(charity.Donations.Sum(d => d.Amount)/charity.FundsNeeded)*100)) %</p>
                                     <div class="progress cases__card-progress">
                                         <div class="progress-bar cases__card-progress--bar" role="progressbar"
-                                     style="width: @(charity.Donations.Sum(d => d.Amount)/charity.FundsNeeded)%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                     style="width: @((charity.Donations.Sum(d => d.Amount)/charity.FundsNeeded)*100)%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
                                         </div>
                                     </div>
                                     <div class="cases__card-range--bottom">
