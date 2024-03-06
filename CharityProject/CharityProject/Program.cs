@@ -29,6 +29,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<ICaseService, CaseService>();
 builder.Services.AddScoped<ICommentService, CommentService>();
 builder.Services.AddScoped<IDonationService, DonationService>();
+builder.Services.AddScoped<IUpdateService, UpdateService>();
 
 var app = builder.Build();
 

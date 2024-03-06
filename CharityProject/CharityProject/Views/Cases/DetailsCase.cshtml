@@ -139,16 +139,35 @@
                     </div>
                 </div>
                 <br />
-                <div class="education__search">
-                    <h4 class="education__txt">Write an update:</h4>
-                    <form asp-action="PostComment" asp-controller="Comments" method="POST" class="d-flex position-relative mt-3">
-                        <input type="text" hidden value="@Model.Charity.Id" asp-for="@Model.Charity.Id" />
-                        <input class="education__inp form-control" type="text" placeholder="Enter your update" asp-for="@Model.Comment.Text">
-                        <button class="global__btn education__inp-btn">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                        </button>
-                    </form>
-                </div>
+                @if (Model.Charity.Updates.Count != 0)
+                {
+                    <h4 class="education__txt">Updates:</h4>
+                    @foreach (var update in Model.Charity.Updates)
+                    {
+                        <div class="education__search">
+                            <span style="font-style: italic; font-size: 12pt">
+                                From the owner:
+                                <a class="btn btn-danger align-content-lg-end" asp-controller="Updates" asp-action="DeleteUpdate" asp-route-updateId="@update.Id" asp-route-charityId="@Model.Charity.Id">Delete</a>
+                                <br />
+                                @update.Text
+                            </span>
+                        </div>
+                    }
+                }
+                </br>
+                @if (Model.User.Id == Model.Charity.CreatorId)
+                {
+                    <div class="education__search">
+                        <h4 class="education__txt">Write an update:</h4>
+                        <form asp-action="PostUpdate" asp-controller="Updates" method="POST" class="d-flex position-relative mt-3">
+                            <input type="text" hidden value="@Model.Charity.Id" asp-for="@Model.Charity.Id" />
+                            <input class="education__inp form-control" type="text" placeholder="Enter your update" asp-for="@Model.Update.Text">
+                            <button class="global__btn education__inp-btn">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </button>
+                        </form>
+                    </div>
+                }
             </div>
         </div>
         <!-- Form -->
