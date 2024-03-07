@@ -23,7 +23,11 @@ namespace Charities.Controllers
         public async Task<IActionResult> All()
         {
             List<Charity> charities = await caseService.GetAllCharities();
-            return View(charities);
+            AllCasesViewModel viewModel = new AllCasesViewModel()
+            {
+                Charities = charities
+            };
+            return View(viewModel);
         }
 
         [HttpGet]
@@ -56,6 +60,38 @@ namespace Charities.Controllers
                 BiggestDonations = charity.Donations.OrderByDescending(d => d.Amount).Take(3).ToList()
             };
             return View(viewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> FilterSearch(AllCasesViewModel model)
+        {
+            List<Charity> charities = await caseService.GetAllCharities();
+            var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+
+            if (model.DonatedCharities == true)
+            {
+                if (model.CharityName == null)
+                {
+                    charities = charities.Where(c => c.Donations.Where(d => d.UserId == userId).ToList().Count != 0).ToList();
+                }
+                else
+                {
+                    charities = charities.Where(c => c.Name == model.CharityName && c.Donations.Where(d => d.UserId == userId).ToList().Count != 0).ToList();
+                }
+            }
+            else
+            {
+                if (model.CharityName != null)
+                {
+                    charities = charities.Where(c => c.Name == model.CharityName).ToList();
+                }
+            }
+
+            AllCasesViewModel viewModel = new AllCasesViewModel()
+            {
+                Charities = charities
+            };
+            return View("All" ,viewModel);
         }
     }
 }

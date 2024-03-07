@@ -1,4 +1,4 @@
-﻿@model List<Charities.Data.Models.Charity>
+﻿@model CharityProject.Models.AllCasesViewModel
 <div class="banner">
     <div class="banner__overlay">
         <div class="container">
@@ -24,6 +24,32 @@
                 <img src="~/assets/img/polygon.svg" alt="image">
             </div>
         </div>
+
+        <!--Search Bar Start-->
+        <br />
+        <br />
+        <div class="container p-sm-0">
+            <form method="post" asp-action="FilterSearch">
+                <fieldset>
+                    <legend>What are you looking for?</legend>
+                    <div class="inner-form">
+                        <div class="input-field">
+                            <button class="btn-search" type="submit">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                                </svg>
+                            </button>
+                            <input id="search" type="text" placeholder="Charity name" value="" asp-for="@Model.CharityName">
+                        </div>
+                    </div>
+                    <div class="suggestion-wrap">
+                        <input type="checkbox"asp-for="@Model.DonatedCharities"/>
+                        <label>Only where I have donated</label>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <!--Search Bar End-->
     </div>
 </div>
 
@@ -33,54 +59,54 @@
 <div class="cases global__py pt-0">
     <div class="container p-sm-0">
         <div class="cases__grid">
-            @if (Model.Count == 0)
+            @if (Model.Charities!.Count == 0)
             {
                 <h2 class="join__heading global__heading">There are no Charities currently!</h2>
             }
             else
             {
-                            @foreach (var charity in Model)
-            {
-                <div class="card cases__card" data-aos="fade-down" data-aos-duration="1000">
-                    <div class="cases__card-img">
-                        <a asp-controller="Cases" asp-action="DetailsCase" asp-route-id="@charity.Id">
-                            <img class="img-fluid w-100" src="@charity.ImageUrl" alt="image">
-                        </a>
-                        <h4 class="cases__card-tag">@charity.Category?.Name</h4>
-                    </div>
-                    <div class="card-body px-4">
-                        <div class="d-flex">
-                            <img class="cases__card-i" src="~/assets/img/location.svg" alt="icon">
-                            <span class="cases__card-location ps-1">
-                                @charity.Location
-                            </span>
+                @foreach (var charity in Model.Charities)
+                {
+                    <div class="card cases__card" data-aos="fade-down" data-aos-duration="1000">
+                        <div class="cases__card-img">
+                            <a asp-controller="Cases" asp-action="DetailsCase" asp-route-id="@charity.Id">
+                                <img class="img-fluid w-100" src="@charity.ImageUrl" alt="image">
+                            </a>
+                            <h4 class="cases__card-tag">@charity.Category?.Name</h4>
                         </div>
-                        <div class="">
-                            <a asp-controller="Cases" asp-action="DetailsCase" asp-route-id="@charity.Id" class="cases__card-title">@charity.Name</a>
-                        </div>
-                        <div class="cases__card-range">
-                            <p class="global__desc m-0">Funded: @(Math.Round(Convert.ToDecimal(charity.Donations.Sum(d => d.Amount)/charity.FundsNeeded)*100)) %</p>
-                            <div class="progress cases__card-progress">
-                                <div class="progress-bar cases__card-progress--bar" role="progressbar"
+                        <div class="card-body px-4">
+                            <div class="d-flex">
+                                <img class="cases__card-i" src="~/assets/img/location.svg" alt="icon">
+                                <span class="cases__card-location ps-1">
+                                    @charity.Location
+                                </span>
+                            </div>
+                            <div class="">
+                                <a asp-controller="Cases" asp-action="DetailsCase" asp-route-id="@charity.Id" class="cases__card-title">@charity.Name</a>
+                            </div>
+                            <div class="cases__card-range">
+                                <p class="global__desc m-0">Funded: @(Math.Round(Convert.ToDecimal(charity.Donations.Sum(d => d.Amount)/charity.FundsNeeded)*100)) %</p>
+                                <div class="progress cases__card-progress">
+                                    <div class="progress-bar cases__card-progress--bar" role="progressbar"
                                  style="width: @((charity.Donations.Sum(d => d.Amount)/charity.FundsNeeded)*100)%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="cases__card-range--bottom">
-                                <div class="d-flex align-items-center cases__card-range--bottom---m gap-2">
-                                    <img class="cases__card-range--dollar" src="~/assets/img/box.svg" alt="icon">
-                                    <span class="cases__card-range--price">
-                                        Rasied: $@charity.Donations.Sum(d=>d.Amount)
-                                    </span>
-                                </div>
-                                <div class="d-flex align-items-center gap-2">
-                                    <img class="cases__card-range--dollar" src="~/assets/img/dollar-s.svg" alt="icon">
-                                    <span class="cases__card-range--price">goal: $@charity.FundsNeeded</span>
+                                <div class="cases__card-range--bottom">
+                                    <div class="d-flex align-items-center cases__card-range--bottom---m gap-2">
+                                        <img class="cases__card-range--dollar" src="~/assets/img/box.svg" alt="icon">
+                                        <span class="cases__card-range--price">
+                                            Rasied: $@charity.Donations.Sum(d=>d.Amount)
+                                        </span>
+                                    </div>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <img class="cases__card-range--dollar" src="~/assets/img/dollar-s.svg" alt="icon">
+                                        <span class="cases__card-range--price">goal: $@charity.FundsNeeded</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            }
+                }
             }
             <!--
             <div class="col-12 text-center">
@@ -113,4 +139,4 @@
         </div>
     </div>
 </div>
-    <!--  Join_US END -->
+<!--  Join_US END -->

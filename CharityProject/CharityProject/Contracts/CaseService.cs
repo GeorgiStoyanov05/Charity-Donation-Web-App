@@ -61,7 +61,7 @@ namespace CharityProject.Contracts
 
         public async Task<List<Charity>> GetAllCharities()
         {
-            return await context.Charities.Include(c => c.Donations).Include(c=>c.Updates).Include(c=>c.Category).Include(c=>c.Comments).ToListAsync();
+            return await context.Charities.Include(c => c.Donations).ThenInclude(d=>d.User).Include(c=>c.Updates).ThenInclude(d => d.User).Include(c=>c.Category).Include(c=>c.Comments)!.ThenInclude(d => d.User).ToListAsync();
         }
 
         public async Task<Charity> GetCharity(Guid id)
