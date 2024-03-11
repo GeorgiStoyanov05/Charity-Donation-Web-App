@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="~/assets/fonts/Inter-VariableFont_slnt,wght.ttf">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,800">
-    
+
     <!-- Style CSS -->
     <link rel="stylesheet" href="~/assets/css/style.css">
 </head>
@@ -50,34 +50,21 @@
                         <a class="nav-link menu__list-link" asp-controller="Home" asp-action="Index">home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link menu__list-link" asp-controller="Home" asp-action="AboutUs">about us</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link menu__list-link" asp-controller="Cases" asp-action="All">cases</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle menu__list-link" href="#" id="navbarDropdown" role="button"
-                           data-bs-toggle="dropdown" aria-expanded="false">
-                            pages
-                        </a>
-                        <ul class="dropdown-menu menu__list-dropdown--ul" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="single-cases.html">single cases</a></li>
-                            <li><a class="dropdown-item" href="donate.html">donate</a></li>
-                            <li><a class="dropdown-item" href="blog-details.html">blog details</a></li>
-                            <li><a class="dropdown-item" href="faqs.html">faqs</a></li>
-                            <li><a class="dropdown-item" href="gallery.html">gallery</a></li>
-                            <li><a class="dropdown-item" href="team.html">team</a></li>
-                            <li><a class="dropdown-item" href="testimonials.html">testimonials</a></li>
-                            <li><a class="dropdown-item" href="volunteer.html">volunteer</a></li>
-                            <li><a class="dropdown-item" href="error.html">error</a></li>
-                        </ul>
-                    </li>
                     <li class="nav-item">
-                        <a class="nav-link menu__list-link" asp-controller="Home" asp-action="Blog">blog</a>
+                        <a class="nav-link menu__list-link" asp-controller="Home" asp-action="AboutUs">about us</a>
                     </li>
+
                     <li class="nav-item">
                         <a class="nav-link menu__list-link" asp-controller="Home" asp-action="Contact">contact</a>
                     </li>
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link menu__list-link" asp-controller="Cases" asp-action="Create">Create a case</a>
+                        </li>
+                    }
                 </ul>
                 @if (!SignInManager.IsSignedIn(User))
                 {
@@ -90,13 +77,9 @@
                 {
 
                     <div class="">
-                        <a class="btn menu__btn menu__btn-in mb-3 mb-lg-0" href="#" id="navbarDropdown" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
+                        <div class="btn menu__btn menu__btn-in mb-3 mb-lg-0" aria-expanded="false">
                             @User.Identity?.Name
-                        </a>
-                        <ul class="dropdown-menu menu__list-dropdown--ul" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" asp-controller="Cases" asp-action="Create">Create a case</a></li>
-                        </ul>
+                        </div>
                     </div>
                     <div class="d-sm-flex d-lg-block gap-4 mt-3 mt-lg-0">
                         <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
