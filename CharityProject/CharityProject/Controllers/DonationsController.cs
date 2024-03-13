@@ -34,7 +34,7 @@ namespace CharityProject.Controllers
             };
             Charity charity = await caseService.GetCharity(model.Charity.Id);
             charity = await donationService.MakeDonationToCharity(donation, charity);
-            return RedirectToAction("DetailsCase", "Cases");
+            return RedirectToAction("DetailsCase", "Cases", new { id = model.Charity.Id});
         }
     }
 }

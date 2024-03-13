@@ -20,9 +20,9 @@
                 </p>
             </div>
             <div class="col-12 col-md-5 p-0 text-end d-none d-md-block position-relative">
-                <img class="img-fluid" src="./assets/img/header-img.png" alt="image">
+                <img class="img-fluid" src="~/assets/img/header-img.png" alt="image">
                 <div class="hero__hand">
-                    <img class="img-fluid" src="./assets/img/hand-fist.png" alt="hand image">
+                    <img class="img-fluid" src="~/assets/img/hand-fist.png" alt="hand image">
                 </div>
             </div>
         </div>
@@ -59,7 +59,7 @@
                             </div>
                             <div class="card-body px-4">
                                 <div class="d-flex">
-                                    <img class="cases__card-i" src="./assets/img/location.svg" alt="icon">
+                                    <img class="cases__card-i" src="~/assets/img/location.svg" alt="icon">
                                     <span class="cases__card-location ps-1">
                                         @charity.Location
                                     </span>
@@ -78,13 +78,13 @@
                                     </div>
                                     <div class="cases__card-range--bottom">
                                         <div class="d-flex align-items-center cases__card-range--bottom---m gap-2">
-                                            <img class="cases__card-range--dollar" src="./assets/img/box.svg" alt="icon">
+                                            <img class="cases__card-range--dollar" src="~/assets/img/box.svg" alt="icon">
                                             <span class="cases__card-range--price">
                                                 Rasied: $@charity.Donations.Sum(d=>d.Amount)
                                             </span>
                                         </div>
                                         <div class="d-flex align-items-center gap-2">
-                                            <img class="cases__card-range--dollar" src="./assets/img/dollar-s.svg"
+                                            <img class="cases__card-range--dollar" src="~/assets/img/dollar-s.svg"
                                          alt="icon">
                                             <span class="cases__card-range--price">goal: $@charity.FundsNeeded</span>
                                         </div>
@@ -106,10 +106,10 @@
             <div class="col-6 my-auto my-xl-0">
                 <div class="d-none d-lg-flex gap-4" data-aos="fade-right" data-aos-duration="1000">
                     <div class="about__image">
-                        <img class="img-fluid" src="./assets/img/add-1.png" alt="image">
+                        <img class="img-fluid" src="~/assets/img/add-1.png" alt="image">
                     </div>
                     <div class="about__image">
-                        <img class="img-fluid" src="./assets/img/add-2.png" alt="image">
+                        <img class="img-fluid" src="~/assets/img/add-2.png" alt="image">
                     </div>
                 </div>
             </div>
@@ -137,19 +137,19 @@
                 <div class="">
                     <ul class="about__list">
                         <li>
-                            <img class="cases__card-range--dollar p-1 me-2" src="./assets/img/check.svg" alt="icon">
+                            <img class="cases__card-range--dollar p-1 me-2" src="~/assets/img/check.svg" alt="icon">
                             <span class="global__desc m-0">
                                 Start your campaigns
                             </span>
                         </li>
                         <li>
-                            <img class="cases__card-range--dollar p-1 me-2" src="./assets/img/check.svg" alt="icon">
+                            <img class="cases__card-range--dollar p-1 me-2" src="~/assets/img/check.svg" alt="icon">
                             <span class="global__desc m-0">
                                 Share with friends
                             </span>
                         </li>
                         <li>
-                            <img class="cases__card-range--dollar p-1 me-2" src="./assets/img/check.svg" alt="icon">
+                            <img class="cases__card-range--dollar p-1 me-2" src="~/assets/img/check.svg" alt="icon">
                             <span class="global__desc m-0">
                                 Manage Donations
                             </span>
@@ -185,7 +185,7 @@
                 <ul>
                     <li class="org__li">
                         <div class="org__li-img">
-                            <img class="org__li-img--icon" src="./assets/img/campain.svg" alt="">
+                            <img class="org__li-img--icon" src="~/assets/img/campain.svg" alt="">
                         </div>
                         <div class="">
                             <h3 class="org__li-name">Manage your campaigns</h3>
@@ -197,7 +197,7 @@
                     </li>
                     <li class="org__li">
                         <div class="org__li-img">
-                            <img class="org__li-img--icon" src="./assets/img/donation.svg" alt="">
+                            <img class="org__li-img--icon" src="~/assets/img/donation.svg" alt="">
                         </div>
                         <div class="">
                             <h3 class="org__li-name">Collecting donation</h3>
@@ -209,7 +209,7 @@
                     </li>
                     <li class="org__li">
                         <div class="org__li-img">
-                            <img class="org__li-img--icon" src="./assets/img/money.svg" alt="">
+                            <img class="org__li-img--icon" src="~/assets/img/money.svg" alt="">
                         </div>
                         <div class="">
                             <h3 class="org__li-name">Withdraw your money</h3>
@@ -222,7 +222,7 @@
                 </ul>
             </div>
             <div class="col-lg-6 d-none d-sm-block mt-5 mt-lg-0" data-aos="fade-right" data-aos-duration="1000">
-                <img class="img-fluid" src="./assets/img/draw-img.png" alt="image">
+                <img class="img-fluid" src="~/assets/img/draw-img.png" alt="image">
             </div>
         </div>
     </div>
@@ -233,20 +233,20 @@
     <div class="container p-sm-0">
         <div class="num__body">
             <div class="">
-                <h4 class="num__body-digit"><span class="num__counter">6500</span>+</h4>
-                <p class="num__body-text">Donation</p>
+                <h4 class="num__body-digit"><span class="num__counter">@ViewBag.DonationsCount</span>+</h4>
+                <p class="num__body-text">Donations</p>
             </div>
             <div class="">
-                <h4 class="num__body-digit">$<span class="num__counter">60</span>+</h4>
-                <p class="num__body-text">Found Raised</p>
+                <h4 class="num__body-digit">$<span class="num__counter">@ViewBag.TotalFundsDonated</span>+</h4>
+                <p class="num__body-text">Funds Raised</p>
             </div>
             <div class="">
-                <h4 class="num__body-digit"><span class="num__counter">250</span> </h4>
-                <p class="num__body-text">Volunteer</p>
+                <h4 class="num__body-digit"><span class="num__counter">@ViewBag.VolunteersCount</span> </h4>
+                <p class="num__body-text">Volunteers</p>
             </div>
             <div class="">
-                <h4 class="num__body-digit"><span class="num__counter">110</span></h4>
-                <p class="num__body-text">project</p>
+                <h4 class="num__body-digit"><span class="num__counter">@ViewBag.ProjectsCount</span></h4>
+                <p class="num__body-text">projects</p>
             </div>
         </div>
     </div>

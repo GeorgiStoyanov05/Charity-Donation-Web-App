@@ -20,6 +20,11 @@ namespace Charities.Controllers
         public async Task<IActionResult> Index()
         {
             List<Charity> charities = await caseService.GetAllCharities();
+            List<int> data = await caseService.ExtractCountData();
+            ViewBag.DonationsCount = data[0];
+            ViewBag.TotalFundsDonated = data[1];
+            ViewBag.VolunteersCount = data[2];
+            ViewBag.ProjectsCount = data[3];
             return View(charities);
         }
 

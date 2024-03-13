@@ -68,5 +68,17 @@ namespace CharityProject.Contracts
         {
             return await context.Charities.Include(c => c.Comments).ThenInclude(c => c.User).Include(c => c.Donations).ThenInclude(c=>c.User).Include(c => c.Updates).ThenInclude(c => c.User).FirstOrDefaultAsync(c => c.Id == id);
         }
+
+        public async Task<List<int>> ExtractCountData()
+        {
+            List<int> data;
+            var donations = await context.Charities.Include(c=>c.Donations).Select(c => c.Donations).ToListAsync();
+            int totalDonationsCount = donations.Sum(d => d.Count);
+            int totalFundsDonated = Convert.ToInt32(donations.Sum(d => d.Sum(d1 => d1.Amount)));
+            int volunteers = context.Users.ToList().Count();
+            int totalProjects = context.Charities.ToList().Count;
+            data = new List<int>() {totalDonationsCount, totalFundsDonated, volunteers, totalProjects };
+            return data;
+        }
     }
 }
