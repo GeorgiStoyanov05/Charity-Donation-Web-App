@@ -10,11 +10,12 @@ namespace Charities.Controllers
     {
         private readonly UserManager<User> userManager;
         private readonly SignInManager<User> signInManager;
-
-        public AccountController(UserManager<User> _userManager, SignInManager<User> _signInManager)
+        private readonly RoleManager<IdentityRole> roleManager;
+        public AccountController(UserManager<User> _userManager, SignInManager<User> _signInManager, RoleManager<IdentityRole> roleManager)
         {
             this.userManager = _userManager;
             this.signInManager = _signInManager;
+            this.roleManager = roleManager;
         }
 
         [HttpGet]
@@ -46,6 +47,14 @@ namespace Charities.Controllers
 
             if (result.Succeeded)
             {
+                if (model.Email == "admin@abv.bg")
+                {
+                    await userManager.AddToRoleAsync(user, "Administrator");
+                }
+                else
+                {
+                    await userManager.AddToRoleAsync(user, "User");
+                }
                 await signInManager.SignInAsync(user, isPersistent: false);
                 return RedirectToAction("Index", "Home");
             }
@@ -98,6 +107,16 @@ namespace Charities.Controllers
         public async Task<IActionResult> Logout()
         {
             await signInManager.SignOutAsync();
+            return Redirect("/Home/Index");
+        }
+
+        public async Task<IActionResult> CreateRoles()
+        {
+            if (!roleManager.RoleExistsAsync("Administrator").Result || !roleManager.RoleExistsAsync("User").Result)
+            {
+                await roleManager.CreateAsync(new IdentityRole() { Name = "User" });
+                await roleManager.CreateAsync(new IdentityRole() { Name = "Administrator" });
+            }
             return Redirect("/Home/Index");
         }
     }
