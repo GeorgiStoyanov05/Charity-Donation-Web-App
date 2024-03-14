@@ -28,7 +28,7 @@ namespace CharityProject.Controllers
             };
             Charity charity = await caseService.GetCharity(model.Charity.Id);
             await updateService.PostUpdateToCharity(update, charity);
-            return RedirectToAction("DetailsCase", "Cases");
+            return RedirectToAction("DetailsCase", "Cases", new { id = model.Charity.Id });
         }
 
         public async Task<IActionResult> DeleteUpdate(Guid updateId, Guid charityId)
@@ -36,7 +36,7 @@ namespace CharityProject.Controllers
             Charity charity = await caseService.GetCharity(charityId);
             Update update = updateService.GetUpdate(updateId, charity);
             await updateService.DeleteUpdateFromCharity(update, charity);
-            return RedirectToAction("DetailsCase", "Cases");
+            return RedirectToAction("DetailsCase", "Cases", new { id = charityId });
         }
     }
 }

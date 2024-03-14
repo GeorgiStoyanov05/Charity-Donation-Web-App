@@ -49,6 +49,8 @@ namespace Charities.Data.Models
 
         public bool IsApproved { get; set; } = false;
 
+        public bool IsRejected { get; set; } = false;
+
         public bool IsDeleted { get; set; } = false;
     }
 }

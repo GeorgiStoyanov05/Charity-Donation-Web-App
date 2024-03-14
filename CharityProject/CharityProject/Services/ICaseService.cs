@@ -15,5 +15,7 @@ namespace CharityProject.Services
         Task<Charity> GetCharity(Guid id);
 
         Task<List<int>> ExtractCountData();
+
+        Task<Charity> UpdateCharity(Charity charity);
     }
 }

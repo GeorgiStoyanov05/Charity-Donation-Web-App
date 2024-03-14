@@ -91,7 +91,23 @@ namespace Charities.Controllers
             {
                 Charities = charities
             };
-            return View("All" ,viewModel);
+            return View("All", viewModel);
+        }
+
+        public async Task<IActionResult> Approve(Guid charityId)
+        {
+            Charity charity = await caseService.GetCharity(charityId);
+            charity.IsApproved = true;
+            await caseService.UpdateCharity(charity);
+            return RedirectToAction("All", "Cases");
+        }
+
+        public async Task<IActionResult> Disapprove(Guid charityId)
+        {
+            Charity charity = await caseService.GetCharity(charityId);
+            charity.IsRejected = true;
+            await caseService.UpdateCharity(charity);
+            return RedirectToAction("All", "Cases");
         }
     }
 }

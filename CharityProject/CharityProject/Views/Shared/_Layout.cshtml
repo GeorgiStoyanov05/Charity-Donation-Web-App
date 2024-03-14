@@ -59,7 +59,7 @@
                     <li class="nav-item">
                         <a class="nav-link menu__list-link" asp-controller="Home" asp-action="Contact">contact</a>
                     </li>
-                    @if (SignInManager.IsSignedIn(User))
+                    @if (SignInManager.IsSignedIn(User) && !this.User.IsInRole("Administrator"))
                     {
                         <li class="nav-item">
                             <a class="nav-link menu__list-link" asp-controller="Cases" asp-action="Create">Create a case</a>

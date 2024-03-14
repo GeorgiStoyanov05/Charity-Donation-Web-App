@@ -33,14 +33,14 @@ namespace CharityProject.Controllers
             };
             Charity charity = await caseService.GetCharity(model.Charity.Id);
             await commentService.AddCommentToCharity(charity, comment);
-            return RedirectToAction("DetailsCase", "Cases");
+            return RedirectToAction("DetailsCase", "Cases", new { id = model.Charity.Id });
         }
 
         [HttpGet]
         public async Task<IActionResult> DeleteComment(Guid commentId, Guid charityId)
         {
             Charity charity = await commentService.DeleteComment(commentId, charityId);
-            return RedirectToAction("DetailsCase", "Cases");
+            return RedirectToAction("DetailsCase", "Cases", new { id = charityId });
         }
     }
 }

@@ -80,5 +80,12 @@ namespace CharityProject.Contracts
             data = new List<int>() {totalDonationsCount, totalFundsDonated, volunteers, totalProjects };
             return data;
         }
+
+        public async Task<Charity> UpdateCharity(Charity charity)
+        {
+            context.Charities.Update(charity);
+            await context.SaveChangesAsync();
+            return charity;
+        }
     }
 }

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CharityProject.Migrations
 {
-    public partial class DbMigrations : Migration
+    public partial class FinalDbMigrations : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -192,6 +192,7 @@ namespace CharityProject.Migrations
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     IsApproved = table.Column<bool>(type: "bit", nullable: false),
+                    IsRejected = table.Column<bool>(type: "bit", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -298,11 +299,11 @@ namespace CharityProject.Migrations
                 columns: new[] { "Id", "Name" },
                 values: new object[,]
                 {
-                    { new Guid("0f9dbaf0-cd49-4e57-a1a9-0c7c80c45523"), "Helping Poor" },
-                    { new Guid("31ec8b2e-8945-4396-8cfc-89a56bb2367d"), "Clean Water" },
-                    { new Guid("9de499df-5fcb-4fb6-b80e-cfc99a01afe4"), "Healthy Food" },
-                    { new Guid("b2c43449-f9d8-496f-829f-a01ec96c242b"), "Free Education" },
-                    { new Guid("bfb61b25-3e73-49a1-93a0-c915801ffdc2"), "Medical Facilities" }
+                    { new Guid("57b079e0-4317-4dca-a59b-b396eea4b67c"), "Helping Poor" },
+                    { new Guid("62a9c2f5-3936-44f1-9a34-f54781b80ea1"), "Healthy Food" },
+                    { new Guid("85cc0a43-5404-4272-a2a3-21c220b76a6d"), "Medical Facilities" },
+                    { new Guid("d884ce0c-bf9c-4420-b968-cfb55cf1dbb9"), "Free Education" },
+                    { new Guid("ef6d5b61-f952-4fc6-acfe-5eebe4be021f"), "Clean Water" }
                 });
 
             migrationBuilder.CreateIndex(

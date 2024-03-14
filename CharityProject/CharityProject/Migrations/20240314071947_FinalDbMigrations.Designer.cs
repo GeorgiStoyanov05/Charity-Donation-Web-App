@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CharityProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240228115310_DbMigrations")]
-    partial class DbMigrations
+    [Migration("20240314071947_FinalDbMigrations")]
+    partial class FinalDbMigrations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -41,27 +41,27 @@ namespace CharityProject.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("9de499df-5fcb-4fb6-b80e-cfc99a01afe4"),
+                            Id = new Guid("62a9c2f5-3936-44f1-9a34-f54781b80ea1"),
                             Name = "Healthy Food"
                         },
                         new
                         {
-                            Id = new Guid("b2c43449-f9d8-496f-829f-a01ec96c242b"),
+                            Id = new Guid("d884ce0c-bf9c-4420-b968-cfb55cf1dbb9"),
                             Name = "Free Education"
                         },
                         new
                         {
-                            Id = new Guid("31ec8b2e-8945-4396-8cfc-89a56bb2367d"),
+                            Id = new Guid("ef6d5b61-f952-4fc6-acfe-5eebe4be021f"),
                             Name = "Clean Water"
                         },
                         new
                         {
-                            Id = new Guid("0f9dbaf0-cd49-4e57-a1a9-0c7c80c45523"),
+                            Id = new Guid("57b079e0-4317-4dca-a59b-b396eea4b67c"),
                             Name = "Helping Poor"
                         },
                         new
                         {
-                            Id = new Guid("bfb61b25-3e73-49a1-93a0-c915801ffdc2"),
+                            Id = new Guid("85cc0a43-5404-4272-a2a3-21c220b76a6d"),
                             Name = "Medical Facilities"
                         });
                 });
@@ -95,6 +95,9 @@ namespace CharityProject.Migrations
                         .HasColumnType("bit");
 
                     b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsRejected")
                         .HasColumnType("bit");
 
                     b.Property<string>("Location")
