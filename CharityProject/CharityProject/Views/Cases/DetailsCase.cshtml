@@ -176,7 +176,7 @@
                     }
                 }
                 </br>
-                @if (Model.User.Id == Model.Charity.CreatorId)
+                @if (Model.User?.Id == Model.Charity.CreatorId)
                 {
                     <div class="education__search">
                         <h4 class="education__txt">Write an update:</h4>
@@ -254,7 +254,7 @@
 <div class="cases global__py pt-0">
     <div class="container p-sm-0">
         <div class="cases__grid">
-            @if (this.User.IsInRole("User"))
+            @if (!this.User.IsInRole("Administrator"))
             {
                 @if (Model.Charities.Where(c => c.IsApproved == true && c.IsDeleted == false && c != Model.Charity).ToList().Count == 0)
                 {
@@ -309,7 +309,7 @@
                     }
                 }
             }
-            @if (this.User.IsInRole("Administrator"))
+            else
             {
                 @if (Model.Charities.Where(c => c.IsApproved == false && c.IsRejected == false && c != Model.Charity).ToList().Count == 0)
                 {

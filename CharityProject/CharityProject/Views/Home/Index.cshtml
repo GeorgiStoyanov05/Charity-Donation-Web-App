@@ -42,7 +42,7 @@
         </div>
         <div class="row">
             <div class="cases__slider">
-                @if (this.User.IsInRole("User"))
+                @if (!this.User.IsInRole("Administrator"))
                 {
                     @if (Model.Where(c=>c.IsApproved==true && c.IsDeleted==false).ToList().Count == 0)
                     {
@@ -97,7 +97,7 @@
                         }
                     }
                 }
-                @if (this.User.IsInRole("Administrator"))
+                else
                 {
                     @if (Model.Where(c=>c.IsApproved==false && c.IsRejected==false).ToList().Count == 0)
                     {
