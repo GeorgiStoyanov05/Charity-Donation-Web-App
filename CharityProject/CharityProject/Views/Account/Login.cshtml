@@ -16,16 +16,14 @@
                                                     class="text-danger">*</span></label>
                                             <input class="form-control sign__form-input" id="emailInp" type="email"
                                                 placeholder="Enter your email" asp-for="Email">
-                                            <span class="sign__text sign__text-email text-danger d-none" asp-validation-for="Email"></span>
+                                            <span asp-validation-for="Email" class="text-danger"></span>
                                         </div>
                                         <div class="">
                                             <label class="sign__form-label" for="passwordInp">Password <span
                                                     class="text-danger">*</span></label>
                                             <input class="form-control sign__form-input" id="passwordInp"
                                                 type="password" placeholder="Create a Password" asp-for="Password">
-                                            <div class="">
-                                                <span class="sign__text sign__text-pass text-danger d-none" asp-validation-for="Password"></span>
-                                            </div>
+                                                <span class="text-danger" asp-validation-for="Password"></span>
                                         </div>
                                         <div class="d-flex justify-content-between align-items-center mt-3 mb-4">
                                             <label class="sign__form-rem">

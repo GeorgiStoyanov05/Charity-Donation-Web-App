@@ -7,57 +7,55 @@
                 <div class="col-11 col-sm-10 col-md-8 col-lg-5 col-xl-4 m-auto sign__position">
                     <div class="sign__form">
                         <h5 class="sign__small d-none d-lg-block">Copyright © 2023 Company Name</h5>
-                        <form method="post" class="" id="form">
+                        <form method="post" class="">
                             <h4 class="sign__form-heading">Sign up</h4>
                             <div class="">
                                 <div class="sign__form-mb">
                                     <label class="sign__form-label" asp-for="Username">
                                         Username <span class="text-danger">*</span>
                                     </label>
-                                    <input class="form-control sign__form-input" id="nameInp" name="username"
+                                    <input class="form-control sign__form-input"
                                            type="text" placeholder="Enter your name" asp-for="Username">
                                     <div class="">
-                                        <span class="sign__text sign__text-name text-danger d-none" asp-validation-for="Username"></span>
+                                        <span asp-validation-for="Username" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="sign__form-mb">
                                     <label class="sign__form-label" asp-for="Email">
                                         Email <span class="text-danger">*</span>
                                     </label>
-                                    <input class="form-control sign__form-input" id="emailInp" name="email"
+                                    <input class="form-control sign__form-input"
                                            type="email" placeholder="Enter your email" asp-for="Email">
                                     <div class="">
-                                        <span class="sign__text sign__text-email text-danger d-none" asp-validation-for="Email"></span>
+                                        <span asp-validation-for="Email" class="text-danger"></span>
                                     </div>
                                 </div>
-                                <div class="">
+                                <div class="sign__form-mb">
                                     <label class="sign__form-label" asp-for="Password">
                                         Password <span class="text-danger">*</span>
                                     </label>
-                                    <input class="form-control sign__form-input" id="passwordInp"
-                                           name="password" type="password" placeholder="Create a Password" asp-for="Password">
-                                </div>
-                                <div class="mt-1 mb-4">
+                                    <input class="form-control sign__form-input"
+                                           type="password" placeholder="Create a Password" asp-for="Password">
                                     <div class="">
-                                        <span class="sign__text sign__text-pass text-danger d-none" asp-validation-for="Password"></span>
+                                        <span asp-validation-for="Password" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="sign__form-mb">
                                     <label class="sign__form-label" asp-for="ConfirmPassword">
                                         Repeat Password <span class="text-danger">*</span>
                                     </label>
-                                    <input class="form-control sign__form-input" id="nameInp" name="ConfirmPassword"
+                                    <input class="form-control sign__form-input"
                                            type="password" placeholder="Enter your Password again" asp-for="ConfirmPassword">
                                     <div class="">
-                                        <span class="sign__text sign__text-name text-danger d-none" asp-validation-for="ConfirmPassword"></span>
+                                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-10 col-sm-12 m-auto">
                                     <div class="">
-                                        <input type="submit" class="sign__btn sign__btn-in form-control" value="Get Started"/>
+                                        <input type="submit" class="sign__btn sign__btn-in form-control" value="Get Started" />
                                     </div>
                                 </div>
-                                <br/>
+                                <br />
                                 <div class="">
                                     <p class="sign__text text-center">
                                         Already have an account? <a class="sign__form-link" asp-controller="Account" asp-action="Login">Log in</a>

@@ -42,33 +42,28 @@
                         <input id="nameInp" class="contact__form-inp form-control" type="text"
                                placeholder="Name" asp-for="Name" />
                         <div class="">
-                            <span class="sign__text sign__text-name text-danger d-none">
-                                Use a valid
-                                name
-                            </span>
-                            <span class="sign__text sign__text-name--required text-danger d-none">
-                                Name
-                                is
-                                required
-                            </span>
+                            <span asp-validation-for="Name" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="">
                         <input class="contact__form-inp form-control" type="text"
                                placeholder="Image URL" asp-for="ImageUrl">
                         <div class="">
+                            <span asp-validation-for="ImageUrl" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="">
                         <input id="emailInp" class="contact__form-inp form-control" type="text"
                                placeholder="Location" asp-for="Location">
                         <div class="">
+                            <span asp-validation-for="Location" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="">
                         <input id="phnInp" class="contact__form-inp form-control" type="number"
                                placeholder="Funds needed" asp-for="FundsNeeded">
                         <div class="">
+                            <span asp-validation-for="FundsNeeded" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="">
@@ -78,10 +73,16 @@
                                 <option value="@category.Id">@category.Name</option>
                             }
                         </select>
+                        <div class="">
+                            <span asp-validation-for="CategoryId" class="text-danger"></span>
+                        </div>
                     </div>
                     <div class="contact__form-body--comnt">
                         <textarea class="contact__form-inp form-control" id="comment" cols="30" rows="5"
                                   placeholder="Write your description" asp-for="Description"></textarea>
+                        <div class="">
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
                     </div>
                     <div class="">
                         <input class="donation__btn global__btn mt-0" type="submit" value="create">

@@ -8,7 +8,7 @@ namespace Charities.Data.Models
         [Key]
         public Guid Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "The Update field is required.")]
         [StringLength(maximumLength: 200)]
         public string? Text { get; set; }
 

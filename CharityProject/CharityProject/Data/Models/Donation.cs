@@ -19,7 +19,7 @@ namespace Charities.Data.Models
         public Charity? Charity { get; set; }
 
         [Required]
-        [Range(1.00, double.MaxValue)]
+        [Range(1.00, double.MaxValue, ErrorMessage ="Minimum donation amount is 1.00$.")]
         public double Amount { get; set; }
 
         [Required]
