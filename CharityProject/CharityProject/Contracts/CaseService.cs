@@ -76,7 +76,7 @@ namespace CharityProject.Contracts
             int totalDonationsCount = donations.Sum(d => d.Count);
             int totalFundsDonated = Convert.ToInt32(donations.Sum(d => d.Sum(d1 => d1.Amount)));
             int volunteers = context.Users.ToList().Count();
-            int totalProjects = context.Charities.ToList().Count;
+            int totalProjects = context.Charities.Where(c => c.IsApproved == true && c.IsDeleted == false).ToList().Count;
             data = new List<int>() {totalDonationsCount, totalFundsDonated, volunteers, totalProjects };
             return data;
         }
