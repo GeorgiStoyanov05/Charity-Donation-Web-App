@@ -43,24 +43,33 @@ namespace Charities.Controllers
                 Email = model.Email,
                 UserName = model.Username
             };
-            var result = await userManager.CreateAsync(user, model.Password);
 
-            if (result.Succeeded)
+            var checkIfUserExists = await userManager.FindByEmailAsync(model.Email);
+            if (checkIfUserExists == null)
             {
-                if (model.Email == "admin@abv.bg")
+                var result = await userManager.CreateAsync(user, model.Password);
+
+                if (result.Succeeded)
                 {
-                    await userManager.AddToRoleAsync(user, "Administrator");
+                    if (model.Email == "admin@abv.bg")
+                    {
+                        await userManager.AddToRoleAsync(user, "Administrator");
+                    }
+                    else
+                    {
+                        await userManager.AddToRoleAsync(user, "User");
+                    }
+                    await signInManager.SignInAsync(user, isPersistent: false);
+                    return RedirectToAction("Index", "Home");
                 }
-                else
+                foreach (var item in result.Errors)
                 {
-                    await userManager.AddToRoleAsync(user, "User");
+                    ModelState.AddModelError("", item.Description);
                 }
-                await signInManager.SignInAsync(user, isPersistent: false);
-                return RedirectToAction("Index", "Home");
             }
-            foreach (var item in result.Errors)
+            else
             {
-                ModelState.AddModelError("", item.Description);
+                ModelState.AddModelError("", "User with this email already exists.");
             }
             return View(model);
         }
