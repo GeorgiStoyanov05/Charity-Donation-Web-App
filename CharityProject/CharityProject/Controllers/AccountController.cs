@@ -58,10 +58,10 @@ namespace Charities.Controllers
                 await signInManager.SignInAsync(user, isPersistent: false);
                 return RedirectToAction("Index", "Home");
             }
-            /*foreach (var item in result.Errors)
+            foreach (var item in result.Errors)
             {
                 ModelState.AddModelError("", item.Description);
-            }*/
+            }
             return View(model);
         }
 
@@ -100,10 +100,12 @@ namespace Charities.Controllers
                     return Redirect("/Home/Index");
                 }
             }
-            //ModelState.AddModelError("", "Invalid login");
+            ModelState.AddModelError("", "Invalid email or password");
             return View(model);
         }
 
+        [HttpGet]
+        [Authorize]
         public async Task<IActionResult> Logout()
         {
             await signInManager.SignOutAsync();

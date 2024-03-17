@@ -2,12 +2,14 @@
 using CharityProject.Contracts;
 using CharityProject.Models;
 using CharityProject.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
 namespace Charities.Controllers
 {
+    [Authorize]
     public class CasesController : Controller
     {
         private readonly ICaseService caseService;
@@ -20,6 +22,7 @@ namespace Charities.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> All()
         {
             List<Charity> charities = await caseService.GetAllCharities();
@@ -47,6 +50,7 @@ namespace Charities.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> DetailsCase(Guid id)
         {
             List<Charity> charities = await caseService.GetAllCharities();
@@ -63,6 +67,7 @@ namespace Charities.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> FilterSearch(AllCasesViewModel model)
         {
             List<Charity> charities = await caseService.GetAllCharities();
@@ -94,6 +99,7 @@ namespace Charities.Controllers
             return View("All", viewModel);
         }
 
+        [Authorize(Roles ="Administrator")]
         public async Task<IActionResult> Approve(Guid charityId)
         {
             Charity charity = await caseService.GetCharity(charityId);
@@ -102,6 +108,7 @@ namespace Charities.Controllers
             return RedirectToAction("All", "Cases");
         }
 
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Disapprove(Guid charityId)
         {
             Charity charity = await caseService.GetCharity(charityId);

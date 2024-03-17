@@ -1,12 +1,14 @@
 ﻿using Charities.Data.Models;
 using CharityProject.Models;
 using CharityProject.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
 namespace CharityProject.Controllers
 {
+    [Authorize]
     public class UpdatesController : Controller
     {
         private readonly ICaseService caseService;
