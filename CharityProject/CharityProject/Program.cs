@@ -46,6 +46,8 @@ else
     app.UseHsts();
 }
 
+app.UseStatusCodePagesWithReExecute("/Home/Error");
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 

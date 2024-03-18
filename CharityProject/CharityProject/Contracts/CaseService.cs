@@ -21,36 +21,36 @@ namespace CharityProject.Contracts
 
         public async Task<Charity> CreateCharity(CreateCaseViewModel model, string userId)
         {
-            var user = await context.Users.FindAsync(userId);
-            var creator = context.Owners.Find(userId);
-            if (creator == null)
-            {
-                creator = new Creator()
+                var user = await context.Users.FindAsync(userId);
+                var creator = context.Owners.Find(userId);
+                if (creator == null)
                 {
-                    Id = userId,
-                    Username = user!.UserName,
-                    Email = user.Email
+                    creator = new Creator()
+                    {
+                        Id = userId,
+                        Username = user!.UserName,
+                        Email = user.Email
 
+                    };
+                    await context.Owners.AddAsync(creator);
+                    await context.SaveChangesAsync();
+                }
+                Charity charity = new Charity()
+                {
+                    Name = model.Name,
+                    CreatorId = creator.Id,
+                    Description = model.Description,
+                    Location = model.Location,
+                    FundsNeeded = model.FundsNeeded,
+                    ImageUrl = model.ImageUrl,
+                    CategoryId = model.CategoryId,
+                    IsDeleted = false,
+                    IsApproved = false
                 };
-                await context.Owners.AddAsync(creator);
-                await context.SaveChangesAsync();
-            }
-            Charity charity = new Charity()
-            {
-                Name = model.Name,
-                CreatorId = creator.Id,
-                Description = model.Description,
-                Location = model.Location,
-                FundsNeeded = model.FundsNeeded,
-                ImageUrl = model.ImageUrl,
-                CategoryId = model.CategoryId,
-                IsDeleted = false,
-                IsApproved = false
-            };
 
-            await context.Charities.AddAsync(charity);
-            await context.SaveChangesAsync();
-            return charity;
+                await context.Charities.AddAsync(charity);
+                await context.SaveChangesAsync();
+                return charity;
         }
 
         public async Task<List<Category>> GetAllCategories()

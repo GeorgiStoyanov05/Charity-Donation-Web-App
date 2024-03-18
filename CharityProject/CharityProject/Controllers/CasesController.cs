@@ -53,6 +53,10 @@ namespace Charities.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> DetailsCase(Guid id)
         {
+            if (await caseService.GetCharity(id) == null)
+            {
+                return Redirect("/Home/Index");
+            }
             List<Charity> charities = await caseService.GetAllCharities();
             Charity charity = await caseService.GetCharity(id);
             User currentUser = await userManager.GetUserAsync(this.User);

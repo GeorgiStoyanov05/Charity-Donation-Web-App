@@ -53,6 +53,11 @@ namespace Charities.Controllers
             return View();
         }
 
+        public IActionResult ErrorPage()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
