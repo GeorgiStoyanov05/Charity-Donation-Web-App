@@ -34,8 +34,15 @@ namespace CharityProject.Controllers
                 DateMade = DateTime.Now,
                 Comment = model.Donation.Comment,
             };
-            Charity charity = await caseService.GetCharity(model.Charity.Id);
-            charity = await donationService.MakeDonationToCharity(donation, charity);
+            try
+            {
+                Charity charity = await caseService.GetCharity(model.Charity.Id);
+                charity = await donationService.MakeDonationToCharity(donation, charity);
+            }
+            catch (Exception err)
+            {
+                return RedirectToAction("ErrorPage", "Home", new { message = err.Message });
+            }
             return RedirectToAction("DetailsCase", "Cases", new { id = model.Charity.Id});
         }
     }

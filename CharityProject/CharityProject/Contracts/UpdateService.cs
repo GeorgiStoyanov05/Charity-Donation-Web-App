@@ -15,21 +15,52 @@ namespace CharityProject.Contracts
 
         public Update GetUpdate(Guid updateId, Charity charity)
         {
-            return charity.Updates.FirstOrDefault(u=>u.Id==updateId)!;
+            Update update = charity.Updates.FirstOrDefault(u => u.Id == updateId)!;
+            return update;
         }
 
         public async Task<Charity> PostUpdateToCharity(Update update, Charity charity)
         {
-            charity.Updates.Add(update);
-            context.Charities.Update(charity);
-            await context.SaveChangesAsync();
+            if (update == null)
+            {
+                throw new ArgumentNullException("Update not found.");
+            }
+            if (charity == null)
+            {
+                throw new ArgumentNullException("Charity not found.");
+            }
+            try
+            {
+                charity.Updates.Add(update);
+                context.Charities.Update(charity);
+                await context.SaveChangesAsync();
+            }
+            catch (Exception err)
+            {
+                throw new ArgumentException("There was an error while posting the update.");
+            }
             return charity;
         }
         public async Task<Charity> DeleteUpdateFromCharity(Update update, Charity charity)
         {
-            charity.Updates.Remove(update);
-            context.Charities.Update(charity);
-            await context.SaveChangesAsync();
+            if (update == null)
+            {
+                throw new ArgumentNullException("Update not found.");
+            }
+            if (charity == null)
+            {
+                throw new ArgumentNullException("Charity not found.");
+            }
+            try
+            {
+                charity.Updates.Remove(update);
+                context.Charities.Update(charity);
+                await context.SaveChangesAsync();
+            }
+            catch (Exception err)
+            {
+                throw new ArgumentException("There was an error while deleting the update.");
+            }
             return charity;
         }
     }

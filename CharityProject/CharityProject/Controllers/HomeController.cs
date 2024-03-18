@@ -53,15 +53,16 @@ namespace Charities.Controllers
             return View();
         }
 
-        public IActionResult ErrorPage()
+        public IActionResult ErrorPage(string message)
         {
+            ViewBag.Message = message;
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+       /* [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        }*/
     }
 }

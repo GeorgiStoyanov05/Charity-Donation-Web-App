@@ -2,6 +2,7 @@ using Charities.Data.Models;
 using CharityProject.Contracts;
 using CharityProject.Data;
 using CharityProject.Services;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,7 +14,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<User>(options => 
+builder.Services.AddDefaultIdentity<User>(options =>
 {
     options.SignIn.RequireConfirmedAccount = false;
     options.Password.RequiredLength = 5;
@@ -46,8 +47,6 @@ else
     app.UseHsts();
 }
 
-app.UseStatusCodePagesWithReExecute("/Home/Error");
-
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
@@ -59,6 +58,7 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
 app.MapRazorPages();
 
 app.Run();

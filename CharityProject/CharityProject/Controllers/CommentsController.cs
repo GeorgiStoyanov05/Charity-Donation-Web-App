@@ -33,15 +33,29 @@ namespace CharityProject.Controllers
                 UserId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value,
                 CharityId = model.Charity.Id
             };
-            Charity charity = await caseService.GetCharity(model.Charity.Id);
-            await commentService.AddCommentToCharity(charity, comment);
+            try
+            {
+                Charity charity = await caseService.GetCharity(model.Charity.Id);
+                await commentService.AddCommentToCharity(charity, comment);
+            }
+            catch (Exception err)
+            {
+                return RedirectToAction("ErrorPage", "Home", new { message = err.Message });
+            }
             return RedirectToAction("DetailsCase", "Cases", new { id = model.Charity.Id });
         }
 
         [HttpGet]
         public async Task<IActionResult> DeleteComment(Guid commentId, Guid charityId)
         {
-            Charity charity = await commentService.DeleteComment(commentId, charityId);
+            try
+            {
+                Charity charity = await commentService.DeleteComment(commentId, charityId);
+            }
+            catch (Exception err)
+            {
+                return RedirectToAction("ErrorPage", "Home", new { message = err.Message });
+            }
             return RedirectToAction("DetailsCase", "Cases", new { id = charityId });
         }
     }

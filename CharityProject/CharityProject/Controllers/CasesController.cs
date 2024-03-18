@@ -44,8 +44,15 @@ namespace Charities.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CreateCaseViewModel model)
         {
-            var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
-            var charity = await caseService.CreateCharity(model, userId!);
+            try
+            {
+                var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+                var charity = await caseService.CreateCharity(model, userId!);
+            }
+            catch (Exception err)
+            {
+                return RedirectToAction("ErrorPage", "Home", new { message = err.Message });
+            }
             return Redirect("/Home/Index");
         }
 
@@ -53,21 +60,24 @@ namespace Charities.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> DetailsCase(Guid id)
         {
-            if (await caseService.GetCharity(id) == null)
+            try
             {
-                return Redirect("/Home/Index");
+                List<Charity> charities = await caseService.GetAllCharities();
+                Charity charity = await caseService.GetCharity(id);
+                User currentUser = await userManager.GetUserAsync(this.User);
+                DetailsCaseViewModel viewModel = new DetailsCaseViewModel()
+                {
+                    Charities = charities,
+                    Charity = charity,
+                    User = currentUser,
+                    BiggestDonations = charity.Donations.OrderByDescending(d => d.Amount).Take(3).ToList()
+                };
+                return View(viewModel);
             }
-            List<Charity> charities = await caseService.GetAllCharities();
-            Charity charity = await caseService.GetCharity(id);
-            User currentUser = await userManager.GetUserAsync(this.User);
-            DetailsCaseViewModel viewModel = new DetailsCaseViewModel()
+            catch (Exception err)
             {
-                Charities = charities,
-                Charity = charity,
-                User = currentUser,
-                BiggestDonations = charity.Donations.OrderByDescending(d => d.Amount).Take(3).ToList()
-            };
-            return View(viewModel);
+                return RedirectToAction("ErrorPage", "Home", new { message = err.Message });
+            }
         }
 
         [HttpPost]
@@ -103,12 +113,19 @@ namespace Charities.Controllers
             return View("All", viewModel);
         }
 
-        [Authorize(Roles ="Administrator")]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Approve(Guid charityId)
         {
             Charity charity = await caseService.GetCharity(charityId);
             charity.IsApproved = true;
-            await caseService.UpdateCharity(charity);
+            try
+            {
+                await caseService.UpdateCharity(charity);
+            }
+            catch (Exception err)
+            {
+                return RedirectToAction("ErrorPage", "Home", new { message = err.Message });
+            }
             return RedirectToAction("All", "Cases");
         }
 
@@ -117,7 +134,14 @@ namespace Charities.Controllers
         {
             Charity charity = await caseService.GetCharity(charityId);
             charity.IsRejected = true;
-            await caseService.UpdateCharity(charity);
+            try
+            {
+                await caseService.UpdateCharity(charity);
+            }
+            catch (Exception err)
+            {
+                return RedirectToAction("ErrorPage", "Home", new { message = err.Message });
+            }
             return RedirectToAction("All", "Cases");
         }
     }

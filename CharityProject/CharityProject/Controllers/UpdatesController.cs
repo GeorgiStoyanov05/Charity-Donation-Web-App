@@ -28,16 +28,30 @@ namespace CharityProject.Controllers
                 DateCreated = DateTime.Now,
                 UserId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value
             };
-            Charity charity = await caseService.GetCharity(model.Charity.Id);
-            await updateService.PostUpdateToCharity(update, charity);
+            try
+            {
+                Charity charity = await caseService.GetCharity(model.Charity.Id);
+                await updateService.PostUpdateToCharity(update, charity);
+            }
+            catch (Exception err)
+            {
+                return RedirectToAction("ErrorPage", "Home", new { message = err.Message });
+            }
             return RedirectToAction("DetailsCase", "Cases", new { id = model.Charity.Id });
         }
 
         public async Task<IActionResult> DeleteUpdate(Guid updateId, Guid charityId)
         {
-            Charity charity = await caseService.GetCharity(charityId);
-            Update update = updateService.GetUpdate(updateId, charity);
-            await updateService.DeleteUpdateFromCharity(update, charity);
+            try
+            {
+                Charity charity = await caseService.GetCharity(charityId);
+                Update update = updateService.GetUpdate(updateId, charity);
+                await updateService.DeleteUpdateFromCharity(update, charity);
+            }
+            catch (Exception err)
+            {
+                return RedirectToAction("ErrorPage", "Home", new { message = err.Message });
+            }
             return RedirectToAction("DetailsCase", "Cases", new { id = charityId });
         }
     }

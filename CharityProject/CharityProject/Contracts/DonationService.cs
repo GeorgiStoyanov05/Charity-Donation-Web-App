@@ -19,9 +19,20 @@ namespace CharityProject.Contracts
         public async Task<Charity> MakeDonationToCharity(Donation donation, Charity charity)
         {
             Charity extendedCharity = context.Charities.Where(c => c.Id == charity.Id).Include(c => c.Donations).ToList()[0];
-            extendedCharity.Donations.Add(donation);
-            context.Charities.Update(extendedCharity);
-            await context.SaveChangesAsync();
+            if (extendedCharity == null)
+            {
+                throw new ArgumentNullException("Charity not found.");
+            }
+            try
+            {
+                extendedCharity.Donations.Add(donation);
+                context.Charities.Update(extendedCharity);
+                await context.SaveChangesAsync();
+            }
+            catch (Exception err)
+            {
+                throw new Exception("There was an error while making your donation.");
+            }
             return extendedCharity;
         }
     }
