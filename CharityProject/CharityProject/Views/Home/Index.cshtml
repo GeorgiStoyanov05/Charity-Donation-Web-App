@@ -44,13 +44,13 @@
             <div class="cases__slider">
                 @if (!this.User.IsInRole("Administrator"))
                 {
-                    @if (Model.Where(c=>c.IsApproved==true && c.IsDeleted==false).ToList().Count == 0)
+                    @if (Model.Where(c => c.IsApproved == true && c.IsDeleted == false).ToList().Count == 0)
                     {
                         <h3 class="global__text">There are no cases currently!</h3>
                     }
                     else
                     {
-                        @foreach (var charity in Model.Where(c=>c.IsApproved==true && c.IsDeleted==false).ToList())
+                        @foreach (var charity in Model.Where(c => c.IsApproved == true && c.IsDeleted == false).ToList())
                         {
                             <div class="card cases__card">
                                 <div class="cases__card-img">
@@ -99,13 +99,13 @@
                 }
                 else
                 {
-                    @if (Model.Where(c=>c.IsApproved==false && c.IsRejected==false).ToList().Count == 0)
+                    @if (Model.Where(c => c.IsApproved == false && c.IsRejected == false).ToList().Count == 0)
                     {
                         <h3 class="global__text">There are no cases that need to be approved currently!</h3>
                     }
                     else
                     {
-                        @foreach (var charity in Model.Where(c=>c.IsApproved==false && c.IsRejected==false).ToList())
+                        @foreach (var charity in Model.Where(c => c.IsApproved == false && c.IsRejected == false).ToList())
                         {
                             <div class="card cases__card">
                                 <div class="cases__card-img">
@@ -176,21 +176,12 @@
                     We are the Powerful, Free Fundraising Platform
                 </h2>
                 <p class="about__desc global__desc mb-3">
-                    Amet, consectetur adipiscing elit. Etiam eu turpis
-                    molestie,
-                    dictum est
-                    a, mattis tellus. Sed dignissim, metus nec
-                    fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus.
-                    Maecenas eget condimentum velit,
-                    sit amet feugiat risus sem sollicitudin lectus.
-                </p>
+                    We empower individuals and organizations to bring their ideas to life.
+                    With zero platform fees, every dollar you raise goes directly to your cause.
                 <p class="about__desc global__desc m-0">
-                    Consectetur adipiscing elit. Etiam eu turpis molestie,
-                    dictum
-                    est a,
-                    mattis tellus. Sed dignissim, metus nec fringilla
-                    accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget
-                    condimentum.
+                    Whether it's for medical expenses, community projects, or creative endeavors, our user-friendly platform makes fundraising simple and effective.
+                    Join us in making a difference today. Together, we can achieve greatness, one campaign at a time.
+                </p>
                 </p>
                 <div class="">
                     <ul class="about__list">
@@ -203,7 +194,7 @@
                         <li>
                             <img class="cases__card-range--dollar p-1 me-2" src="~/assets/img/check.svg" alt="icon">
                             <span class="global__desc m-0">
-                                Share with friends
+                                Write updates and comments
                             </span>
                         </li>
                         <li>
@@ -245,10 +236,10 @@
                             <img class="org__li-img--icon" src="~/assets/img/campain.svg" alt="">
                         </div>
                         <div class="">
-                            <h3 class="org__li-name">Manage your campaigns</h3>
+                            <h3 class="org__li-name">Interact with different campaigns</h3>
                             <p class="org__desc global__desc mt-2 mb-0">
-                                Track how many people signed the petition
-                                by week, month, year.
+                                Post updates about the progress of your charity and also 
+                                write words of support to motivate others.
                             </p>
                         </div>
                     </li>
