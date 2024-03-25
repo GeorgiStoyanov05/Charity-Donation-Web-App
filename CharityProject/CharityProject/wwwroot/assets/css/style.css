@@ -19510,7 +19510,7 @@ ul {
     content: "";
     left: 0;
     bottom: 0;
-    background-image: url(../img/line-left.png);
+    background-image: url(../../images/line-left.png);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -19524,7 +19524,7 @@ ul {
     content: "";
     right: -4%;
     bottom: 0;
-    background-image: url(../img/line-right.png);
+    background-image: url(../../images/line-right.png);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -21130,7 +21130,8 @@ input:checked ~ .sign__form-rem--checkmark::after {
 }
 
 .footer {
-    position: relative;
+    position: absolute;
+    width: 100%;
     z-index: 8;
     background-image: url(../img/footerDrop.png);
     background-size: cover;
@@ -21142,7 +21143,7 @@ input:checked ~ .sign__form-rem--checkmark::after {
 
 @media screen and (min-width: 1200px) {
     .footer {
-        padding: 20rem 0 48px 0;
+        padding: 6rem 0 48px 0;
     }
 }
 

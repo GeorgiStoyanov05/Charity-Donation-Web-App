@@ -254,7 +254,7 @@
             {
                 @if (Model.Charities.Where(c => c.IsApproved == true && c.IsDeleted == false && c != Model.Charity).ToList().Count == 0)
                 {
-                    <h3 class="global__text">There are no cases currently!</h3>
+                    <h3 class="global__text">There are no other cases currently!</h3>
                 }
                 else
                 {
