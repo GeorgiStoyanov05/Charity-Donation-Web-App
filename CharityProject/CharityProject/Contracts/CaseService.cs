@@ -11,12 +11,10 @@ namespace CharityProject.Contracts
     public class CaseService : ICaseService
     {
         private readonly ApplicationDbContext context;
-        private readonly UserManager<User> userManager;
 
-        public CaseService(ApplicationDbContext _context, UserManager<User> userManager)
+        public CaseService(ApplicationDbContext _context)
         {
             this.context = _context;
-            this.userManager = userManager;
         }
 
         public async Task<Charity> CreateCharity(CreateCaseViewModel model, string userId)
@@ -66,10 +64,6 @@ namespace CharityProject.Contracts
         public async Task<List<Category>> GetAllCategories()
         {
             List<Category> categories = await context.Categories.ToListAsync();
-            if (categories.Count == 0)
-            {
-                throw new ArgumentNullException("There are not categories.");
-            }
             return categories;
         }
 
@@ -99,15 +93,8 @@ namespace CharityProject.Contracts
 
         public async Task<Charity> UpdateCharity(Charity charity)
         {
-            try
-            {
                 context.Charities.Update(charity);
                 await context.SaveChangesAsync();
-            }
-            catch (Exception err)
-            {
-                throw new ArgumentException("There's was an error while updating the charity's data.");
-            }
             return charity;
         }
     }

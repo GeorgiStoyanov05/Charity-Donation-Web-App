@@ -13,7 +13,7 @@ namespace Charities.Data.Models
         public User? User { get; set; }
 
         [Required (ErrorMessage = "The Comment field is required.")]
-        [StringLength(maximumLength:200)]
+        [StringLength(200, MinimumLength = 1)]
         public string? Text { get; set; }
 
         [Required]

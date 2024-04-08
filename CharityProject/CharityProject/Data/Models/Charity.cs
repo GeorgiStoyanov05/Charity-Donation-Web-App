@@ -9,7 +9,7 @@ namespace Charities.Data.Models
         public Guid Id { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [StringLength(50, MinimumLength = 1)]
         public string? Name { get; set; }
 
         
@@ -45,6 +45,7 @@ namespace Charities.Data.Models
         [Required]
         [ForeignKey("Category")]
         public Guid CategoryId { get; set; }
+        [Required]
         public Category? Category { get; set; }
 
         public bool IsApproved { get; set; } = false;

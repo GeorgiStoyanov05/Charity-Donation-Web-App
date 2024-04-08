@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CharityProject.Migrations
 {
-    public partial class FinalDbMigrations : Migration
+    public partial class FinalProjectDbMigrations : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -299,11 +299,11 @@ namespace CharityProject.Migrations
                 columns: new[] { "Id", "Name" },
                 values: new object[,]
                 {
-                    { new Guid("04fb7b0a-6afa-48a0-b761-9d93161fefec"), "Healthy Food" },
-                    { new Guid("21e88a33-c6c5-4325-97d5-cced0c7bd977"), "Medical Facilities" },
-                    { new Guid("254b835b-e174-4986-9c97-dda89b35e90e"), "Free Education" },
-                    { new Guid("4060d6d5-954c-4a60-8a74-3717a48fdc4d"), "Clean Water" },
-                    { new Guid("f4291895-8423-4c68-a53f-d75d60b37487"), "Helping Poor" }
+                    { new Guid("1598cb75-6d10-4150-bee7-63950b93bbab"), "Clean Water" },
+                    { new Guid("7965c185-0f86-4353-afe7-7ca57bfc095f"), "Free Education" },
+                    { new Guid("8948826d-1240-44ce-99f1-28bdb95ee83c"), "Helping Poor" },
+                    { new Guid("d0551b0d-cdb3-40c0-bec4-21117f9f196f"), "Medical Facilities" },
+                    { new Guid("fd7b0192-ff92-49fd-8d80-aac12f057c51"), "Healthy Food" }
                 });
 
             migrationBuilder.CreateIndex(

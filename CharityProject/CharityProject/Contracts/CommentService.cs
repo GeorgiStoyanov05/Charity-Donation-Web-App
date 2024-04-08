@@ -10,21 +10,19 @@ namespace CharityProject.Contracts
     public class CommentService : ICommentService
     {
         private readonly ApplicationDbContext context;
-        private readonly UserManager<User> userManager;
 
-        public CommentService(ApplicationDbContext _context, UserManager<User> userManager)
+        public CommentService(ApplicationDbContext _context)
         {
             this.context = _context;
-            this.userManager = userManager;
         }
 
         public async Task<Charity> AddCommentToCharity(Charity charity, Comment comment)
         {
-            Charity extendedCharity = context.Charities.Where(c => c.Id == charity.Id).Include(c => c.Comments).ToList()[0];
-            if (extendedCharity == null)
+            if (charity == null)
             {
                 throw new ArgumentNullException("Charity not found.");
             }
+            Charity extendedCharity = context.Charities.Where(c => c.Id == charity.Id).Include(c => c.Comments).ToList()[0];
             try
             {
                 extendedCharity.Comments!.Add(comment);
@@ -46,11 +44,11 @@ namespace CharityProject.Contracts
 
         public async Task<Charity> DeleteComment(Guid commentId, Guid charityId)
         {
-            Charity charity = context.Charities.Include(c => c.Comments).Where(c=>c.Id==charityId).ToList()[0];
-            if (charity == null)
+            if (context.Charities.Where(c => c.Id == charityId).ToList().Count == 0)
             {
                 throw new ArgumentNullException("Charity not found.");
             }
+            Charity charity = context.Charities.Include(c => c.Comments).Where(c=>c.Id==charityId).ToList()[0];
             Comment comment = charity.Comments!.Where(c => c.Id == commentId).FirstOrDefault()!;
             if (comment == null)
             {
