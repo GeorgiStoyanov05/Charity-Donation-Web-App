@@ -9,7 +9,8 @@ namespace Charities.Data.Models
         public Guid Id { get; set; }
 
         [Required]
-        [StringLength(50, MinimumLength = 1)]
+        [MinLength(1)]
+        [MaxLength(50)]
         public string? Name { get; set; }
 
         
@@ -35,8 +36,8 @@ namespace Charities.Data.Models
         //TODO: FundsDonated
         public ICollection<Donation> Donations { get; set; }
 
-        [Required]
         [Url]
+        [Required]
         public string? ImageUrl { get; set; }
 
         //TODO: Comments

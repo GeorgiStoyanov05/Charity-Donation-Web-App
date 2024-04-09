@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CharityProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240408195124_FinalDbMigration")]
+    [Migration("20240409154327_FinalDbMigration")]
     partial class FinalDbMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -41,27 +41,27 @@ namespace CharityProject.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("55e194b3-d843-478c-9051-10d8f3c7cce5"),
+                            Id = new Guid("39c69eb7-7a5f-49a9-b8c0-52e1a188c563"),
                             Name = "Healthy Food"
                         },
                         new
                         {
-                            Id = new Guid("5ebcf9d5-89b0-4f9c-88f1-75b0a8bce741"),
+                            Id = new Guid("c0189056-ff44-4730-8db9-c0240c8d22b5"),
                             Name = "Free Education"
                         },
                         new
                         {
-                            Id = new Guid("adfb776d-26f7-4342-9569-6e125ff21766"),
+                            Id = new Guid("8f302450-8add-46fd-89fb-e18b15ffd430"),
                             Name = "Clean Water"
                         },
                         new
                         {
-                            Id = new Guid("c77cffe9-7e48-49fd-8b3b-88e5e50b508e"),
+                            Id = new Guid("0c2345fb-a0eb-4771-9901-2b2648f745ad"),
                             Name = "Helping Poor"
                         },
                         new
                         {
-                            Id = new Guid("95d07d08-305c-4664-8c07-daa342e2516f"),
+                            Id = new Guid("6088dda6-fa21-40c8-81fd-96e6208afe1e"),
                             Name = "Medical Facilities"
                         });
                 });
@@ -172,8 +172,7 @@ namespace CharityProject.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<double?>("Amount")
-                        .IsRequired()
+                    b.Property<double>("Amount")
                         .HasColumnType("float");
 
                     b.Property<Guid>("CharityId")

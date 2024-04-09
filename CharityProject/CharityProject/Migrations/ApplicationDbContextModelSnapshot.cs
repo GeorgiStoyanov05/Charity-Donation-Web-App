@@ -39,27 +39,27 @@ namespace CharityProject.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("fd7b0192-ff92-49fd-8d80-aac12f057c51"),
+                            Id = new Guid("39c69eb7-7a5f-49a9-b8c0-52e1a188c563"),
                             Name = "Healthy Food"
                         },
                         new
                         {
-                            Id = new Guid("7965c185-0f86-4353-afe7-7ca57bfc095f"),
+                            Id = new Guid("c0189056-ff44-4730-8db9-c0240c8d22b5"),
                             Name = "Free Education"
                         },
                         new
                         {
-                            Id = new Guid("1598cb75-6d10-4150-bee7-63950b93bbab"),
+                            Id = new Guid("8f302450-8add-46fd-89fb-e18b15ffd430"),
                             Name = "Clean Water"
                         },
                         new
                         {
-                            Id = new Guid("8948826d-1240-44ce-99f1-28bdb95ee83c"),
+                            Id = new Guid("0c2345fb-a0eb-4771-9901-2b2648f745ad"),
                             Name = "Helping Poor"
                         },
                         new
                         {
-                            Id = new Guid("d0551b0d-cdb3-40c0-bec4-21117f9f196f"),
+                            Id = new Guid("6088dda6-fa21-40c8-81fd-96e6208afe1e"),
                             Name = "Medical Facilities"
                         });
                 });

@@ -21,9 +21,9 @@ namespace CharityProject.Contracts
 
         public async Task<Charity> PostUpdateToCharity(Update update, Charity charity)
         {
-            if (update == null)
+            if (update.Text.Length==0)
             {
-                throw new ArgumentNullException("Update not found.");
+                throw new ArgumentNullException("The update's text length must be greater than 0");
             }
             if (charity == null)
             {
@@ -37,7 +37,7 @@ namespace CharityProject.Contracts
             }
             catch (Exception err)
             {
-                throw new ArgumentException("There was an error while posting the update.");
+                throw new ArgumentException(err.Message);
             }
             return charity;
         }

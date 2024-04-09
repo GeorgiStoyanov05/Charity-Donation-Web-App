@@ -9,12 +9,10 @@ namespace CharityProject.Contracts
     public class DonationService : IDonationService
     {
         private readonly ApplicationDbContext context;
-        private readonly UserManager<User> userManager;
 
-        public DonationService(ApplicationDbContext _context, UserManager<User> userManager)
+        public DonationService(ApplicationDbContext _context)
         {
             this.context = _context;
-            this.userManager = userManager;
         }
         public async Task<Charity> MakeDonationToCharity(Donation donation, Charity charity)
         {

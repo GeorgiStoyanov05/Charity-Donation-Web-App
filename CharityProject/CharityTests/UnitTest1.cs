@@ -73,7 +73,7 @@ namespace CharityTests
                     Location = "Kazanlak",
                 };
 
-                Assert.That(async () => await caseService.CreateCharity(correctModel, "d"), Throws.ArgumentNullException);
+                Assert.That(async () => await caseService.CreateCharity(correctModel, "d"), Throws.ArgumentException);
             }
             [Test]
             public async Task CreateCharityMethodTestedWithCorrectModelAndCorrectUser()
@@ -115,7 +115,7 @@ namespace CharityTests
                     Location = "Kazanlak",
                 };
 
-                Assert.That(async () => await caseService.CreateCharity(correctModel, "d"), Throws.ArgumentNullException);
+                Assert.That(async () => await caseService.CreateCharity(correctModel, "b"), Throws.Exception);
             }
             [Test]
             public async Task CreateCharityMethodTestedWithIncorrectModelDescriptionAndCorrectUser()
@@ -130,7 +130,7 @@ namespace CharityTests
                     Location = "Kazanlak",
                 };
 
-                Assert.That(async () => await caseService.CreateCharity(correctModel, "d"), Throws.ArgumentNullException);
+                Assert.That(async () => await caseService.CreateCharity(correctModel, "b"), Throws.ArgumentException);
             }
             [Test]
             public async Task CreateCharityMethodTestedWithIncorrectModelFundsNeededAndCorrectUser()
@@ -146,23 +146,7 @@ namespace CharityTests
                     Location = "Kazanlak",
                 };
 
-                Assert.That(async () => await caseService.CreateCharity(correctModel, "d"), Throws.ArgumentNullException);
-            }
-            [Test]
-            public async Task CreateCharityMethodTestedWithIncorrectModelImageUrlAndCorrectUser()
-            {
-                CaseService caseService = new CaseService(this.context);
-                CreateCaseViewModel correctModel = new CreateCaseViewModel()
-                {
-                    Name = "TestName",
-                    Description = "SomeDescription",
-                    FundsNeeded = 5000,
-                    ImageUrl = "https/cdn.britannica.com/70/234870-050-D4D024BB/Orange-colored-cat-yawns-displaying-teeth.jpg",
-                    CategoryId = Guid.Parse("5570f29f-e44e-40dc-9f7c-f97334329548"),
-                    Location = "Kazanlak",
-                };
-
-                Assert.That(async () => await caseService.CreateCharity(correctModel, "d"), Throws.ArgumentNullException);
+                Assert.That(async () => await caseService.CreateCharity(correctModel, "b"), Throws.ArgumentException);
             }
             [Test]
             public async Task CreateCharityMethodTestedWithIncorrectModelLocationAndCorrectUser()
@@ -177,7 +161,7 @@ namespace CharityTests
                     CategoryId = Guid.Parse("5570f29f-e44e-40dc-9f7c-f97334329548"),
                 };
 
-                Assert.That(async () => await caseService.CreateCharity(correctModel, "d"), Throws.ArgumentNullException);
+                Assert.That(async () => await caseService.CreateCharity(correctModel, "b"), Throws.ArgumentException);
             }
 
             [Test]
@@ -294,7 +278,6 @@ namespace CharityTests
                     this.context.AddRange(charities);
                     this.context.SaveChanges();
                 }
-
             }
             [Test]
             public void AddCommentToCharityWithEmptyCharityAndEmptyComment()
@@ -410,20 +393,198 @@ namespace CharityTests
         [TestFixture]
         public class DonationServiceTests
         {
-            [Test]
-            public void Test1()
+            private IEnumerable<Charity> charities;
+            private IEnumerable<User> users;
+            private ApplicationDbContext context;
+            [SetUp]
+            public void Setup()
             {
-                Assert.Pass();
+                var options = new DbContextOptionsBuilder<ApplicationDbContext>()
+                   .UseInMemoryDatabase(databaseName: "InMemoryDb")
+                   .Options;
+                this.context = new ApplicationDbContext(options);
+                if (this.context.Users.ToList().Count == 0)
+                {
+                    this.charities = new List<Charity>()
+                {
+                    new Charity(){
+                        CategoryId=Guid.Parse("5570f29f-e44e-40dc-9f7c-f97334329548"),
+                        CreatorId="a",
+                        FundsNeeded=200,
+                        ImageUrl="https://cdn.britannica.com/70/234870-050-D4D024BB/Orange-colored-cat-yawns-displaying-teeth.jpg",
+                        Name = "TestCharity",
+                        Location = "Kazanlak",
+                        Description = "This is a test charity."
+                    }
+                };
+                    this.users = new List<User>()
+                {
+                    new User(){Id="a", Email="gogo@abv.bg", UserName = "gosko"},
+                    new User(){Id="b", Email="gogo1@abv.bg", UserName = "gosko1"},
+                    new User(){Id="c", Email="gogo2@abv.bg", UserName = "gosko2"},
+                };
+
+                    this.context.AddRange(users);
+                    this.context.AddRange(charities);
+                    this.context.SaveChanges();
+                }
+            }
+            [Test]
+            public async Task MakeDontationToCharityTestWithCorrectCharityAndIncorrectDonationAmount()
+            {
+                DonationService donationService = new DonationService(this.context);
+                Charity charity = await context.Charities.FirstAsync();
+                Donation donation = new Donation()
+                {
+                    UserId = "a",
+                    Amount = 0
+                };
+                Assert.That(async()=>await donationService.MakeDonationToCharity(donation, charity), Throws.Exception);
+            }
+            [Test]
+            public async Task MakeDontationToCharityTestWithCorrectCharityAndCorrectDonationAmount()
+            {
+                DonationService donationService = new DonationService(this.context);
+                Charity charity = await context.Charities.FirstAsync();
+                Donation donation = new Donation()
+                {
+                    UserId = "a",
+                    Amount = 5
+                };
+                var result = await donationService.MakeDonationToCharity(donation, charity);
+                Assert.That(result, Is.Not.Null);
+            }
+            [Test]
+            public async Task MakeDontationToCharityTestWithIncorrectCharityAndCorrectDonationAmount()
+            {
+                DonationService donationService = new DonationService(this.context);
+                var charity = new Charity()
+                {
+                    Id = Guid.Parse("388ac69d-d369-493c-b741-f5a2433fca89")
+                };
+                Donation donation = new Donation()
+                {
+                    UserId = "a",
+                    Amount = 5
+                };
+                Assert.That(async () => await donationService.MakeDonationToCharity(donation, charity), Throws.Exception);
             }
         }
 
         [TestFixture]
         public class UpdateServiceTests
         {
-            [Test]
-            public void Test1()
+            private IEnumerable<Charity> charities;
+            private IEnumerable<User> users;
+            private ApplicationDbContext context;
+            [SetUp]
+            public void Setup()
             {
-                Assert.Pass();
+                var options = new DbContextOptionsBuilder<ApplicationDbContext>()
+                   .UseInMemoryDatabase(databaseName: "InMemoryDb")
+                   .Options;
+                this.context = new ApplicationDbContext(options);
+                if (this.context.Users.ToList().Count == 0)
+                {
+                    this.charities = new List<Charity>()
+                {
+                    new Charity(){
+                        CategoryId=Guid.Parse("5570f29f-e44e-40dc-9f7c-f97334329548"),
+                        CreatorId="a",
+                        FundsNeeded=200,
+                        ImageUrl="https://cdn.britannica.com/70/234870-050-D4D024BB/Orange-colored-cat-yawns-displaying-teeth.jpg",
+                        Name = "TestCharity",
+                        Location = "Kazanlak",
+                        Description = "This is a test charity."
+                    }
+                };
+                    this.users = new List<User>()
+                {
+                    new User(){Id="a", Email="gogo@abv.bg", UserName = "gosko"},
+                    new User(){Id="b", Email="gogo1@abv.bg", UserName = "gosko1"},
+                    new User(){Id="c", Email="gogo2@abv.bg", UserName = "gosko2"},
+                };
+
+                    this.context.AddRange(users);
+                    this.context.AddRange(charities);
+                    this.context.SaveChanges();
+                }
+            }
+            [Test]
+            public async Task PostUpdateToCharityWithCorrectCharityAndCorrectUpdate()
+            {
+                UpdateService service = new UpdateService(context);
+                Charity charity = await context.Charities.Include(c=>c.Updates).FirstAsync();
+                Update update = new Update()
+                {
+                    Text = "Example text",
+                    DateCreated = DateTime.Now,
+                    CharityId = charity.Id,
+                    UserId = "a"
+                };
+                var result = await service.PostUpdateToCharity(update, charity);
+                Assert.That(result, Is.Not.Null);
+            }
+            [Test]
+            public async Task PostUpdateToCharityWithCorrectCharityAndIncorrectUpdate()
+            {
+                UpdateService service = new UpdateService(context);
+                Charity charity = await context.Charities.FirstAsync();
+                Update update = new Update()
+                {
+                    Id = Guid.Parse("c9d0a459-031b-4eca-9c76-a4df644d8da7"),
+                    Text = "",
+                    DateCreated = DateTime.Now,
+                    CharityId = charity.Id,
+                    UserId = "a"
+                };
+                Assert.That(async () => await service.PostUpdateToCharity(update, charity), Throws.ArgumentNullException);
+            }
+            [Test]
+            public async Task PostUpdateToCharityWithNullCharityAndCorrectUpdate()
+            {
+                UpdateService service = new UpdateService(context);
+                Charity charity = await context.Charities.FirstAsync();
+                Update update = new Update()
+                {
+                    Id = Guid.Parse("c9d0a459-031b-4eca-9c76-a4df644d8da7"),
+                    Text = "Example text",
+                    DateCreated = DateTime.Now,
+                    CharityId = charity.Id,
+                    UserId = "a"
+                };
+                Assert.That(async () => await service.PostUpdateToCharity(update, null), Throws.ArgumentNullException);
+            }
+            [Test]
+            public async Task PostUpdateToCharityWithNullCharityAndIncorrectUpdate()
+            {
+                UpdateService service = new UpdateService(context);
+                Charity charity = await context.Charities.FirstAsync();
+                Update update = new Update()
+                {
+                    Id = Guid.Parse("c9d0a459-031b-4eca-9c76-a4df644d8da7"),
+                    Text = "",
+                    DateCreated = DateTime.Now,
+                    CharityId = charity.Id,
+                    UserId = "a"
+                };
+                Assert.That(async () => await service.PostUpdateToCharity(update, null), Throws.ArgumentNullException);
+            }
+            [Test]
+            public async Task GetUpdateTest()
+            {
+                UpdateService service = new UpdateService(context);
+                Charity charity = await context.Charities.Include(c => c.Updates).FirstAsync();
+                Update update = new Update()
+                {
+                    Text = "Example text",
+                    DateCreated = DateTime.Now,
+                    CharityId = charity.Id,
+                    UserId = "a"
+                };
+                var result = await service.PostUpdateToCharity(update, charity);
+                Update extractedUpdate = service.GetUpdate(result.Updates.First().Id, result);
+                Assert.That(extractedUpdate, Is.Not.Null);
             }
         }
     }

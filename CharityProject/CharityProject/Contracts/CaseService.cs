@@ -43,6 +43,10 @@ namespace CharityProject.Contracts
                 {
                     throw new ArgumentOutOfRangeException("The funds needed can not be less than 1.00$");
                 }
+                if (model.Name.Length < 1)
+                {
+                    throw new ArgumentOutOfRangeException("Name must contain at least 1 character.");
+                }
                 Charity charity = new Charity()
                 {
                     Name = model.Name,
