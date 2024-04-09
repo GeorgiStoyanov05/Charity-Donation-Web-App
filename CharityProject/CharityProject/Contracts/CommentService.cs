@@ -31,7 +31,7 @@ namespace CharityProject.Contracts
             }
             catch (Exception err)
             {
-                throw new ArgumentException("There was an error while posting this comment.");
+                throw new ArgumentException("Your comment can not be empty.");
             }
             return extendedCharity;
         }
