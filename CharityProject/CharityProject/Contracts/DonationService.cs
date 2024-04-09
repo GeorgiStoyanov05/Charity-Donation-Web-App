@@ -18,22 +18,26 @@ namespace CharityProject.Contracts
         }
         public async Task<Charity> MakeDonationToCharity(Donation donation, Charity charity)
         {
-            Charity extendedCharity = context.Charities.Where(c => c.Id == charity.Id).Include(c => c.Donations).ToList()[0];
-            if (extendedCharity == null)
-            {
-                throw new ArgumentNullException("Charity not found.");
-            }
             try
             {
+                Charity extendedCharity = context.Charities.Where(c => c.Id == charity.Id).Include(c => c.Donations).ToList()[0];
+                if (extendedCharity == null)
+                {
+                    throw new ArgumentNullException("Charity not found.");
+                }
+                if (donation.Amount < 1)
+                {
+                    throw new ArgumentOutOfRangeException("Donation amount cannot be less than 1.00$");
+                }
                 extendedCharity.Donations.Add(donation);
                 context.Charities.Update(extendedCharity);
                 await context.SaveChangesAsync();
+                return extendedCharity;
             }
             catch (Exception err)
             {
-                throw new Exception("There was an error while making your donation.");
+                throw new Exception(err.Message);
             }
-            return extendedCharity;
         }
     }
 }

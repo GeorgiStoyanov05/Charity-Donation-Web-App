@@ -19,46 +19,51 @@ namespace CharityProject.Contracts
 
         public async Task<Charity> CreateCharity(CreateCaseViewModel model, string userId)
         {
-            var user = await context.Users.FindAsync(userId);
-            if (user == null)
-            {
-                throw new ArgumentNullException("This user doesn't exist.");
-            }
-            var creator = context.Owners.Find(userId);
-            if (creator == null)
-            {
-                creator = new Creator()
-                {
-                    Id = userId,
-                    Username = user!.UserName,
-                    Email = user.Email
-
-                };
-                await context.Owners.AddAsync(creator);
-                await context.SaveChangesAsync();
-            }
-            Charity charity = new Charity()
-            {
-                Name = model.Name,
-                CreatorId = creator.Id,
-                Description = model.Description,
-                Location = model.Location,
-                FundsNeeded = model.FundsNeeded,
-                ImageUrl = model.ImageUrl,
-                CategoryId = model.CategoryId,
-                IsDeleted = false,
-                IsApproved = false
-            };
             try
             {
+                var user = await context.Users.FindAsync(userId);
+                if (user == null)
+                {
+                    throw new ArgumentNullException("This user doesn't exist.");
+                }
+                var creator = context.Owners.Find(userId);
+                if (creator == null)
+                {
+                    creator = new Creator()
+                    {
+                        Id = userId,
+                        Username = user!.UserName,
+                        Email = user.Email
+
+                    };
+                    await context.Owners.AddAsync(creator);
+                    await context.SaveChangesAsync();
+                }
+                if (model.FundsNeeded < 1)
+                {
+                    throw new ArgumentOutOfRangeException("The funds needed can not be less than 1.00$");
+                }
+                Charity charity = new Charity()
+                {
+                    Name = model.Name,
+                    CreatorId = creator.Id,
+                    Description = model.Description,
+                    Location = model.Location,
+                    FundsNeeded = model.FundsNeeded,
+                    ImageUrl = model.ImageUrl,
+                    CategoryId = model.CategoryId,
+                    IsDeleted = false,
+                    IsApproved = false
+                };
                 await context.Charities.AddAsync(charity);
                 await context.SaveChangesAsync();
+                return charity;
             }
             catch (Exception err)
             {
-                throw new ArgumentException("There was an error while creating this charity.");
+                throw new ArgumentException(err.Message);
             }
-            return charity;
+            
         }
 
         public async Task<List<Category>> GetAllCategories()
