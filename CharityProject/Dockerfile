@@ -1,14 +1,18 @@
+# Build stage
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-WORKDIR /app
+WORKDIR /src
 
-COPY *.csproj ./
-RUN dotnet restore
-
+# Copy solution and project files
 COPY . ./
-RUN dotnet publish -c Release -o out
+WORKDIR /src/CharityProject
 
+RUN dotnet restore
+RUN dotnet publish -c Release -o /app
+
+# Runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
 WORKDIR /app
-COPY --from=build /app/out .
+COPY --from=build /app .
 
+# Run the app
 ENTRYPOINT ["dotnet", "CharityProject.dll"]
