@@ -13,7 +13,7 @@ The application connects people with charitable intentions and those in need. It
 
 ## 🌐 Live Demo
 
-Check out the live application here: [[https://gaming-team-4cwe.onrender.com](https://charity-donation-web-app.onrender.com/)]
+Check out the live application here: [(https://charity-donation-web-app.onrender.com/)](https://charity-donation-web-app.onrender.com/)]
 
 ## 🧰 Technologies Used
 
